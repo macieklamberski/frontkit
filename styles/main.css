@@ -78,6 +78,22 @@ table {
   border-spacing: 0;
 }
 
+/* Button reset (source: http://snipplr.com/view/23417/reset-button-tag/) */
+
+button {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+}
+
+button.action-button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
 /*
  *  1.2 Basic
  *
