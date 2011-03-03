@@ -78,6 +78,23 @@ table {
   border-spacing: 0;
 }
 
+/* Button reset (based on http://snipplr.com/view/23417/reset-button-tag/) */
+
+button,
+input[type="submit"] {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+button.action-button::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
 /*
  *  1.2 Basic
  *
