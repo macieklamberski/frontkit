@@ -16,7 +16,7 @@ foreach (new DirectoryIterator('www') as $file)
 
     $list .= '<li'.($page == $file->getFilename() ? ' class="selected"' : '').'>';
 
-    $name = ucfirst(str_replace(array('.html', '_', '-'), array('', '', ''), $file->getFilename()));
+    $name = ucfirst(str_replace(array('.html', '_', '-'), array('', ' ', ' '), $file->getFilename()));
 
     $list .= '<a href="?page='.str_replace('.html', '', $file->getFilename()).'">'.$name.'</a>';
   }
