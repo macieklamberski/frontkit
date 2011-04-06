@@ -38,16 +38,16 @@ if (file_exists('www/'.$page))
   // Displaying header
   if (file_exists($header = 'www/_header.html'))
   {
-    echo trim(file_get_contents($header))."\n";
+    echo trim(file_get_contents($header), "\n")."\n";
   }
 
   // Displaying content
-  echo trim(file_get_contents('www/'.$page))."\n";
+  echo trim(file_get_contents('www/'.$page), "\n")."\n";
 
   // Displaying footer
   if (file_exists($footer = 'www/_footer.html'))
   {
-    echo trim(file_get_contents($footer))."\n";
+    echo trim(file_get_contents($footer), "\n")."\n";
   }
 
   if ( ! isset($_GET['navigation']) || $_GET['navigation'] == 1)
