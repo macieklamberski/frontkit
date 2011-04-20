@@ -229,7 +229,10 @@ a:active {
 
 @media only screen and (max-width: 767px) {
 
-
+  body {
+    -ms-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+  }
 
 }
 
