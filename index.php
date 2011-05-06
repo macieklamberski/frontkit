@@ -22,7 +22,7 @@ function get_partial($name)
 
 //-- Creating list of pages ---------------------------------------------------
 
-$list = '<div id="pages-list">';
+$list = '<div id="fk-pages-list">';
 
 foreach (new DirectoryIterator('www') as $file)
 {
@@ -69,6 +69,6 @@ echo $content;
 
 if ($display_nav)
 {
-  echo '<style>#pages-list{background:#f6f6f6;border:3px solid #eee;border-left: 0;font:12px sans-serif;line-height:20px;list-style:none;position:fixed;left:0;top:100px;min-width:100px;-moz-border-radius:0 5px 5px 0;border-radius:0 5px 5px 0;-moz-opacity:.8;-webkit-opacity:.8;opacity:.8;z-index:999;margin:0;padding:10px 20px;}#pages-list .selected a{font-weight:700;}#pages-list a{color:#333;display:block;text-decoration:none;}#pages-list a:hover{color:#666;}</style>';
+  echo '<style>#fk-pages-list{background:#f6f6f6;border:3px solid #eee;border-left: 0;font:12px sans-serif;line-height:20px;list-style:none;position:fixed;left:0;top:100px;min-width:100px;-moz-border-radius:0 5px 5px 0;border-radius:0 5px 5px 0;-moz-opacity:.8;-webkit-opacity:.8;opacity:.8;z-index:999;margin:0;padding:10px 20px;}#pages-list .selected a{font-weight:700;}#pages-list a{color:#333;display:block;text-decoration:none;}#pages-list a:hover{color:#666;}</style>';
   echo $list;
 }
