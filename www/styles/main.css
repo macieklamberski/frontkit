@@ -1,22 +1,19 @@
 @charset "UTF-8";
 
 /*
- *  Site Name (Month YYYY)
+ *  Project Name (Month YYYY or Version)
  *  Crafted with passion by http://lamberski.com
  *
  *  1 Global
  *    1.1 Reset
- *    1.2 Basic
- *    1.3 Universal
- *  2 Layout
- *    2.1 Header
- *    2.2 Content
- *      2.2.1 Main
- *      2.2.2 Sidebar
- *    2.3 Footer
- *  3 Responsive Web Design
- *    3.1 Screen
- *    3.2 Handheld
+ *    1.2 Default
+ *    1.3 Components
+ *  2 Header
+ *  3 Content
+ *  4 Footer
+ *  5 Responsive Web Design
+ *    5.1 Screen
+ *    5.2 Handheld
  */
 
 /*
@@ -60,7 +57,7 @@ body {
 }
 
 ol, ul {
-  /*list-style: none;*/
+  list-style: none;
 }
 
 blockquote, q {
@@ -78,17 +75,6 @@ table {
   border-spacing: 0;
 }
 
-/* Button reset (based on http://snipplr.com/view/23417/reset-button-tag/) */
-
-button,
-input[type="submit"] {
-  background: none;
-  border: none;
-  margin: 0;
-  padding: 0;
-  width: auto;
-}
-
 button.action-button::-moz-focus-inner,
 input[type="submit"]::-moz-focus-inner {
   border: 0;
@@ -104,20 +90,8 @@ body {
 
 }
 
-a {
-
-}
-
-a:hover {
-
-}
-
-a:active {
-
-}
-
 /*
- *  1.3 Universal (single groups and structures used in layout)
+ *  1.3 Components (and, if needed, more complex modules)
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -132,18 +106,33 @@ a:active {
   overflow: hidden;
 }
 
-/*
- *  2 Layout
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
 .wrapper {
   margin: 0 auto;
+}
 
+/*  Micro clearfix hack (http://nicolasgallagher.com/micro-clearfix-hack/)
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* For modern browsers */
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+
+.clearfix {
+  zoom: 1;
 }
 
 /*
- *  2.1 Header
+ *  2 Header
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -151,28 +140,8 @@ a:active {
 
 }
 
-#logo {
-
-}
-
-/*  Navigation
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-[role="navigation"] {
-
-}
-
 /*
- *  2.2 Content
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-#content {
-
-}
-
-/*
- *  2.2.1 Main
+ *  3 Content
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -181,16 +150,7 @@ a:active {
 }
 
 /*
- *  2.2.1 Sidebar
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-#sidebar {
-
-}
-
-/*
- *  2.3 Footer
+ *  4 Footer
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -199,12 +159,12 @@ a:active {
 }
 
 /*
- *  3 Responsive Web Design (based on Less Framework 3)
+ *  5 Responsive Web Design (based on Less Framework 3)
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /*
- *  3.1 Screen
+ *  5.1 Screen
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -223,16 +183,13 @@ a:active {
 }
 
 /*
- *  3.2 Handheld
+ *  5.2 Handheld
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 @media only screen and (max-width: 767px) {
 
-  body {
-    -ms-text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-  }
+
 
 }
 
