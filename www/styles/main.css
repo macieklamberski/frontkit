@@ -75,10 +75,10 @@ table {
   border-spacing: 0;
 }
 
-button.action-button::-moz-focus-inner,
+button::-moz-focus-inner,
 input[type="submit"]::-moz-focus-inner {
-  border: 0;
   padding: 0;
+  border: 0;
 }
 
 /*
