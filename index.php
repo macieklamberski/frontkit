@@ -16,8 +16,13 @@ function get_partial($name)
 {
   if (file_exists('www/_'.$name.'.html'))
   {
-    return get_file('_'.$name);
+    return load_partials(get_file('_'.$name));
   }
+}
+
+function load_partials($content)
+{
+  return preg_replace('/\{\{\s*([a-z0-9]+)\s*\}\}/e', 'get_partial("$1")', $content);
 }
 
 //-- Creating list of pages ---------------------------------------------------
@@ -56,12 +61,19 @@ if (empty($has_pages))
 
 $content = get_file(str_replace('.html', '', $page_name));
 
-// Automatically adding header and footer partials (if not added manually)
-if (strpos($content, '{{ header }}') === FALSE) $content = get_partial('header').$content;
-if (strpos($content, '{{ footer }}') === FALSE) $content = $content.get_partial('footer');
+// Including header and footer (if not added manually and document is not standalone)
+if (strpos($content, '{% standalone %}') === FALSE)
+{
+  if (strpos($content, '{{ header }}') === FALSE) $content = get_partial('header').$content;
+  if (strpos($content, '{{ footer }}') === FALSE) $content = $content.get_partial('footer');
+}
+else
+{
+  $content = str_replace('{% standalone %}', '', $content);
+}
 
 // Getting partials added manually
-$content = preg_replace('/\{\{\s*([a-z0-9]+)\s*\}\}/e', 'get_partial("$1")', $content);
+$content = load_partials($content);
 
 echo $content;
 
