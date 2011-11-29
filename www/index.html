@@ -7,25 +7,57 @@
     <link href="favicon.ico" rel="shortcut icon">
     <link href="styles/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script src="scripts/main.js"></script>
   </head>
   <body>
-    <a href="#main" class="accessibility"></a>
-    <header role="banner">
-      <h1 class="outline">Project Name</h1>
-      <nav role="navigation">
-        <h2 class="outline">Main Navigation</h2>
+    <nav>
+      <ol>
+        <li><a href="#navigation">Skip to navigation</a></li>
+        <li><a href="#content">Skip to content</a></li>
+        <li><a href="#sidebar">Skip to sidebar</a></li>
+      </ol>
+    </nav>
 
-      </nav>
+    <hr>
+
+    <header id="header" role="banner">
+      <h1 class="site-name">Site Name<span></span></h1>
+      <!-- <a href="#" rel="home" title="Go to homepage" class="site-name">Site Name<span></span></a> -->
     </header>
-    <div role="main" id="main">
 
+    <hr>
+
+    <nav id="navigation" role="navigation">
+      <ul>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </nav>
+
+    <hr>
+
+    <div role="main">
+      <div id="content">
+        <p>Content</p>
+      </div>
+
+      <hr>
+
+      <aside id="sidebar">
+        <p>Sidebar</p>
+      </aside>
     </div>
-    <footer role="contentinfo">
 
+    <hr>
+
+    <footer id="footer" role="contentinfo">
+      <p>Footer</p>
     </footer>
+
+    <script src="scripts/main.js"></script>
   </body>
 </html>
