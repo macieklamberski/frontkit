@@ -1,0 +1,310 @@
+@charset "UTF-8";
+
+/*******************************************************************************
+ *
+ *  Project Name (Month YYYY or Version)
+ *  Crafted with passion by Maciek Lamberski (http://lamberski.com).
+ *
+ *******************************************************************************
+ *
+ *  1 BASE
+ *    1.1 Reset
+ *    1.2 Defaults
+ *
+ *  2 COMMON
+ *    2.1 Header
+ *    2.2 Content
+ *    2.3 Sidebar
+ *    2.4 Footer
+ *
+ *  3 PAGES
+ *    3.1 Home
+ *
+ *  4 OOCSS
+ *    4.1 Accessibility & Outline
+ *    4.2 Clearfix
+ *    4.3 Wrapper
+ *    4.4 Text Format
+ *
+ ******************************************************************************/
+
+/*  1 BASE
+ ******************************************************************************/
+
+/*  1.1 Reset (based on Reset v2.0 by Eric Meyer)
+ *============================================================================*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Reset for buttons in Firefox */
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+  /* border: 0; */ /* Only if needed */
+  padding: 0;
+  margin: 0;
+}
+
+/*  1.2 Defaults
+ *============================================================================*/
+
+body {
+
+}
+
+hr {
+  display: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+address, cite, dfn {
+  font-style: normal;
+}
+
+abbr, acronym {
+  border-bottom: 1px dotted #999;
+  cursor: help;
+}
+
+
+/* Links */
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Forms */
+
+input, textarea, select {
+
+}
+
+textarea {
+   overflow: auto;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="url"],
+input[type="search"],
+textarea {
+
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button {
+
+}
+
+/*  2 COMMON (common parts of the website)
+ ******************************************************************************/
+
+/*  2.1 Header
+ *============================================================================*/
+
+#header {
+
+}
+
+/*  2.2 Content
+ *============================================================================*/
+
+#content {
+
+}
+
+/*  2.3 Sidebar
+ *============================================================================*/
+
+#sidebar {
+
+}
+
+/*  2.4 Footer
+ *============================================================================*/
+
+#footer {
+
+}
+
+/*  3 PAGES (declarations for page-specific elements)
+ ******************************************************************************/
+
+/*  3.1 Home
+ *============================================================================*/
+
+
+
+/*  4 OOCSS
+ ******************************************************************************/
+
+/*  4.1 Accessibility & Outline
+ *============================================================================*/
+
+.accessibility {
+  position: absolute;
+  top: -999em;
+  left: -999em;
+  height: 1px;
+  width: 1px;
+}
+
+.outline {
+  display: none;
+}
+
+/*  4.2 Clearfix (http://nicolasgallagher.com/micro-clearfix-hack/)
+ *============================================================================*/
+
+/* For modern browsers */
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+
+.clearfix {
+  zoom: 1;
+}
+
+/*  4.3 Wrapper
+ *============================================================================*/
+
+.wrapper {
+  margin: 0 auto;
+  position: relative;
+}
+
+/*  4.4 Text Format
+ *============================================================================*/
+
+.text-format {
+  line-height: 1.5em;
+}
+
+/* Block */
+
+.text-format > * {
+  margin-top: 2em;
+}
+
+.text-format > :first-child {
+  margin-top: 0;
+}
+
+.text-format blockquote {
+
+}
+
+.text-format ul,
+.text-format ol {
+
+}
+
+.text-format li {
+  margin-left: 1.5em;
+}
+
+/* Inline */
+
+.formatting i {
+  font-style: italic;
+}
+
+.formatting b {
+  font-weight: bold;
+}
+
+.formatting sup {
+  vertical-align: super;
+  font-size: 80%;
+}
+
+.formatting sub {
+  vertical-align: sub;
+  font-size: 80%;
+}
+
+.formatting a {
+  text-decoration: none;
+  font-weight: bold;
+}
