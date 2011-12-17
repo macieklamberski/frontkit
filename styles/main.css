@@ -249,29 +249,18 @@ button {
   line-height: 1.5em;
 }
 
-/* Block */
-
 .text-format > * {
   margin-top: 1.5em;
 }
 
-.text-format blockquote > * {
-  margin-top: 1em;
-}
-
-.text-format > :first-child,
-.text-format blockquote > :first-child {
+.text-format > :first-child {
   margin-top: 0;
 }
 
-.text-format blockquote {
-  font-style: italic;
-  margin: 1em;
-}
+/* Lists */
 
 .text-format ol
-.text-format ul,
-.text-format dl {
+.text-format ul {
   margin: 1em;
   margin-left: 2em;
 }
@@ -282,10 +271,6 @@ button {
 
 .text-format ul li ul li {
   list-style-type: circle;
-}
-
-.text-format ul li ul li ul li {
-  list-style-type: square;
 }
 
 .text-format ol li {
@@ -310,9 +295,4 @@ button {
 .text-format sub {
   vertical-align: sub;
   font-size: 80%;
-}
-
-.text-format a {
-  text-decoration: none;
-  font-weight: bold;
 }
