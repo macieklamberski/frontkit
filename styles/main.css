@@ -17,14 +17,11 @@
  *    2.3 Sidebar
  *    2.4 Footer
  *
- *  3 PAGES
- *    3.1 Home
- *
- *  4 OOCSS
- *    4.1 Accessibility & Outline
- *    4.2 Clearfix
- *    4.3 Wrapper
- *    4.4 Text Format
+ *  3 OOCSS
+ *    3.1 Accessibility & Outline
+ *    3.2 Clearfix
+ *    3.3 Wrapper
+ *    3.4 Text Format
  *
  ******************************************************************************/
 
@@ -90,7 +87,6 @@ input[type="reset"]::-moz-focus-inner,
 input[type="button"]::-moz-focus-inner,
 input[type="submit"]::-moz-focus-inner,
 input[type="file"] > input[type="button"]::-moz-focus-inner {
-  /* border: 0; */ /* Only if needed */
   padding: 0;
   margin: 0;
 }
@@ -161,8 +157,8 @@ textarea {
 
 }
 
-input[type="button"],
 input[type="reset"],
+input[type="button"],
 input[type="submit"],
 button {
 
@@ -199,18 +195,10 @@ button {
 
 }
 
-/*  3 PAGES (declarations for page-specific elements)
+/*  3 OOCSS
  ******************************************************************************/
 
-/*  3.1 Home
- *============================================================================*/
-
-
-
-/*  4 OOCSS
- ******************************************************************************/
-
-/*  4.1 Accessibility & Outline
+/*  3.1 Accessibility & Outline
  *============================================================================*/
 
 .accessibility {
@@ -225,7 +213,7 @@ button {
   display: none;
 }
 
-/*  4.2 Clearfix (http://nicolasgallagher.com/micro-clearfix-hack/)
+/*  3.2 Clearfix (http://nicolasgallagher.com/micro-clearfix-hack/)
  *============================================================================*/
 
 /* For modern browsers */
@@ -246,7 +234,7 @@ button {
   zoom: 1;
 }
 
-/*  4.3 Wrapper
+/*  3.3 Wrapper
  *============================================================================*/
 
 .wrapper {
@@ -254,7 +242,7 @@ button {
   position: relative;
 }
 
-/*  4.4 Text Format
+/*  3.4 Text Format
  *============================================================================*/
 
 .text-format {
@@ -264,47 +252,67 @@ button {
 /* Block */
 
 .text-format > * {
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
-.text-format > :first-child {
+.text-format blockquote > * {
+  margin-top: 1em;
+}
+
+.text-format > :first-child,
+.text-format blockquote > :first-child {
   margin-top: 0;
 }
 
 .text-format blockquote {
-
+  font-style: italic;
+  margin: 1em;
 }
 
+.text-format ol
 .text-format ul,
-.text-format ol {
-
+.text-format dl {
+  margin: 1em;
+  margin-left: 2em;
 }
 
-.text-format li {
-  margin-left: 1.5em;
+.text-format ul li {
+  list-style-type: disc;
+}
+
+.text-format ul li ul li {
+  list-style-type: circle;
+}
+
+.text-format ul li ul li ul li {
+  list-style-type: square;
+}
+
+.text-format ol li {
+  list-style-type: decimal;
 }
 
 /* Inline */
 
-.formatting i {
+.text-format i {
   font-style: italic;
 }
 
-.formatting b {
+.text-format b {
   font-weight: bold;
 }
 
-.formatting sup {
+.text-format sup {
   vertical-align: super;
   font-size: 80%;
 }
 
-.formatting sub {
+.text-format sub {
   vertical-align: sub;
   font-size: 80%;
 }
 
-.formatting a {
+.text-format a {
   text-decoration: none;
   font-weight: bold;
 }
