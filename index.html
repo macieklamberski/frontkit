@@ -3,15 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Project Name</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="favicon.ico" rel="shortcut icon">
     <link href="styles/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
-    <nav>
+    <nav class="accessibility">
       <ol>
         <li><a href="#navigation">Skip to navigation</a></li>
         <li><a href="#content">Skip to content</a></li>
@@ -23,18 +21,16 @@
 
     <header id="header" role="banner">
       <h1 class="site-name">Site Name<span></span></h1>
-      <!-- <a href="#" rel="home" title="Go to homepage" class="site-name">Site Name<span></span></a> -->
+      <!-- <a href="#" rel="index" title="Go to homepage" class="site-name">Site Name<span></span></a> -->
     </header>
 
     <hr>
 
     <nav id="navigation" role="navigation">
       <ul>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        <li><a href="#">Link #1</a></li>
+        <li><a href="#">Link #2</a></li>
+        <li><a href="#">Link #3</a></li>
       </ul>
     </nav>
 
@@ -56,6 +52,8 @@
       <p>Footer</p>
     </footer>
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="frontizer/frontizer.js"></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>
