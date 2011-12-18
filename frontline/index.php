@@ -19,7 +19,7 @@ catch (Exception $e)
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Frontline: Error</title>
+    <title>Frontline Error</title>
     <link href="frontline/frontline.css" rel="stylesheet">
   </head>
   <body>
