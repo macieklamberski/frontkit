@@ -37,19 +37,26 @@ class Frontline
   }
 
   /**
-   * Appends jQuery and Frontline assets at the end of the file.
+   * Appends Frontline assets at the end </head> and </body>.
    *
    * @param   string  Document content
    * @return  string
    */
   public static function install($content, $pageName)
   {
-    $lines = array(
-      self::buildNavigator($pageName),
-      '<link rel="stylesheet" href="frontline/frontline.css">',
-    );
+    // Detect indentation style used in project
+    preg_match('/\n(\s*)\<\/body\>/', $content, $matches);
+    $indentation = $matches[1];
 
-    $content = str_replace('</body>', implode("\n", $lines)."\n".'</body>', $content);
+    $content = str_replace('</head>', implode(array(
+      "\n".$indentation.$indentation.'<link rel="stylesheet" href="frontline/frontline.css">',
+      "\n".$indentation.'</head>',
+    )), $content);
+
+    $content = str_replace('</body>', implode(array(
+      "\n".$indentation.$indentation.self::buildNavigator($pageName),
+      "\n".$indentation.'</body>',
+    )), $content);
 
     return $content;
   }
