@@ -1,13 +1,13 @@
 /*******************************************************************************
  *
- *  Frontizer (December 2011)
+ *  Frontline (December 2011)
  *  Crafted with passion by Maciek Lamberski (http://lamberski.com).
  *
  ******************************************************************************/
 
 /* Navigator */
 
-#frontizer-navigator {
+#frontline-navigator {
   background: #f6f6f6;
   border: 3px solid #eee;
   border-left: 0;
@@ -23,23 +23,23 @@
   z-index: 999;
 }
 
-#frontizer-navigator a {
+#frontline-navigator a {
   color: #333;
   display: block;
   text-decoration: none;
 }
 
-#frontizer-navigator a:hover {
+#frontline-navigator a:hover {
   color: #666;
 }
 
-#frontizer-navigator .current a {
+#frontline-navigator .current a {
   font-weight: bold;
 }
 
 /* Error */
 
-#frontizer-error {
+#frontline-error {
   font: 12px/18px sans-serif;
   margin: 150px auto 0;
   text-align: center;

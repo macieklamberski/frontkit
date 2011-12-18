@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Class responsible for all the main features of Frontizer. It contains static
+ * Class responsible for all the main features of Frontline. It contains static
  * methods called at the request in special circumstances.
  */
-class Frontizer
+class Frontline
 {
   /**
    * Function iterates over the main directory and builds array of available
@@ -16,7 +16,7 @@ class Frontizer
    */
   public static function buildNavigator($pageName)
   {
-    $list = '<ul id="frontizer-navigator">';
+    $list = '<ul id="frontline-navigator">';
 
     foreach (new DirectoryIterator('..') as $file)
     {
@@ -34,6 +34,24 @@ class Frontizer
     $list .= '</ul>';
 
     return self::countPages() > 0 ? $list : '';
+  }
+
+  /**
+   * Appends jQuery and Frontline assets at the end of the file.
+   *
+   * @param   string  Document content
+   * @return  string
+   */
+  public static function install($content, $pageName)
+  {
+    $lines = array(
+      self::buildNavigator($pageName),
+      '<link rel="stylesheet" href="frontline/frontline.css">',
+    );
+
+    $content = str_replace('</body>', implode("\n", $lines)."\n".'</body>', $content);
+
+    return $content;
   }
 
   /**
