@@ -3,7 +3,7 @@
 require 'frontizer.php';
 
 // Detect requested page
-$pageName = isset($_GET['file']) ? $_GET['file'] : 'index.html';
+$pageName = !empty($_GET['file']) ? $_GET['file'] : 'index.html';
 
 // Detecting current request and additional info
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -33,5 +33,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 }
 else
 {
-  echo Frontizer::buildNavigator($pageName);  
+  echo Frontizer::buildNavigator($pageName);
 }
