@@ -6,7 +6,7 @@ The tool also contains basic HTML5, CSS and JS template. It can be of course rep
 
 ## Usage
 
-Frontline files must be placed in the Apache directory to be able to execute included PHP script. All *\*.html* documents should be created in the root directory of project. Each of them can be accessed by typing its name in the browser. *.htaccess* file redirects all requests to a script, which includes partials and sends complete HTML code to browser.
+Frontline files must be placed in the Apache directory to be able to execute included PHP script. All *.html* documents should be created in the root directory of project. Each of them can be accessed by typing its name in the browser. *.htaccess* file redirects all requests to a script, which includes partials and sends complete HTML code to browser.
 
 ### Partials
 
