@@ -102,7 +102,7 @@ class Frontline
         }
       }
 
-      $content = preg_replace('/\{\{>\s(\w+)\}\}/e', 'self::compilePartial("$1")', $content);
+      $content = preg_replace('/\{\{>\s([a-zA-Z0-9_-]+)\}\}/e', 'self::compilePartial("$1")', $content);
 
       return $content;
     }
