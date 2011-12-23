@@ -18,10 +18,11 @@
  *    2.4 Footer
  *
  *  3 OOCSS
- *    3.1 Accessibility & Outline
+ *    3.1 Hidden
  *    3.2 Clearfix
- *    3.3 Wrapper
- *    3.4 Text Format
+ *    3.3 Image Replacement
+ *    3.4 Wrapper
+ *    3.5 Text Format
  *
  ******************************************************************************/
 
@@ -197,43 +198,53 @@ button {
 /*  3 OOCSS
  ******************************************************************************/
 
-/*  3.1 Accessibility & Outline
+/*  3.1 Hidden
  *============================================================================*/
 
-.accessibility {
-  position: absolute;
-  top: -999em;
+.hidden {
+  position: fixed;
   left: -999em;
-  height: 1px;
-  width: 1px;
 }
 
-.outline {
-  display: none;
-}
-
-/*  3.2 Clearfix (http://nicolasgallagher.com/micro-clearfix-hack/)
+/*  3.2 Clearfix
  *============================================================================*/
 
-/* For modern browsers */
-
-.clearfix:before,
-.clearfix:after {
+.cf:before,
+.cf:after {
   content: "";
   display: table;
 }
 
-.clearfix:after {
+.cf:after {
   clear: both;
 }
 
-/* For IE 6/7 (trigger hasLayout) */
-
-.clearfix {
+.ie7 .cf {
   zoom: 1;
 }
 
-/*  3.3 Wrapper
+/*  3.3 Image Replacement
+ *============================================================================*/
+
+.ir {
+	display: block;
+	position: relative;
+}
+
+.ir span {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.ie7 .ir a span,
+.ie7 a.ir span {
+	cursor: pointer;
+}
+
+/*  3.4 Wrapper
  *============================================================================*/
 
 .wrapper {
@@ -241,7 +252,7 @@ button {
   position: relative;
 }
 
-/*  3.4 Text Format
+/*  3.5 Text Format
  *============================================================================*/
 
 .text-format {
