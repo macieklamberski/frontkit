@@ -7,7 +7,7 @@ $pageName = !empty($_GET['file']) ? $_GET['file'] : 'index.html';
 
 try
 {
-  $content = Frontline::compileFile($pageName, true);
+  $content = Frontline::compileFile($pageName);
   $content = Frontline::install($content, $pageName);
 
   echo $content;

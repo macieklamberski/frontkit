@@ -65,9 +65,10 @@ class Frontline
    * Merges page content with all partials.
    *
    * @param   string  Full filename of file to compile
+   * @param   string  Wheter to throw exception if file not found
    * @return  string
    */
-  public static function compileFile($filename, $throwError = false)
+  public static function compileFile($filename, $throwError = true)
   {
     // Check if any page exists and if not, throw an Exception.
     if (self::countPages() == 0)
@@ -116,6 +117,7 @@ class Frontline
    * Wrapper of compileFile() method generating special filename for partials.
    *
    * @param   string  Name of partial to compile
+   * @param   string  Wheter to throw exception if partial not found
    * @return  string
    */
   protected static function compilePartial($name, $throwError = true)
