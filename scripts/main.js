@@ -11,6 +11,8 @@ var Site = {
    * Initialize implemented functions
    */
   init: function() {
+    $("html").removeClass("no-js");
+
     Site.doThis();
     Site.doThat();
   },
