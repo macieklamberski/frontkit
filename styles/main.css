@@ -22,7 +22,6 @@
  *    3.2 Clearfix
  *    3.3 Image Replacement
  *    3.4 Wrapper
- *    3.5 Text Format
  *
  ******************************************************************************/
 
@@ -250,59 +249,4 @@ button {
 .wrapper {
   margin: 0 auto;
   position: relative;
-}
-
-/*  3.5 Text Format
- *============================================================================*/
-
-.text-format {
-  line-height: 1.5em;
-}
-
-.text-format > * {
-  margin-top: 1.5em;
-}
-
-.text-format > :first-child {
-  margin-top: 0;
-}
-
-/* Lists */
-
-.text-format ol
-.text-format ul {
-  margin: 1em;
-  margin-left: 2em;
-}
-
-.text-format ul li {
-  list-style-type: disc;
-}
-
-.text-format ul li ul li {
-  list-style-type: circle;
-}
-
-.text-format ol li {
-  list-style-type: decimal;
-}
-
-/* Inline */
-
-.text-format i {
-  font-style: italic;
-}
-
-.text-format b {
-  font-weight: bold;
-}
-
-.text-format sup {
-  vertical-align: super;
-  font-size: 80%;
-}
-
-.text-format sub {
-  vertical-align: sub;
-  font-size: 80%;
 }
