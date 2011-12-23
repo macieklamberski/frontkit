@@ -144,7 +144,7 @@ input, textarea, select {
 }
 
 textarea {
-   overflow: auto;
+  overflow: auto;
 }
 
 input[type="text"],
@@ -227,21 +227,21 @@ button {
  *============================================================================*/
 
 .ir {
-	display: block;
-	position: relative;
+  display: block;
+  position: relative;
 }
 
 .ir span {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .ie7 .ir a span,
 .ie7 a.ir span {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /*  3.4 Wrapper
