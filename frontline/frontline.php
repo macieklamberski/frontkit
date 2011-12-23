@@ -7,7 +7,7 @@
 class Frontline
 {
   /**
-   * Function iterates over the main directory and builds array of available
+   * Function iterates over the main directory and builds markup for available
    * pages.
    *
    * @param   string  Full filename of currently viewed page
@@ -24,7 +24,7 @@ class Frontline
       {
         $list .= '<li'.($pageName == $file->getFilename() ? ' class="current"' : '').'>';
 
-        // Humanize file name to display on the list
+        // Humanize file name to display on the list.
         $name = ucwords(str_replace(array('.html', '_', '-'), array('', ' ', ' '), $file->getFilename()));
 
         $list .= '<a href="'.$file->getFilename().'">'.$name.'</a></li>';
@@ -33,7 +33,7 @@ class Frontline
 
     $list .= '</ul>';
 
-    return self::countPages() > 0 ? $list : '';
+    return self::countPages() > 1 ? $list : '';
   }
 
   /**
@@ -44,7 +44,7 @@ class Frontline
    */
   public static function install($content, $pageName)
   {
-    // Detect indentation style used in project
+    // Detect indentation style used in the document.
     preg_match('/\n(\s*)\<\/body\>/', $content, $matches);
     $indentation = $matches[1];
 
@@ -99,11 +99,13 @@ class Frontline
         }
         else
         {
+          // Remove {{}#standalone}} flag together with all whitespace characters.
           $content = preg_replace('/\s*\{\{\#standalone\}\}\s*/m', '', $content);
         }
       }
 
-      $content = preg_replace('/\{\{>\s(\w+)\}\}/e', 'self::compilePartial("$1")', $content);
+      // Include all detected partials.
+      $content = preg_replace('/\{\{>\s([a-zA-Z0-9_-]+)\}\}/e', 'self::compilePartial("$1")', $content);
 
       return $content;
     }
