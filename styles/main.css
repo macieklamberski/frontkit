@@ -7,25 +7,27 @@
  *
  *******************************************************************************
  *
- *  1 BASE
+ *  1 BASE & HELPERS
  *    1.1 Reset
- *    1.2 Defaults
+ *    1.2 Hidden
+ *    1.3 Clearfix
+ *    1.4 Image Replacement
+ *    1.5 Defaults
  *
  *  2 COMMON
- *    2.1 Header
- *    2.2 Content
- *    2.3 Sidebar
- *    2.4 Footer
+ *    2.1 Wrapper
+ *    2.2 Header
+ *    2.3 Navigation
+ *    2.4 Content
+ *    2.5 Sidebar
+ *    2.6 Footer
  *
- *  3 OOCSS
- *    3.1 Hidden
- *    3.2 Clearfix
- *    3.3 Image Replacement
- *    3.4 Wrapper
+ *  3 PAGES
+ *    3.1 Index
  *
  ******************************************************************************/
 
-/*  1 BASE
+/*  1 BASE & HELPERS
  ******************************************************************************/
 
 /*  1.1 Reset (based on Reset v2.0 by Eric Meyer)
@@ -91,7 +93,54 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   margin: 0;
 }
 
-/*  1.2 Defaults
+/*  1.2 Hidden
+ *============================================================================*/
+
+.hidden {
+  position: fixed;
+  left: -999em;
+}
+
+/*  1.3 Clearfix
+ *============================================================================*/
+
+.cf:before,
+.cf:after {
+  content: "";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.ie7 .cf {
+  zoom: 1;
+}
+
+/*  1.4 Image Replacement
+ *============================================================================*/
+
+.ir {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.ir span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.ie7 .ir a span,
+.ie7 a.ir span {
+  cursor: pointer;
+}
+
+/*  1.5 Defaults
  *============================================================================*/
 
 body {
@@ -163,90 +212,58 @@ button {
 
 }
 
-/*  2 COMMON (common parts of the website)
+/*  2 COMMON
  ******************************************************************************/
 
-/*  2.1 Header
+/*  2.1 Wrapper
+ *============================================================================*/
+
+.wrapper {
+  margin: 0 auto;
+  position: relative;
+}
+
+/*  2.2 Header
  *============================================================================*/
 
 #header {
 
 }
 
-/*  2.2 Content
+/*  2.3 Navigation
+ *============================================================================*/
+
+#navigation {
+
+}
+
+/*  2.4 Content
  *============================================================================*/
 
 #content {
 
 }
 
-/*  2.3 Sidebar
+/*  2.5 Sidebar
  *============================================================================*/
 
 #sidebar {
 
 }
 
-/*  2.4 Footer
+/*  2.6 Footer
  *============================================================================*/
 
 #footer {
 
 }
 
-/*  3 OOCSS
+/*  3 PAGES
  ******************************************************************************/
 
-/*  3.1 Hidden
+/*  3.1 Index
  *============================================================================*/
 
-.hidden {
-  position: fixed;
-  left: -999em;
-}
+.page-index {
 
-/*  3.2 Clearfix
- *============================================================================*/
-
-.cf:before,
-.cf:after {
-  content: "";
-  display: table;
-}
-
-.cf:after {
-  clear: both;
-}
-
-.ie7 .cf {
-  zoom: 1;
-}
-
-/*  3.3 Image Replacement
- *============================================================================*/
-
-.ir {
-  display: block;
-  position: relative;
-}
-
-.ir span {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.ie7 .ir a span,
-.ie7 a.ir span {
-  cursor: pointer;
-}
-
-/*  3.4 Wrapper
- *============================================================================*/
-
-.wrapper {
-  margin: 0 auto;
-  position: relative;
 }
