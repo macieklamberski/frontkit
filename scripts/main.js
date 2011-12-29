@@ -11,23 +11,17 @@ var Site = {
    * Initialize implemented functions
    */
   init: function() {
-    $("html").removeClass("no-js");
+    $("html")
+    	.removeClass("no-js")
+    	.addClass("js");
 
-    Site.doThis();
-    Site.doThat();
+    Site.doSomething();
   },
 
   /**
-   * Function doing this
+   * Function doing something
    */
-  doThis: function() {
-
-  },
-
-  /**
-   * Function doing that
-   */
-  doThat: function() {
+  doSomething: function() {
 
   }
 
