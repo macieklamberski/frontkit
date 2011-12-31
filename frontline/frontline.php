@@ -80,21 +80,21 @@ class Frontline
     {
       $content = file_get_contents('../'.$filename);
 
-      // Automatically include header and footer to the document if not added
-      // manually and document is not standalone. This applies only for pages,
-      // all partials are ignored.
+      // Automatically include "start" and "end" partials to the document if
+      // not added manually and document is not standalone. This applies only
+      // for pages, all partials are ignored.
       if (substr($filename, 0, 1) != '_')
       {
         if (!preg_match('/\{\{#standalone\}\}/', $content))
         {
-          if (!preg_match('/\{\{>\sheader\}\}/', $content))
+          if (!preg_match('/\{\{>\sstart\}\}/', $content))
           {
-            $content = self::compilePartial('header', false).$content;
+            $content = self::compilePartial('start', false).$content;
           }
 
-          if (!preg_match('/\{\{>\sfooter\}\}/', $content))
+          if (!preg_match('/\{\{>\send\}\}/', $content))
           {
-            $content = $content.self::compilePartial('footer', false);
+            $content = $content.self::compilePartial('end', false);
           }
         }
         else
