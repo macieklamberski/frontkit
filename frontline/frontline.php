@@ -33,7 +33,7 @@ class Frontline
 
     $list .= '</ul>';
 
-    return self::countPages() > 1 ? $list : '';
+    return self::countPages() >= 1 ? $list : '';
   }
 
   /**
