@@ -99,7 +99,7 @@ class Frontline
         }
         else
         {
-          // Remove {{}#standalone}} flag together with all whitespace characters.
+          // Remove {{#standalone}} flag together with all whitespace characters.
           $content = preg_replace('/\s*\{\{\#standalone\}\}\s*/m', '', $content);
         }
       }
