@@ -144,7 +144,8 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
  *============================================================================*/
 
 body {
-
+  -webkit-text-size-adjust: none;
+      -ms-text-size-adjust: none;
 }
 
 hr {
