@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  *  Project Name (Month YYYY or Version)
- *  Crafted with passion by Developer Name (http://website.com).
+ *  Crafted with passion by Maciej Lamberski (http://lamberski.com).
  *
  ******************************************************************************/
 
