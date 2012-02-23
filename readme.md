@@ -20,7 +20,3 @@ If project contains *_start.html* and *_end.html* partials, they will be automat
 * `{{#standalone}}` - flag indicating that *_start.html* and *_end.html* partials will not be automatically included to this document.
 
 Syntax is inspired by **[Mustache](http://mustache.github.com)**, where `{{> name}}` is also syntax for partials. `{{#name}}` is my own invention and it serves as a boolean.
-
-## License
-
-Frontline is dually licensed under the MIT or GPL Version 2.
