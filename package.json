@@ -1,0 +1,22 @@
+{
+  "name": "Frontline",
+  "description": "Tool that helps with initial front-end development.",
+  "homepage": "https://github.com/lamberski/frontline",
+  "author": {
+    "name": "Maciej Lamberski",
+    "url": "http://lamberski.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lamberski/frontline.git"
+  },
+  "version": "2.0.0",
+  "dependencies": {
+    "grunt-autoprefixer": "^1.0.1",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-imagemin": "^0.8.1",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
