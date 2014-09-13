@@ -1,4 +1,0 @@
-RewriteEngine On
-
-RewriteCond %{REQUEST_FILENAME} \.html$
-RewriteRule ^(.*)$ frontline/index.php?file=$1
