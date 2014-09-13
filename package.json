@@ -1,5 +1,6 @@
 {
   "name": "Frontline",
+  "version": "2.0.0",
   "description": "Tool that helps with initial front-end development.",
   "homepage": "https://github.com/lamberski/frontline",
   "author": {
@@ -10,7 +11,6 @@
     "type": "git",
     "url": "https://github.com/lamberski/frontline.git"
   },
-  "version": "2.0.0",
   "dependencies": {
     "grunt-autoprefixer": "^1.0.1",
     "grunt-contrib-copy": "^0.5.0",
