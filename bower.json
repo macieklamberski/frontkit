@@ -1,5 +1,9 @@
 {
   "name": "Frontline",
   "version": "2.0.0",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "jquery": "~2.1.1",
+    "modernizr": "~2.8.3"
+  }
 }
