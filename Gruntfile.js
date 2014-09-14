@@ -124,7 +124,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build-scripts', ['copy:scripts', 'uglify']);
   grunt.registerTask('build-assets', ['copy:assets', 'imagemin']);
   grunt.registerTask('build-templates', ['copy:templates']);
-  grunt.registerTask('build', ['build-styles', 'build-scripts', 'build-assets']);
+  grunt.registerTask('build', ['build-styles', 'build-scripts', 'build-assets', 'build-templates']);
   grunt.registerTask('default', ['watch']);
 
 };
