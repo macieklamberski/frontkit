@@ -1,23 +1,29 @@
 module.exports = function(grunt) {
 
   // External tasks
-  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-usemin');
 
   // Project configuration
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
 
+    clean: {
+      dist: {
+        src: ['.tmp', 'dist/*.html', 'dist/styles', 'dist/scripts', 'dist/images', 'dist/fonts', 'dist/media'] }
+    },
+
     sass: {
       dist: {
-        options: {
-          style: 'compressed'
-        },
         files: {
           'dist/styles/main.css': 'src/styles/main.scss'
         }
@@ -34,11 +40,25 @@ module.exports = function(grunt) {
       }
     },
 
+    cssmin: {
+      build: {
+        files: [
+          {
+            src: 'dist/styles/main.css',
+            dest: 'dist/styles/main.css'
+          }
+        ]
+      }
+    },
+
     uglify: {
-      scripts: {
-        files: {
-          'dist/scripts/main.js': ['dist/scripts/main.js']
-        }
+      build: {
+        files: [
+          {
+            src: 'dist/scripts/main.js',
+            dest: 'dist/scripts/main.js'
+          }
+        ]
       }
     },
 
@@ -47,60 +67,80 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'dist/images/',
+            cwd: 'dist/images',
             src: ['**/*.{png,jpg,gif,svg}'],
-            dest: 'dist/images/'
+            dest: 'dist/images'
           },
           {
             expand: true,
-            cwd: 'dist/media/',
+            cwd: 'dist/media',
             src: ['**/*.{png,jpg,gif,svg}'],
-            dest: 'dist/media/'
+            dest: 'dist/media'
           }
         ]
+      }
+    },
+
+    useminPrepare: {
+      html: {
+        expand: true,
+        cwd: 'dist',
+        src: ['*.html']
+      },
+      options: {
+        root: 'src',
+        dest: 'dist'
+      }
+    },
+
+    usemin: {
+      html: {
+        expand: true,
+        cwd: 'dist',
+        src: ['*.html']
       }
     },
 
     copy: {
       scripts: {
         expand: true,
-        cwd: 'src/scripts/',
+        cwd: 'src/scripts',
         src: ['main.js'],
-        dest: 'dist/scripts/'
+        dest: 'dist/scripts'
       },
       assets: {
         files: [
           {
             expand: true,
-            cwd: 'src/images/',
+            cwd: 'src/images',
             src: ['**/*'],
-            dest: 'dist/images/'
+            dest: 'dist/images'
           },
           {
             expand: true,
-            cwd: 'src/fonts/',
+            cwd: 'src/fonts',
             src: ['**/*'],
-            dest: 'dist/fonts/'
+            dest: 'dist/fonts'
           },
           {
             expand: true,
-            cwd: 'src/media/',
+            cwd: 'src/media',
             src: ['**/*'],
-            dest: 'dist/media/'
+            dest: 'dist/media'
           }
         ]
       },
       templates: {
         expand: true,
-        cwd: 'src/',
+        cwd: 'src',
         src: ['*.html'],
-        dest: 'dist/'
+        dest: 'dist'
       }
     },
 
     watch: {
       styles: {
-        files: ['src/styles/**/*.scss'],
+        files: ['src/styles/*.scss'],
         tasks: ['build-styles']
       },
       scripts: {
@@ -121,10 +161,10 @@ module.exports = function(grunt) {
 
   // Custom tasks
   grunt.registerTask('build-styles', ['sass', 'autoprefixer']);
-  grunt.registerTask('build-scripts', ['copy:scripts', 'uglify']);
+  grunt.registerTask('build-scripts', ['copy:scripts']);
   grunt.registerTask('build-assets', ['copy:assets', 'imagemin']);
-  grunt.registerTask('build-templates', ['copy:templates']);
-  grunt.registerTask('build', ['build-styles', 'build-scripts', 'build-assets', 'build-templates']);
+  grunt.registerTask('build-templates', ['copy:templates', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
+  grunt.registerTask('build', ['clean', 'build-styles', 'build-scripts', 'build-assets', 'build-templates']);
   grunt.registerTask('default', ['watch']);
 
 };
