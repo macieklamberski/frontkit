@@ -18,8 +18,21 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      dist: {
-        src: ['.tmp', 'dist/*.html', 'dist/styles', 'dist/scripts', 'dist/images', 'dist/fonts', 'dist/media'] }
+      tmp: {
+        src: ['.tmp']
+      },
+      styles: {
+        src: ['dist/styles']
+      },
+      scripts: {
+        src: ['dist/scripts']
+      },
+      assets: {
+        src: ['dist/images', 'dist/fonts', 'dist/media']
+      },
+      templates: {
+        src: ['dist/*.html']
+      }
     },
 
     sass: {
@@ -163,7 +176,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build-styles', ['sass', 'autoprefixer']);
   grunt.registerTask('build-scripts', ['copy:scripts']);
   grunt.registerTask('build-assets', ['copy:assets', 'imagemin']);
-  grunt.registerTask('build-templates', ['copy:templates', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
+  grunt.registerTask('build-templates', ['copy:templates', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin', 'clean:tmp']);
   grunt.registerTask('build', ['clean', 'build-styles', 'build-scripts', 'build-assets', 'build-templates']);
   grunt.registerTask('default', ['watch']);
 
