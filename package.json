@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/lamberski/frontline.git"
   },
-  "dependencies": {
+  "devDependencies": {
     "grunt-autoprefixer": "^1.0.1",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "^0.5.0",
