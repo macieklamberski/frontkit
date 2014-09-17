@@ -80,13 +80,13 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'dist/images',
-            src: ['**/*.{png,jpg,gif,svg}'],
+            src: ['**/*.{png,jpg,gif}'],
             dest: 'dist/images'
           },
           {
             expand: true,
             cwd: 'dist/media',
-            src: ['**/*.{png,jpg,gif,svg}'],
+            src: ['**/*.{png,jpg,gif}'],
             dest: 'dist/media'
           }
         ]
