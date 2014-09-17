@@ -1,9 +1,7 @@
 module.exports = function(grunt) {
 
-  // External tasks
   require('load-grunt-tasks')(grunt);
 
-  // Project configuration
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
@@ -163,7 +161,6 @@ module.exports = function(grunt) {
 
   });
 
-  // Custom tasks
   grunt.registerTask('build-styles', [
     'sass',
     'autoprefixer'
