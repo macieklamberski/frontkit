@@ -7,9 +7,6 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      tmp: {
-        src: ['.tmp']
-      },
       styles: {
         src: ['dist/styles']
       },
@@ -178,8 +175,7 @@ module.exports = function(grunt) {
     'concat',
     'cssmin',
     'uglify',
-    'usemin',
-    'clean:tmp'
+    'usemin'
   ]);
   grunt.registerTask('build', [
     'clean',
