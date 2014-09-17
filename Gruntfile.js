@@ -164,11 +164,35 @@ module.exports = function(grunt) {
   });
 
   // Custom tasks
-  grunt.registerTask('build-styles', ['sass', 'autoprefixer']);
-  grunt.registerTask('build-scripts', ['copy:scripts']);
-  grunt.registerTask('build-assets', ['copy:assets', 'imagemin']);
-  grunt.registerTask('build-templates', ['copy:templates', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin', 'clean:tmp']);
-  grunt.registerTask('build', ['clean', 'build-styles', 'build-scripts', 'build-assets', 'build-templates']);
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build-styles', [
+    'sass',
+    'autoprefixer'
+  ]);
+  grunt.registerTask('build-scripts', [
+    'copy:scripts'
+  ]);
+  grunt.registerTask('build-assets', [
+    'copy:assets',
+    'imagemin'
+  ]);
+  grunt.registerTask('build-templates', [
+    'copy:templates',
+    'useminPrepare',
+    'concat',
+    'cssmin',
+    'uglify',
+    'usemin',
+    'clean:tmp'
+  ]);
+  grunt.registerTask('build', [
+    'clean',
+    'build-styles',
+    'build-scripts',
+    'build-assets',
+    'build-templates'
+  ]);
+  grunt.registerTask('default', [
+    'watch'
+  ]);
 
 };
