@@ -93,6 +93,25 @@ module.exports = function(grunt) {
       }
     },
 
+    svgmin: {
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/images',
+            src: ['**/*.svg'],
+            dest: 'dist/images'
+          },
+          {
+            expand: true,
+            cwd: 'dist/media',
+            src: ['**/*.svg'],
+            dest: 'dist/media'
+          }
+        ]
+      }
+    },
+
     useminPrepare: {
       html: {
         expand: true,
@@ -183,6 +202,7 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('build-assets', [
     'copy:assets',
+    'svgmin',
     'svg2png',
     'imagemin'
   ]);
