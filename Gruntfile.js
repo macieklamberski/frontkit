@@ -61,6 +61,19 @@ module.exports = function(grunt) {
       }
     },
 
+    svg2png: {
+      dist: {
+        files: [
+          {
+            src: ['dist/images/**/*.svg']
+          },
+          {
+            src: ['dist/media/**/*.svg']
+          }
+        ]
+      }
+    },
+
     imagemin: {
       dist: {
         files: [
@@ -139,14 +152,17 @@ module.exports = function(grunt) {
 
     watch: {
       styles: {
+        options: { dot: true },
         files: ['src/styles/*.scss'],
         tasks: ['build-styles']
       },
       scripts: {
+        options: { dot: true },
         files: ['src/scripts/*.js'],
         tasks: ['build-scripts']
       },
       assets: {
+        options: { dot: true },
         files: ['src/{images,fonts,media}/**/*'],
         tasks: ['build-assets']
       },
@@ -167,6 +183,7 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('build-assets', [
     'copy:assets',
+    'svg2png',
     'imagemin'
   ]);
   grunt.registerTask('build-templates', [
