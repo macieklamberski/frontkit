@@ -198,16 +198,16 @@ module.exports = function(grunt) {
     'autoprefixer'
   ]);
   grunt.registerTask('build-scripts', [
-    'copy:scripts'
+    'newer:copy:scripts'
   ]);
   grunt.registerTask('build-assets', [
-    'copy:assets',
-    'svgmin',
-    'svg2png',
-    'imagemin'
+    'newer:copy:assets',
+    'newer:svgmin',
+    'newer:svg2png',
+    'newer:imagemin'
   ]);
   grunt.registerTask('build-templates', [
-    'copy:templates',
+    'newer:copy:templates',
     'useminPrepare',
     'concat',
     'cssmin',
