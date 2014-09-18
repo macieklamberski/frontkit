@@ -25,6 +25,6 @@
     "grunt-svg2png": "^0.2.5",
     "grunt-svgmin": "^1.0.0",
     "grunt-usemin": "^2.4.0",
-    "load-grunt-tasks": "^0.6.0"
+    "jit-grunt": "^0.8.0"
   }
 }
