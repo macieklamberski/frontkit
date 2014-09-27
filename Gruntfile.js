@@ -174,12 +174,12 @@ module.exports = function(grunt) {
     watch: {
       styles: {
         options: { dot: true },
-        files: ['src/styles/*.scss'],
+        files: ['src/styles/**/*.scss'],
         tasks: ['build-styles']
       },
       scripts: {
         options: { dot: true },
-        files: ['src/scripts/*.js'],
+        files: ['src/scripts/**/*.js'],
         tasks: ['build-scripts']
       },
       assets: {
