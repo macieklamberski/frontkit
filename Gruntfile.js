@@ -114,6 +114,17 @@ module.exports = function(grunt) {
       }
     },
 
+    jekyll: {
+      options: {
+        src : 'src/templates'
+      },
+      dist: {
+        options: {
+          dest: 'dist'
+        }
+      }
+    },
+
     useminPrepare: {
       html: {
         expand: true,
@@ -162,12 +173,6 @@ module.exports = function(grunt) {
             dest: 'dist/media'
           }
         ]
-      },
-      templates: {
-        expand: true,
-        cwd: 'src',
-        src: ['*.html'],
-        dest: 'dist'
       }
     },
 
@@ -188,7 +193,7 @@ module.exports = function(grunt) {
         tasks: ['build-assets']
       },
       templates: {
-        files: ['src/*.html'],
+        files: ['src/templates/*.html'],
         tasks: ['build-templates']
       }
     }
@@ -209,7 +214,7 @@ module.exports = function(grunt) {
     'newer:imagemin'
   ]);
   grunt.registerTask('build-templates', [
-    'newer:copy:templates',
+    'jekyll:dist',
     'useminPrepare',
     'concat',
     'cssmin',
@@ -218,10 +223,10 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('build', [
     'clean',
-    'build-styles',
+    'build-templates',
     'build-scripts',
-    'build-assets',
-    'build-templates'
+    'build-styles',
+    'build-assets'
   ]);
   grunt.registerTask('default', [
     'watch'
