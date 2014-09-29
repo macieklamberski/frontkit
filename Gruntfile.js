@@ -120,7 +120,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          dest: 'dist'
+          dest: '.tmp/jekyll'
         }
       }
     },
@@ -173,18 +173,24 @@ module.exports = function(grunt) {
             dest: 'dist/media'
           }
         ]
+      },
+      templates: {
+        expand: true,
+        cwd: '.tmp/jekyll',
+        src: ['**/*'],
+        dest: 'dist'
       }
     },
 
     watch: {
       styles: {
         options: { dot: true },
-        files: ['src/styles/**/*.scss'],
+        files: ['src/styles/**/*'],
         tasks: ['build-styles']
       },
       scripts: {
         options: { dot: true },
-        files: ['src/scripts/**/*.js'],
+        files: ['src/scripts/**/*'],
         tasks: ['build-scripts']
       },
       assets: {
@@ -193,7 +199,7 @@ module.exports = function(grunt) {
         tasks: ['build-assets']
       },
       templates: {
-        files: ['src/templates/*.html'],
+        files: ['src/templates/**/*'],
         tasks: ['build-templates']
       }
     }
@@ -215,6 +221,7 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('build-templates', [
     'jekyll:dist',
+    'newer:copy:templates',
     'useminPrepare',
     'concat',
     'cssmin',
