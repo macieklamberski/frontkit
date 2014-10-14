@@ -129,7 +129,7 @@ module.exports = function(grunt) {
       html: {
         expand: true,
         cwd: 'dist',
-        src: ['*.html']
+        src: ['**/*.html']
       },
       options: {
         root: 'src',
@@ -141,7 +141,7 @@ module.exports = function(grunt) {
       html: {
         expand: true,
         cwd: 'dist',
-        src: ['*.html']
+        src: ['**/*.html']
       }
     },
 
