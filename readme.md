@@ -47,7 +47,7 @@ Also make sure that [git](http://git-scm.com/) is installed as some bower packag
  - **fonts** - Font files, also font-based icons
  - **images** - Images used strictly for layout purposes
  - **media** - Other images used as a content
- - **scripts** - JS files (only custom files, plugins and libraries should be added via Bower](http://bower.io/))
+ - **scripts** - JS files (only custom files, plugins and libraries should be added via [Bower](http://bower.io/))
  - **styles** - SCSS files
  - **templates** - directory used for [Jekyll](http://jekyllrb.com) templates and data files
 
