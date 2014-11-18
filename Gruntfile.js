@@ -202,6 +202,18 @@ module.exports = function(grunt) {
         files: ['src/templates/**/*'],
         tasks: ['build-templates']
       }
+    },
+
+    'ftp-deploy': {
+      staging: {
+        auth: {
+          host: '',
+          authKey: ''
+        },
+        src: 'dist',
+        dest: '',
+        exclusions: []
+      }
     }
 
   });
