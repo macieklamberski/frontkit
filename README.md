@@ -66,7 +66,3 @@ You can also run `build` task to recreate whole project.
 ```
 grunt build
 ```
-
-## License
-
-Frontline is licensed under MIT License.
