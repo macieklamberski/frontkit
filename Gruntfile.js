@@ -135,7 +135,7 @@ module.exports = function(grunt) {
         src: ['**/*.html']
       },
       options: {
-        root: 'src',
+        root: ['src', 'bower_components'],
         dest: 'dist'
       }
     },
