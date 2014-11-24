@@ -42,14 +42,14 @@ Also make sure that [git](http://git-scm.com/) is installed as some bower packag
 
 - **dist** - production / preview files are automatically generated here, this is where you check your work in a browser
 - **node_modules** - Node.js modules for various Grunt tasks, usually you don’t have to do anything about this folder
+- **bower_components** - 3rd party libraries managed via [Bower](http://bower.io/)
 - **src** - source files, development is done here
- - **bower_components** - 3rd party libraries managed via [Bower](http://bower.io/)
- - **fonts** - Font files, also font-based icons
- - **images** - Images used strictly for layout purposes
- - **media** - Other images used as a content
- - **scripts** - JS files (only custom files, plugins and libraries should be added via [Bower](http://bower.io/))
- - **styles** - SCSS files
- - **templates** - directory used for [Jekyll](http://jekyllrb.com) templates and data files
+  - **fonts** - Font files, also font-based icons
+  - **images** - Images used strictly for layout purposes
+  - **media** - Other images used as a content
+  - **scripts** - JS files (only custom files, plugins and libraries should be added via [Bower](http://bower.io/))
+  - **styles** - SCSS files
+  - **templates** - directory used for [Jekyll](http://jekyllrb.com) templates and data files
 
 ## Usage
 
