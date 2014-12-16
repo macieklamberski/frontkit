@@ -25,6 +25,7 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
+        style: 'expanded',
         loadPath: ['src/styles', 'bower_components']
       },
       dist: {
@@ -42,6 +43,7 @@ module.exports = function(grunt) {
 
     autoprefixer: {
       options: {
+        cascade: false,
         browsers: ['last 2 versions', 'ie 9']
       },
       dist: {
