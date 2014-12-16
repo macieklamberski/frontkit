@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "grunt-autoprefixer": "^1.0.1",
+    "grunt-autoprefixer": "^2.0.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-copy": "^0.5.0",
@@ -14,7 +14,7 @@
     "grunt-newer": "^0.7.0",
     "grunt-svg2png": "^0.2.5",
     "grunt-svgmin": "^1.0.0",
-    "grunt-usemin": "^2.4.0",
+    "grunt-usemin": "^2.6.2",
     "jit-grunt": "^0.8.0"
   }
 }
