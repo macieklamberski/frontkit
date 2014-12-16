@@ -59,6 +59,25 @@ module.exports = function(grunt) {
       }
     },
 
+    svgmin: {
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/images',
+            src: ['**/*.svg'],
+            dest: 'dist/images'
+          },
+          {
+            expand: true,
+            cwd: 'dist/media',
+            src: ['**/*.svg'],
+            dest: 'dist/media'
+          }
+        ]
+      }
+    },
+
     svg2png: {
       dist: {
         files: [
@@ -91,25 +110,6 @@ module.exports = function(grunt) {
       }
     },
 
-    svgmin: {
-      dist: {
-        files: [
-          {
-            expand: true,
-            cwd: 'dist/images',
-            src: ['**/*.svg'],
-            dest: 'dist/images'
-          },
-          {
-            expand: true,
-            cwd: 'dist/media',
-            src: ['**/*.svg'],
-            dest: 'dist/media'
-          }
-        ]
-      }
-    },
-
     jekyll: {
       options: {
         src : 'src/templates'
@@ -118,26 +118,6 @@ module.exports = function(grunt) {
         options: {
           dest: '.tmp/jekyll'
         }
-      }
-    },
-
-    useminPrepare: {
-      html: {
-        expand: true,
-        cwd: 'dist',
-        src: ['**/*.html']
-      },
-      options: {
-        root: ['src/{styles,scripts}', 'bower_components'],
-        dest: 'dist'
-      }
-    },
-
-    usemin: {
-      html: {
-        expand: true,
-        cwd: 'dist',
-        src: ['**/*.html']
       }
     },
 
@@ -175,6 +155,26 @@ module.exports = function(grunt) {
         cwd: '.tmp/jekyll',
         src: ['**/*'],
         dest: 'dist'
+      }
+    },
+
+    useminPrepare: {
+      html: {
+        expand: true,
+        cwd: 'dist',
+        src: ['**/*.html']
+      },
+      options: {
+        root: ['src/{styles,scripts}', 'bower_components'],
+        dest: 'dist'
+      }
+    },
+
+    usemin: {
+      html: {
+        expand: true,
+        cwd: 'dist',
+        src: ['**/*.html']
       }
     },
 
