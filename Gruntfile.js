@@ -23,6 +23,12 @@ module.exports = function(grunt) {
       }
     },
 
+    newer: {
+      options: {
+        cache: '.tmp/newer'
+      }
+    },
+
     sass: {
       options: {
         cacheLocation: '.tmp/sass',
