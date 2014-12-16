@@ -16,7 +16,7 @@ module.exports = function(grunt) {
         src: ['dist/scripts']
       },
       assets: {
-        src: ['dist/images', 'dist/fonts', 'dist/media']
+        src: ['dist/{images,fonts,media}']
       },
       templates: {
         src: ['dist/*.html']
