@@ -25,6 +25,7 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
+        cacheLocation: '.tmp/sass',
         style: 'expanded',
         loadPath: ['src/styles', 'bower_components']
       },
