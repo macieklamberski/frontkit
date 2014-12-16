@@ -28,9 +28,15 @@ module.exports = function(grunt) {
         loadPath: ['src/styles', 'bower_components']
       },
       dist: {
-        files: {
-          'dist/styles/main.css': 'src/styles/main.scss'
-        }
+        files: [
+          {
+            expand: true,
+            cwd: 'src/styles',
+            src: ['**/*.scss'],
+            dest: 'dist/styles',
+            ext: '.css'
+          }
+        ]
       }
     },
 
@@ -39,8 +45,14 @@ module.exports = function(grunt) {
         browsers: ['last 2 versions', 'ie 9']
       },
       dist: {
-        src: 'dist/styles/main.css',
-        dest: 'dist/styles/main.css'
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/styles',
+            src: ['**/*.css'],
+            dest: 'dist/styles'
+          }
+        ]
       }
     },
 
@@ -48,8 +60,10 @@ module.exports = function(grunt) {
       build: {
         files: [
           {
-            src: 'dist/styles/main.css',
-            dest: 'dist/styles/main.css'
+            expand: true,
+            cwd: 'dist/styles',
+            src: ['**/*.css'],
+            dest: 'dist/styles'
           }
         ]
       }
@@ -135,7 +149,7 @@ module.exports = function(grunt) {
         src: ['**/*.html']
       },
       options: {
-        root: ['src', 'bower_components'],
+        root: ['src/{styles,scripts}', 'bower_components'],
         dest: 'dist'
       }
     },
