@@ -30,15 +30,11 @@ module.exports = function(grunt) {
         loadPath: ['src/styles', 'bower_components']
       },
       dist: {
-        files: [
-          {
-            expand: true,
-            cwd: 'src/styles',
-            src: ['**/*.scss'],
-            dest: 'dist/styles',
-            ext: '.css'
-          }
-        ]
+        expand: true,
+        cwd: 'src/styles',
+        src: ['**/*.scss'],
+        dest: 'dist/styles',
+        ext: '.css'
       }
     },
 
@@ -48,53 +44,34 @@ module.exports = function(grunt) {
         browsers: ['last 2 versions', 'ie 9']
       },
       dist: {
-        files: [
-          {
-            expand: true,
-            cwd: 'dist/styles',
-            src: ['**/*.css'],
-            dest: 'dist/styles'
-          }
-        ]
+        expand: true,
+        cwd: 'dist/styles',
+        src: ['**/*.css'],
+        dest: 'dist/styles'
       }
     },
 
     svgmin: {
       dist: {
-        files: [
-          {
-            expand: true,
-            cwd: 'dist',
-            src: ['{images,media}/**/*.svg'],
-            dest: 'dist'
-          }
-        ]
+        expand: true,
+        cwd: 'dist',
+        src: ['{images,media}/**/*.svg'],
+        dest: 'dist'
       }
     },
 
     svg2png: {
       dist: {
-        files: [
-          {
-            src: ['dist/images/**/*.svg']
-          },
-          {
-            src: ['dist/media/**/*.svg']
-          }
-        ]
+        src: ['dist/{images,media}/**/*.svg']
       }
     },
 
     imagemin: {
       dist: {
-        files: [
-          {
-            expand: true,
-            cwd: 'dist',
-            src: ['{images,media}/**/*.{png,jpg,gif}'],
-            dest: 'dist'
-          }
-        ]
+        expand: true,
+        cwd: 'dist',
+        src: ['{images,media}/**/*.{png,jpg,gif}'],
+        dest: 'dist'
       }
     },
 
@@ -112,31 +89,15 @@ module.exports = function(grunt) {
     copy: {
       scripts: {
         expand: true,
-        cwd: 'src/scripts',
-        src: ['**/*.js'],
-        dest: 'dist/scripts'
+        cwd: 'src',
+        src: ['scripts/**/*.js'],
+        dest: 'dist'
       },
       assets: {
-        files: [
-          {
-            expand: true,
-            cwd: 'src/images',
-            src: ['**/*'],
-            dest: 'dist/images'
-          },
-          {
-            expand: true,
-            cwd: 'src/fonts',
-            src: ['**/*'],
-            dest: 'dist/fonts'
-          },
-          {
-            expand: true,
-            cwd: 'src/media',
-            src: ['**/*'],
-            dest: 'dist/media'
-          }
-        ]
+        expand: true,
+        cwd: 'src',
+        src: ['{images,fonts,media}/**/*'],
+        dest: 'dist'
       },
       templates: {
         expand: true,
@@ -169,12 +130,12 @@ module.exports = function(grunt) {
     watch: {
       styles: {
         options: { dot: true },
-        files: ['src/styles/**/*'],
+        files: ['src/styles/**/*.scss'],
         tasks: ['build-styles']
       },
       scripts: {
         options: { dot: true },
-        files: ['src/scripts/**/*'],
+        files: ['src/scripts/**/*.js'],
         tasks: ['build-scripts']
       },
       assets: {
