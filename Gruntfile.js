@@ -59,30 +59,6 @@ module.exports = function(grunt) {
       }
     },
 
-    cssmin: {
-      build: {
-        files: [
-          {
-            expand: true,
-            cwd: 'dist/styles',
-            src: ['**/*.css'],
-            dest: 'dist/styles'
-          }
-        ]
-      }
-    },
-
-    uglify: {
-      build: {
-        files: [
-          {
-            src: 'dist/scripts/main.js',
-            dest: 'dist/scripts/main.js'
-          }
-        ]
-      }
-    },
-
     svg2png: {
       dist: {
         files: [
@@ -243,9 +219,9 @@ module.exports = function(grunt) {
     'jekyll:dist',
     'newer:copy:templates',
     'useminPrepare',
-    'concat',
-    'cssmin',
-    'uglify',
+    'concat:generated',
+    'cssmin:generated',
+    'uglify:generated',
     'usemin'
   ]);
   grunt.registerTask('build', [
