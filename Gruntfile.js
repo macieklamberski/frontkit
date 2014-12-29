@@ -111,6 +111,12 @@ module.exports = function(grunt) {
         cwd: '.tmp/jekyll',
         src: ['**/*'],
         dest: 'dist'
+      },
+      other: {
+        expand: true,
+        cwd: 'src',
+        src: ['**/*', '!{fonts,images,media,scripts,styles,templates}/*'],
+        dest: 'dist'
       }
     },
 
@@ -153,6 +159,13 @@ module.exports = function(grunt) {
       templates: {
         files: ['src/templates/**/*'],
         tasks: ['build-templates']
+      },
+      other: {
+        files: [
+          'src/**/*',
+          '!src/{fonts,images,media,scripts,styles,templates}/*'
+        ],
+        tasks: ['build-other']
       }
     }
 
@@ -180,12 +193,16 @@ module.exports = function(grunt) {
     'uglify:generated',
     'usemin'
   ]);
+  grunt.registerTask('build-other', [
+    'newer:copy:other'
+  ]);
   grunt.registerTask('build', [
     'clean',
     'build-templates',
     'build-scripts',
     'build-styles',
-    'build-assets'
+    'build-assets',
+    'build-other'
   ]);
   grunt.registerTask('default', [
     'watch'
