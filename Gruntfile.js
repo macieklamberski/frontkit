@@ -31,6 +31,7 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
+        sourcemap: 'none',
         cacheLocation: '.tmp/sass',
         style: 'expanded',
         loadPath: ['src/styles', 'bower_components']
