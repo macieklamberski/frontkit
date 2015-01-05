@@ -6,10 +6,10 @@ Frontline is a scaffolding for web projects. It creates a project structure, fil
 
 The following software needs to be installed if you want to use Frontline. These installations need to be done just once so you can skip this section if you have the software already installed.
 
-First is Node.js, so you can work with `npm`, Node package manager. You can install it from [pre-built installer](http://nodejs.org/) or using Bower:
+First is Node.js, so you can work with `npm`, Node package manager. You can install it from [pre-built installer](http://nodejs.org/) or using Homebrew:
 
 ```
-bower install node
+brew install node
 ```
 
 Next is Sass gem:
