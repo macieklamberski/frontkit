@@ -104,7 +104,7 @@ module.exports = function(grunt) {
       other: {
         expand: true,
         cwd: 'src',
-        src: ['*', '!{fonts,images,media,scripts,styles,templates}'],
+        src: ['*/**/*', '!{fonts,images,media,scripts,styles,templates}/**/*'],
         dest: 'dist'
       }
     },
