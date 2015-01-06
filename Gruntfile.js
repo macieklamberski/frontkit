@@ -9,18 +9,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      styles: {
-        src: ['dist/styles']
-      },
-      scripts: {
-        src: ['dist/scripts']
-      },
-      assets: {
-        src: ['dist/{images,fonts,media}']
-      },
-      templates: {
-        src: ['dist/*.html']
-      }
+      src: ['dist/*']
     },
 
     newer: {
@@ -115,7 +104,7 @@ module.exports = function(grunt) {
       other: {
         expand: true,
         cwd: 'src',
-        src: ['**/*', '!{fonts,images,media,scripts,styles,templates}/*'],
+        src: ['*', '!{fonts,images,media,scripts,styles,templates}'],
         dest: 'dist'
       }
     },
