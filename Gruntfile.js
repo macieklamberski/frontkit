@@ -156,7 +156,9 @@ module.exports = function(grunt) {
         ],
         tasks: ['build-other']
       }
-    }
+    },
+
+    'ftp-deploy': grunt.file.readJSON('deploy.json')
 
   });
 

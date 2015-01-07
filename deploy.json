@@ -1,0 +1,13 @@
+{
+  "staging": {
+    "auth": {
+      "host": "",
+      "port": 21,
+      "username": "",
+      "password": ""
+    },
+    "src": ".",
+    "dest": "",
+    "exclusions": [".tmp", "node_modules", "bower_components"]
+  }
+}
