@@ -1,13 +1,16 @@
 {
   "staging": {
-    "auth": {
+    "options": {
       "host": "",
       "port": 21,
       "username": "",
-      "password": ""
+      "password": "",
+      "dest": ""
     },
-    "src": ".",
-    "dest": "",
-    "exclusions": [".tmp", "node_modules", "bower_components"]
+    "files": [{
+      "expand": true,
+      "cwd": ".",
+      "src": ["dist/**"]
+    }]
   }
 }

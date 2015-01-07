@@ -158,7 +158,7 @@ module.exports = function(grunt) {
       }
     },
 
-    'ftp-deploy': grunt.file.readJSON('deploy.json')
+    ftp_push: grunt.file.readJSON('deploy.json')
 
   });
 
