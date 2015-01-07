@@ -9,8 +9,8 @@
     },
     "files": [{
       "expand": true,
-      "cwd": ".",
-      "src": ["dist/**"]
+      "cwd": "dist",
+      "src": ["**"]
     }]
   }
 }
