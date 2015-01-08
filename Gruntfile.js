@@ -109,6 +109,10 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: { generated: {} },
+    uglify: { generated: {} },
+    cssmin: { generated: {} },
+
     useminPrepare: {
       html: {
         expand: true,
