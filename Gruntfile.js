@@ -162,7 +162,9 @@ module.exports = function(grunt) {
       }
     },
 
-    ftp_push: grunt.file.readJSON('deploy.json')
+    ftp_push: grunt.file.readJSON('deploy.json').ftp,
+
+    rsync: grunt.file.readJSON('deploy.json').rsync
 
   });
 

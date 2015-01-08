@@ -12,6 +12,7 @@
     "grunt-ftp-push": "^0.2.6",
     "grunt-jekyll": "^0.4.2",
     "grunt-newer": "^0.7.0",
+    "grunt-rsync": "^0.6.2",
     "grunt-svg2png": "^0.2.5",
     "grunt-svgmin": "^2.0.0",
     "grunt-usemin": "^3.0.0",

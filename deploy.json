@@ -1,16 +1,33 @@
 {
-  "staging": {
+  "ftp": {
+    "staging": {
+      "options": {
+        "host": "",
+        "port": 21,
+        "username": "",
+        "password": "",
+        "dest": ""
+      },
+      "files": [{
+        "expand": true,
+        "cwd": "dist",
+        "src": ["**"]
+      }]
+    }
+  },
+  "rsync": {
     "options": {
-      "host": "",
-      "port": 21,
-      "username": "",
-      "password": "",
-      "dest": ""
+      "args": ["--verbose"],
+      "exclude": [],
+      "recursive": true
     },
-    "files": [{
-      "expand": true,
-      "cwd": "dist",
-      "src": ["**"]
-    }]
+    "production": {
+      "options": {
+        "src": "dist/*",
+        "dest": "",
+        "host": "user@domain.com",
+        "port": 21
+      }
+    }
   }
 }
