@@ -1,5 +1,10 @@
 {
-  "ftp": {
+  "paths": {
+    "src": "src",
+    "dist": "dist",
+    "tmp": ".tmp"
+  },
+  "ftp_push": {
     "staging": {
       "options": {
         "host": "",
