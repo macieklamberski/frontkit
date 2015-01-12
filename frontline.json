@@ -5,7 +5,7 @@
     "tmp": ".tmp"
   },
   "ftp_push": {
-    "staging": {
+    "production": {
       "options": {
         "host": "",
         "port": 21,
