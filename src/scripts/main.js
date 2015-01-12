@@ -1,24 +1,24 @@
-(function($) {
+(function ($) {
 
   var App = {
 
     /**
      * Initialize features
      */
-    init: function() {
+    init: function () {
       // App.feature();
     },
 
     /**
      * Custom feature
      */
-    feature: function() {
+    feature: function () {
 
     }
 
   };
 
-  $(function() {
+  $(function () {
     App.init();
   });
 
