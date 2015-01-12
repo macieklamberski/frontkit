@@ -163,7 +163,7 @@ module.exports = function(grunt) {
       }
     },
 
-    ftp_push: grunt.file.readJSON('frontline.json').ftp,
+    ftp_push: grunt.file.readJSON('frontline.json').ftp_push,
 
     rsync: grunt.file.readJSON('frontline.json').rsync
 
