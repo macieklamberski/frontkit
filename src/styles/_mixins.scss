@@ -16,7 +16,7 @@
 
   } @else if $breakpoint == tablet {
 
-    @media (max-width: $breakpoint-phablet) {
+    @media (max-width: $breakpoint-tablet) {
       @content;
     }
 
