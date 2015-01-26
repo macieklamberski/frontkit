@@ -1,8 +1,10 @@
 @charset 'UTF-8';
 
-@import 'variables.scss';
-@import 'mixins.scss';
-@import 'reset.scss';
-@import 'fonts.scss';
-@import 'base.scss';
-@import 'elements.scss';
+@import 'setup/variables.scss';
+@import 'setup/mixins.scss';
+@import 'common/reset.scss';
+@import 'common/fonts.scss';
+@import 'common/base.scss';
+@import 'common/utilities.scss';
+@import 'components/header.scss';
+@import 'components/footer.scss';

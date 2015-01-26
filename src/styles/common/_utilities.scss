@@ -1,16 +1,8 @@
 
-/* Base
+/* Utilities
 /*----------------------------------------------------------------------------*/
 
-body {
-  text-size-adjust: none;
-}
-
-a {
-
-}
-
-a:hover,
-a:focus {
-
+.hidden {
+  position: fixed;
+  left: -999em;
 }
