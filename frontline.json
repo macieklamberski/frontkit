@@ -2,7 +2,8 @@
   "paths": {
     "source": "src",
     "frontend": "dist",
-    "temporary": ".tmp"
+    "temporary": ".tmp",
+    "wordpress": "wp"
   },
   "ftp_push": {
     "production": {
