@@ -102,12 +102,6 @@ module.exports = function(grunt) {
         cwd: frontline.paths.temporary + '/jekyll',
         src: ['**/*'],
         dest: frontline.paths.frontend
-      },
-      other: {
-        expand: true,
-        cwd: frontline.paths.source,
-        src: ['*/**/*', '!{fonts,images,media,scripts,styles,templates}/**/*'],
-        dest: frontline.paths.frontend
       }
     },
 
@@ -154,13 +148,6 @@ module.exports = function(grunt) {
       templates: {
         files: [frontline.paths.source + '/templates/**/*'],
         tasks: ['build-templates']
-      },
-      other: {
-        files: [
-          frontline.paths.source + '/**/*',
-          '!' + frontline.paths.source + '/{fonts,images,media,scripts,styles,templates}/*'
-        ],
-        tasks: ['build-other']
       }
     },
 
@@ -192,16 +179,12 @@ module.exports = function(grunt) {
     'uglify:generated',
     'usemin'
   ]);
-  grunt.registerTask('build-other', [
-    'newer:copy:other'
-  ]);
   grunt.registerTask('build', [
     'clean',
     'build-templates',
     'build-scripts',
     'build-styles',
-    'build-assets',
-    'build-other'
+    'build-assets'
   ]);
   grunt.registerTask('default', [
     'watch'
