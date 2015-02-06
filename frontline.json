@@ -1,8 +1,8 @@
 {
   "paths": {
-    "src": "src",
-    "dist": "dist",
-    "tmp": ".tmp"
+    "source": "src",
+    "frontend": "dist",
+    "temporary": ".tmp"
   },
   "ftp_push": {
     "production": {
