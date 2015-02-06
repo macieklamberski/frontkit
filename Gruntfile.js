@@ -4,34 +4,34 @@ module.exports = function(grunt) {
     useminPrepare: 'grunt-usemin'
   });
 
-  var config = grunt.file.readJSON('frontline.json');
+  var frontline = grunt.file.readJSON('frontline.json');
 
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      src: [config.paths.frontend + '/*']
+      src: [frontline.paths.frontend + '/*']
     },
 
     newer: {
       options: {
-        cache: config.paths.temporary + '/newer'
+        cache: frontline.paths.temporary + '/newer'
       }
     },
 
     sass: {
       options: {
         sourcemap: 'none',
-        cacheLocation: config.paths.temporary + '/sass',
+        cacheLocation: frontline.paths.temporary + '/sass',
         style: 'expanded',
-        loadPath: [config.paths.source + '/styles', 'bower_components']
+        loadPath: [frontline.paths.source + '/styles', 'bower_components']
       },
       dist: {
         expand: true,
-        cwd: config.paths.source + '/styles',
+        cwd: frontline.paths.source + '/styles',
         src: ['**/*.scss'],
-        dest: config.paths.frontend + '/styles',
+        dest: frontline.paths.frontend + '/styles',
         ext: '.css'
       }
     },
@@ -43,43 +43,43 @@ module.exports = function(grunt) {
       },
       dist: {
         expand: true,
-        cwd: config.paths.frontend + '/styles',
+        cwd: frontline.paths.frontend + '/styles',
         src: ['**/*.css'],
-        dest: config.paths.frontend + '/styles'
+        dest: frontline.paths.frontend + '/styles'
       }
     },
 
     svgmin: {
       dist: {
         expand: true,
-        cwd: config.paths.frontend,
+        cwd: frontline.paths.frontend,
         src: ['{images,media}/**/*.svg'],
-        dest: config.paths.frontend
+        dest: frontline.paths.frontend
       }
     },
 
     svg2png: {
       dist: {
-        src: [config.paths.frontend + '/{images,media}/**/*.svg']
+        src: [frontline.paths.frontend + '/{images,media}/**/*.svg']
       }
     },
 
     imagemin: {
       dist: {
         expand: true,
-        cwd: config.paths.frontend,
+        cwd: frontline.paths.frontend,
         src: ['{images,media}/**/*.{png,jpg,gif}'],
-        dest: config.paths.frontend
+        dest: frontline.paths.frontend
       }
     },
 
     jekyll: {
       options: {
-        src : config.paths.source + '/templates'
+        src : frontline.paths.source + '/templates'
       },
       dist: {
         options: {
-          dest: config.paths.temporary + '/jekyll'
+          dest: frontline.paths.temporary + '/jekyll'
         }
       }
     },
@@ -87,27 +87,27 @@ module.exports = function(grunt) {
     copy: {
       scripts: {
         expand: true,
-        cwd: config.paths.source,
+        cwd: frontline.paths.source,
         src: ['scripts/**/*.js'],
-        dest: config.paths.frontend
+        dest: frontline.paths.frontend
       },
       assets: {
         expand: true,
-        cwd: config.paths.source,
+        cwd: frontline.paths.source,
         src: ['{images,fonts,media}/**/*'],
-        dest: config.paths.frontend
+        dest: frontline.paths.frontend
       },
       templates: {
         expand: true,
-        cwd: config.paths.temporary + '/jekyll',
+        cwd: frontline.paths.temporary + '/jekyll',
         src: ['**/*'],
-        dest: config.paths.frontend
+        dest: frontline.paths.frontend
       },
       other: {
         expand: true,
-        cwd: config.paths.source,
+        cwd: frontline.paths.source,
         src: ['*/**/*', '!{fonts,images,media,scripts,styles,templates}/**/*'],
-        dest: config.paths.frontend
+        dest: frontline.paths.frontend
       }
     },
 
@@ -118,19 +118,19 @@ module.exports = function(grunt) {
     useminPrepare: {
       html: {
         expand: true,
-        cwd: config.paths.frontend,
+        cwd: frontline.paths.frontend,
         src: ['**/*.html']
       },
       options: {
-        root: [config.paths.source + '/{styles,scripts}', 'bower_components'],
-        dest: config.paths.frontend
+        root: [frontline.paths.source + '/{styles,scripts}', 'bower_components'],
+        dest: frontline.paths.frontend
       }
     },
 
     usemin: {
       html: {
         expand: true,
-        cwd: config.paths.frontend,
+        cwd: frontline.paths.frontend,
         src: ['**/*.html']
       }
     },
@@ -138,35 +138,35 @@ module.exports = function(grunt) {
     watch: {
       styles: {
         options: { dot: true },
-        files: [config.paths.source + '/styles/**/*.scss'],
+        files: [frontline.paths.source + '/styles/**/*.scss'],
         tasks: ['build-styles']
       },
       scripts: {
         options: { dot: true },
-        files: [config.paths.source + '/scripts/**/*.js'],
+        files: [frontline.paths.source + '/scripts/**/*.js'],
         tasks: ['build-scripts']
       },
       assets: {
         options: { dot: true },
-        files: [config.paths.source + '/{images,fonts,media}/**/*'],
+        files: [frontline.paths.source + '/{images,fonts,media}/**/*'],
         tasks: ['build-assets']
       },
       templates: {
-        files: [config.paths.source + '/templates/**/*'],
+        files: [frontline.paths.source + '/templates/**/*'],
         tasks: ['build-templates']
       },
       other: {
         files: [
-          config.paths.source + '/**/*',
-          '!' + config.paths.source + '/{fonts,images,media,scripts,styles,templates}/*'
+          frontline.paths.source + '/**/*',
+          '!' + frontline.paths.source + '/{fonts,images,media,scripts,styles,templates}/*'
         ],
         tasks: ['build-other']
       }
     },
 
-    ftp_push: config.ftp_push,
+    ftp_push: frontline.ftp_push,
 
-    rsync: config.rsync
+    rsync: frontline.rsync
 
   });
 
