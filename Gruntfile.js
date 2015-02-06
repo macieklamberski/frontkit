@@ -10,16 +10,6 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    clean: {
-      src: [frontline.paths.frontend + '/*']
-    },
-
-    newer: {
-      options: {
-        cache: frontline.paths.temporary + '/newer'
-      }
-    },
-
     sass: {
       options: {
         sourcemap: 'none',
@@ -84,27 +74,6 @@ module.exports = function(grunt) {
       }
     },
 
-    copy: {
-      scripts: {
-        expand: true,
-        cwd: frontline.paths.source,
-        src: ['scripts/**/*.js'],
-        dest: frontline.paths.frontend
-      },
-      assets: {
-        expand: true,
-        cwd: frontline.paths.source,
-        src: ['{images,fonts,media}/**/*'],
-        dest: frontline.paths.frontend
-      },
-      templates: {
-        expand: true,
-        cwd: frontline.paths.temporary + '/jekyll',
-        src: ['**/*'],
-        dest: frontline.paths.frontend
-      }
-    },
-
     concat: { generated: {} },
     uglify: { generated: {} },
     cssmin: { generated: {} },
@@ -126,6 +95,37 @@ module.exports = function(grunt) {
         expand: true,
         cwd: frontline.paths.frontend,
         src: ['**/*.html']
+      }
+    },
+
+    clean: {
+      src: [frontline.paths.frontend + '/*']
+    },
+
+    newer: {
+      options: {
+        cache: frontline.paths.temporary + '/newer'
+      }
+    },
+
+    copy: {
+      scripts: {
+        expand: true,
+        cwd: frontline.paths.source,
+        src: ['scripts/**/*.js'],
+        dest: frontline.paths.frontend
+      },
+      assets: {
+        expand: true,
+        cwd: frontline.paths.source,
+        src: ['{images,fonts,media}/**/*'],
+        dest: frontline.paths.frontend
+      },
+      templates: {
+        expand: true,
+        cwd: frontline.paths.temporary + '/jekyll',
+        src: ['**/*'],
+        dest: frontline.paths.frontend
       }
     },
 
