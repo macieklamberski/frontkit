@@ -146,8 +146,8 @@ module.exports = function(grunt) {
     notify: {
       watch: {
         options: {
-          title: 'Task Complete',
-          message: 'Frontline has.',
+          title: 'Task complete',
+          message: 'Frontline finished running "watch" task.',
         }
       }
     },
