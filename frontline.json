@@ -1,4 +1,5 @@
 {
+  "notifications": true,
   "paths": {
     "temporary" : ".tmp",
     "source"    : "src",

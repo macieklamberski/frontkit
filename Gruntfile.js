@@ -143,25 +143,34 @@ module.exports = function(grunt) {
       })
     },
 
+    notify: {
+      watch: {
+        options: {
+          title: 'Task Complete',
+          message: 'Frontline has.',
+        }
+      }
+    },
+
     watch: {
       styles: {
         options: { dot: true },
         files: [frontline.paths.source + '/styles/**/*.scss'],
-        tasks: ['build-styles']
+        tasks: ['build-styles', 'show-notification']
       },
       scripts: {
         options: { dot: true },
         files: [frontline.paths.source + '/scripts/**/*.js'],
-        tasks: ['build-scripts']
+        tasks: ['build-scripts', 'show-notification']
       },
       assets: {
         options: { dot: true },
         files: [frontline.paths.source + '/{images,fonts,media}/**/*'],
-        tasks: ['build-assets']
+        tasks: ['build-assets', 'show-notification']
       },
       templates: {
         files: [frontline.paths.source + '/templates/**/*'],
-        tasks: ['build-templates']
+        tasks: ['build-templates', 'show-notification']
       }
     },
 
@@ -171,6 +180,11 @@ module.exports = function(grunt) {
 
   });
 
+  grunt.registerTask('show-notification', function () {
+    if (frontline.notifications) {
+      grunt.task.run('notify:watch');
+    }
+  });
   grunt.registerTask('build-styles', [
     'sass',
     'autoprefixer',
