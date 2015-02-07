@@ -102,7 +102,12 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      src: [frontline.paths.frontend + '/*']
+      frontend: {
+        src: [frontline.paths.frontend + '/*']
+      },
+      wordpress: wordpress({
+        src: [frontline.paths.wordpress + '/{images,fonts,styles,scripts}']
+      })
     },
 
     newer: {
@@ -129,7 +134,13 @@ module.exports = function(grunt) {
         cwd: frontline.paths.temporary + '/jekyll',
         src: ['**/*'],
         dest: frontline.paths.frontend
-      }
+      },
+      wordpress: wordpress({
+        expand: true,
+        cwd: frontline.paths.frontend,
+        src: ['{images,fonts,styles,scripts}/**/*'],
+        dest: frontline.paths.wordpress
+      })
     },
 
     watch: {
@@ -162,16 +173,19 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build-styles', [
     'sass',
-    'autoprefixer'
+    'autoprefixer',
+    'build-wordpress'
   ]);
   grunt.registerTask('build-scripts', [
-    'newer:copy:scripts'
+    'newer:copy:scripts',
+    'build-wordpress'
   ]);
   grunt.registerTask('build-assets', [
     'newer:copy:assets',
     'newer:svgmin',
     'newer:svg2png',
-    'newer:imagemin'
+    'newer:imagemin',
+    'build-wordpress'
   ]);
   grunt.registerTask('build-templates', [
     'jekyll:dist',
@@ -180,14 +194,19 @@ module.exports = function(grunt) {
     'concat:generated',
     'cssmin:generated',
     'uglify:generated',
-    'usemin'
+    'usemin',
+    'build-wordpress'
+  ]);
+  grunt.registerTask('build-wordpress', [
+    'copy:wordpress'
   ]);
   grunt.registerTask('build', [
     'clean',
     'build-templates',
     'build-scripts',
     'build-styles',
-    'build-assets'
+    'build-assets',
+    'build-wordpress'
   ]);
   grunt.registerTask('default', [
     'watch'
