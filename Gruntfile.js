@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         style: 'expanded',
         loadPath: [frontline.paths.source + '/styles', 'bower_components']
       },
-      dist: {
+      frontend: {
         expand: true,
         cwd: frontline.paths.source + '/styles',
         src: ['**/*.scss'],
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         cascade: false,
         browsers: ['last 2 versions', 'ie 9']
       },
-      dist: {
+      frontend: {
         expand: true,
         cwd: frontline.paths.frontend + '/styles',
         src: ['**/*.css'],
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     },
 
     svgmin: {
-      dist: {
+      frontend: {
         expand: true,
         cwd: frontline.paths.frontend,
         src: ['{images,media}/**/*.svg'],
@@ -52,13 +52,13 @@ module.exports = function(grunt) {
     },
 
     svg2png: {
-      dist: {
+      frontend: {
         src: [frontline.paths.frontend + '/{images,media}/**/*.svg']
       }
     },
 
     imagemin: {
-      dist: {
+      frontend: {
         expand: true,
         cwd: frontline.paths.frontend,
         src: ['{images,media}/**/*.{png,jpg,gif}'],
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
       options: {
         src : frontline.paths.source + '/templates'
       },
-      dist: {
+      frontend: {
         options: {
           dest: frontline.paths.temporary + '/jekyll'
         }
@@ -188,7 +188,7 @@ module.exports = function(grunt) {
     'build-wordpress'
   ]);
   grunt.registerTask('build-templates', [
-    'jekyll:dist',
+    'jekyll:frontend',
     'newer:copy:templates',
     'useminPrepare',
     'concat:generated',
