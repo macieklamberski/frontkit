@@ -5,6 +5,9 @@ module.exports = function(grunt) {
   });
 
   var frontline = grunt.file.readJSON('frontline.json');
+  var wordpress = function (options) {
+    return frontline.paths.wordpress ? options : {};
+  };
 
   grunt.initConfig({
 
