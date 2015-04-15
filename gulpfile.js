@@ -7,7 +7,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 
 gulp.task('clean', function () {
-  return gulp.src('static/**/*', {read: false})
+  return gulp.src('static/**/*', { read: false })
     .pipe(clean());
 })
 
