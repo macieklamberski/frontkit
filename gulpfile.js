@@ -1,10 +1,10 @@
-var gulp = require('gulp');
-var clean = require('gulp-clean');
-var include = require('gulp-include');
-var uglify = require('gulp-uglify');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var imagemin = require('gulp-imagemin');
+var gulp = require('gulp'),
+    clean = require('gulp-clean'),
+    include = require('gulp-include'),
+    uglify = require('gulp-uglify'),
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    imagemin = require('gulp-imagemin');
 
 gulp.task('clean', function () {
   return gulp.src('static/**/*', { read: false })
