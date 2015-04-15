@@ -26,16 +26,19 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('static/styles'));
 });
 
-gulp.task('images', function () {
-  gulp.src('source/{media,images}/**/*.{jpg,svg,gif,png}', {base: 'source'})
+gulp.task('media', function () {
+  gulp.src('source/media/**/*.{jpg,svg,gif,png}')
     .pipe(imagemin())
-    .pipe(gulp.dest('static'));
+    .pipe(gulp.dest('static/media'));
+
+  gulp.src(['source/media/**/*', '!source/media/**/*.{jpg,svg,gif,png}'])
+    .pipe(gulp.dest('static/media'));
 });
 
-gulp.task('build', ['scripts', 'styles', 'images']);
+gulp.task('build', ['scripts', 'styles', 'media']);
 
 gulp.task('default', ['build'], function () {
   gulp.watch('source/styles/**/*', ['styles']);
   gulp.watch('source/scripts/**/*', ['scripts']);
-  gulp.watch('source/images/**/*', ['images']);
+  gulp.watch('source/media/**/*', ['media']);
 });
