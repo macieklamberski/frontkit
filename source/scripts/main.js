@@ -6,7 +6,7 @@
      * Initialize features
      */
     init: function () {
-      // App.feature();
+      App.feature();
     },
 
     /**
@@ -15,7 +15,6 @@
     feature: function () {
 
     }
-
   };
 
   $(function () {
