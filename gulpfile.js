@@ -35,13 +35,12 @@ gulp.task('styles', function () {
 });
 
 gulp.task('media', function () {
-  return plugins.mergeStream(
-    gulp.src('source/media/**/*.{jpg,svg,gif,png}')
-      .pipe(plugins.imagemin())
-      .pipe(gulp.dest('static/media')),
-    gulp.src(['source/media/**/*', '!source/media/**/*.{jpg,svg,gif,png}'])
-      .pipe(gulp.dest('static/media'))
-  );
+  var minFilter = plugins.filter(['*.{jpg,svg,gif,png}']);
+  return gulp.src('source/media/**/*')
+    .pipe(minFilter)
+    .pipe(plugins.imagemin())
+    .pipe(minFilter.restore())
+    .pipe(gulp.dest('static/media'));
 });
 
 gulp.task('build', function () {
