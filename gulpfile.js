@@ -1,46 +1,37 @@
 var gulp = require('gulp');
-var mergeStream = require('merge-stream');
-var runSequence = require('run-sequence');
-var clean = require('gulp-clean');
-var filter = require('gulp-filter');
-var include = require('gulp-include');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var uglify = require('gulp-uglify');
-var minifyCSS = require('gulp-minify-css');
-var imagemin = require('gulp-imagemin');
+var plugins = require('gulp-load-plugins')({ pattern: '*' });
 
 gulp.task('clean', function () {
   return gulp.src('static/**/*', { read: false })
-    .pipe(clean());
+    .pipe(plugins.clean());
 });
 
 gulp.task('scripts', function () {
-  var minFilter = filter(['*.min.js']);
+  var minFilter = plugins.filter(['*.min.js']);
   return gulp.src('source/scripts/**/*.js')
-    .pipe(include())
+    .pipe(plugins.include())
     .pipe(minFilter)
-    .pipe(uglify())
+    .pipe(plugins.uglify())
     .pipe(minFilter.restore())
     .pipe(gulp.dest('static/scripts'));
 });
 
 gulp.task('styles', function () {
-  var minFilter = filter(['*.min.{css,scss}']);
+  var minFilter = plugins.filter(['*.min.{css,scss}']);
   return gulp.src('source/styles/**/*.{css,scss}')
-    .pipe(include())
-    .pipe(sass())
-    .pipe(autoprefixer())
+    .pipe(plugins.include())
+    .pipe(plugins.sass())
+    .pipe(plugins.autoprefixer())
     .pipe(minFilter)
-    .pipe(minifyCSS())
+    .pipe(plugins.minifyCss())
     .pipe(minFilter.restore())
     .pipe(gulp.dest('static/styles'));
 });
 
 gulp.task('media', function () {
-  return mergeStream(
+  return plugins.mergeStream(
     gulp.src('source/media/**/*.{jpg,svg,gif,png}')
-      .pipe(imagemin())
+      .pipe(plugins.imagemin())
       .pipe(gulp.dest('static/media')),
     gulp.src(['source/media/**/*', '!source/media/**/*.{jpg,svg,gif,png}'])
       .pipe(gulp.dest('static/media'))
@@ -48,7 +39,7 @@ gulp.task('media', function () {
 });
 
 gulp.task('build', function () {
-  return runSequence('clean', ['scripts', 'styles', 'media']);
+  return plugins.runSequence('clean', ['scripts', 'styles', 'media']);
 });
 
 gulp.task('default', ['scripts', 'styles', 'media'], function () {
