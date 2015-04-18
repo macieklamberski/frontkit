@@ -1,5 +1,7 @@
 var gulp = require('gulp'),
     runSequence = require('run-sequence'),
+    clone = require('gulp-clone'),
+    rename = require('gulp-rename'),
     clean = require('gulp-clean'),
     include = require('gulp-include'),
     uglify = require('gulp-uglify'),
@@ -14,18 +16,28 @@ gulp.task('clean', function () {
 })
 
 gulp.task('scripts', function () {
+  var sink = clone.sink();
+
   gulp.src('source/scripts/**/*.js')
     .pipe(include())
-    .pipe(uglify())
+    .pipe(sink)
+      .pipe(uglify())
+      .pipe(rename({ suffix: '.min' }))
+    .pipe(sink.tap())
     .pipe(gulp.dest('static/scripts'));
 });
 
 gulp.task('styles', function () {
+  var sink = clone.sink();
+
   gulp.src('source/styles/**/*.scss')
     .pipe(include())
     .pipe(sass())
     .pipe(autoprefixer())
-    .pipe(minifyCSS())
+    .pipe(sink)
+      .pipe(minifyCSS())
+      .pipe(rename({ suffix: '.min' }))
+    .pipe(sink.tap())
     .pipe(gulp.dest('static/styles'));
 });
 
