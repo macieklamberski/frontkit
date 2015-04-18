@@ -8,6 +8,7 @@ gulp.task('clean', function () {
 
 gulp.task('templates', function () {
   return gulp.src(['source/**/*.html', '!source/**/_*.html'])
+    .pipe(plugins.changed('static'))
     .pipe(plugins.twig())
     .pipe(gulp.dest('static'));
 });
@@ -15,6 +16,7 @@ gulp.task('templates', function () {
 gulp.task('scripts', function () {
   var minFilter = plugins.filter(['*.min.js']);
   return gulp.src('source/scripts/**/*.js')
+    .pipe(plugins.changed('static/scripts'))
     .pipe(plugins.include())
     .pipe(minFilter)
     .pipe(plugins.uglify())
@@ -37,6 +39,7 @@ gulp.task('styles', function () {
 gulp.task('media', function () {
   var minFilter = plugins.filter(['*.{jpg,svg,gif,png}']);
   return gulp.src('source/media/**/*')
+    .pipe(plugins.changed('static/media'))
     .pipe(minFilter)
     .pipe(plugins.imagemin())
     .pipe(minFilter.restore())
