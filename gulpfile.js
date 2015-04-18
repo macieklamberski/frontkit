@@ -17,8 +17,7 @@ gulp.task('clean', function () {
 
 gulp.task('scripts', function () {
   var sink = clone.sink();
-
-  gulp.src('source/scripts/**/*.js')
+  return gulp.src('source/scripts/**/*.js')
     .pipe(include())
     .pipe(sink)
       .pipe(uglify())
@@ -29,8 +28,7 @@ gulp.task('scripts', function () {
 
 gulp.task('styles', function () {
   var sink = clone.sink();
-
-  gulp.src('source/styles/**/*.scss')
+  return gulp.src('source/styles/**/*.scss')
     .pipe(include())
     .pipe(sass())
     .pipe(autoprefixer())
@@ -46,12 +44,12 @@ gulp.task('media', function () {
     .pipe(imagemin())
     .pipe(gulp.dest('static/media'));
 
-  gulp.src(['source/media/**/*', '!source/media/**/*.{jpg,svg,gif,png}'])
+  return gulp.src(['source/media/**/*', '!source/media/**/*.{jpg,svg,gif,png}'])
     .pipe(gulp.dest('static/media'));
 });
 
 gulp.task('build', function () {
-  runSequence('clean', ['scripts', 'styles', 'media']);
+  return runSequence('clean', ['scripts', 'styles', 'media']);
 });
 
 gulp.task('default', ['scripts', 'styles', 'media'], function () {
