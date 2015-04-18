@@ -30,7 +30,7 @@ For managing certain dependencies like Bootstrap, you will need [Bower](http://b
 $ npm install --global bower
 ```
 
-Also make sure that [git](http://git-scm.com/) is installed as some bower packages require it to be fetched and installed.
+Also make sure that [Git](http://git-scm.com/) is installed as some bower packages require it to be fetched and installed.
 
 ## Structure
 
@@ -47,7 +47,7 @@ Also make sure that [git](http://git-scm.com/) is installed as some bower packag
 
 ## Usage
 
-Frontline is using Grunt tasks to compile and do other processing (i.e. optimizing images, minifying CSS/JS files). Run `gulp` command in your project directory:
+Frontline is using Gulp tasks to compile and do other processing (i.e. optimizing images, minifying CSS/JS files). Run `gulp` command in your project directory:
 
 ```
 $ gulp
