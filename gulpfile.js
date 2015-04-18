@@ -45,11 +45,12 @@ gulp.task('media', function () {
 });
 
 gulp.task('build', function () {
-  return plugins.runSequence('clean', ['scripts', 'styles', 'media']);
+  return plugins.runSequence('clean', ['templates', 'scripts', 'styles', 'media']);
 });
 
 gulp.task('default', ['scripts', 'styles', 'media'], function () {
-  gulp.watch('source/styles/**/*', ['styles']);
+  gulp.watch('source/*.html', ['templates']);
   gulp.watch('source/scripts/**/*', ['scripts']);
+  gulp.watch('source/styles/**/*', ['styles']);
   gulp.watch('source/media/**/*', ['media']);
 });
