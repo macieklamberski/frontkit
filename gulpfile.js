@@ -6,6 +6,12 @@ gulp.task('clean', function () {
     .pipe(plugins.clean());
 });
 
+gulp.task('templates', function () {
+  return gulp.src(['source/**/*.html', '!source/**/_*.html'])
+    .pipe(plugins.twig())
+    .pipe(gulp.dest('static'));
+});
+
 gulp.task('scripts', function () {
   var minFilter = plugins.filter(['*.min.js']);
   return gulp.src('source/scripts/**/*.js')
