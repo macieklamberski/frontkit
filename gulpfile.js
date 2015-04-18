@@ -1,14 +1,14 @@
-var gulp = require('gulp'),
-    mergeStream = require('merge-stream'),
-    runSequence = require('run-sequence'),
-    clean = require('gulp-clean'),
-    filter = require('gulp-filter'),
-    include = require('gulp-include'),
-    sass = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    uglify = require('gulp-uglify'),
-    minifyCSS = require('gulp-minify-css'),
-    imagemin = require('gulp-imagemin');
+var gulp = require('gulp');
+var mergeStream = require('merge-stream');
+var runSequence = require('run-sequence');
+var clean = require('gulp-clean');
+var filter = require('gulp-filter');
+var include = require('gulp-include');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var uglify = require('gulp-uglify');
+var minifyCSS = require('gulp-minify-css');
+var imagemin = require('gulp-imagemin');
 
 gulp.task('clean', function () {
   return gulp.src('static/**/*', { read: false })
