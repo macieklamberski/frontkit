@@ -1,6 +1,6 @@
 # Frontline
 
-Frontline is a scaffolding for web projects. It creates a project structure, files and Grunt tasks which support modern workflows like CSS preprocessors. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
+Frontline is a scaffolding for web projects. It creates a project structure, files and Gulp workflow which support modern workflows like CSS preprocessors. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
 
 ## Requirements
 
@@ -9,31 +9,25 @@ The following software needs to be installed if you want to use Frontline. These
 First is Node.js, so you can work with `npm`, Node package manager. You can install it from [pre-built installer](http://nodejs.org/) or using Homebrew:
 
 ```
-brew install node
+$ brew install node
 ```
 
 Next is Sass gem:
 
 ```
-gem install sass
+$ gem install sass
 ```
 
-You will also need [Jekyll](http://jekyllrb.com) used for creating HTML templates:
+Then install [Gulp](http://gulpjs.com/)'s command line interface (CLI) globally:
 
 ```
-gem install jekyll
-```
-
-Then install [Grunt](http://gruntjs.com/)'s command line interface (CLI) globally:
-
-```
-npm install grunt-cli -g
+$ npm install --global gulp
 ```
 
 For managing certain dependencies like Bootstrap, you will need [Bower](http://bower.io/), another package manager. Install it from the command line too:
 
 ```
-npm install bower -g
+$ npm install --global bower
 ```
 
 Also make sure that [git](http://git-scm.com/) is installed as some bower packages require it to be fetched and installed.
@@ -53,10 +47,10 @@ Also make sure that [git](http://git-scm.com/) is installed as some bower packag
 
 ## Usage
 
-Frontline is using Grunt tasks to compile and do other processing (i.e. optimizing images, minifying CSS/JS files). Run `grunt` command in your project directory:
+Frontline is using Grunt tasks to compile and do other processing (i.e. optimizing images, minifying CSS/JS files). Run `gulp` command in your project directory:
 
 ```
-grunt
+$ gulp
 ```
 
 This will boot up `watch` task that will watch for changes in files and recompile them as needed.
@@ -64,14 +58,5 @@ This will boot up `watch` task that will watch for changes in files and recompil
 You can also run `build` task to recreate whole project.
 
 ```
-grunt build
+$ gulp build
 ```
-## License
-
-Copyright (C) 2014 Maciej Lamberski
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
