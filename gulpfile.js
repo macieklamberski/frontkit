@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    runSequence = require('run-sequence'),
     clean = require('gulp-clean'),
     include = require('gulp-include'),
     uglify = require('gulp-uglify'),
@@ -37,9 +38,11 @@ gulp.task('media', function () {
     .pipe(gulp.dest('static/media'));
 });
 
-gulp.task('build', ['scripts', 'styles', 'media']);
+gulp.task('build', function () {
+  runSequence('clean', ['scripts', 'styles', 'media']);
+});
 
-gulp.task('default', ['build'], function () {
+gulp.task('default', ['scripts', 'styles', 'media'], function () {
   gulp.watch('source/styles/**/*', ['styles']);
   gulp.watch('source/scripts/**/*', ['scripts']);
   gulp.watch('source/media/**/*', ['media']);
