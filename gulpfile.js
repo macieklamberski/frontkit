@@ -48,9 +48,11 @@ gulp.task('build', function () {
   return plugins.runSequence('clean', ['templates', 'scripts', 'styles', 'media']);
 });
 
-gulp.task('default', ['scripts', 'styles', 'media'], function () {
+gulp.task('watch', function () {
   gulp.watch('source/*.html', ['templates']);
   gulp.watch('source/scripts/**/*', ['scripts']);
   gulp.watch('source/styles/**/*', ['styles']);
   gulp.watch('source/media/**/*', ['media']);
 });
+
+gulp.task('default', ['build', 'watch']);
