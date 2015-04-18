@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
+    minifyCSS = require('gulp-minify-css'),
     imagemin = require('gulp-imagemin');
 
 gulp.task('clean', function () {
@@ -23,6 +24,7 @@ gulp.task('styles', function () {
     .pipe(include())
     .pipe(sass())
     .pipe(autoprefixer())
+    .pipe(minifyCSS())
     .pipe(gulp.dest('static/styles'));
 });
 
