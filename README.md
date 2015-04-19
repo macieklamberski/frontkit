@@ -6,7 +6,7 @@ Frontline is a scaffolding for web projects. It creates a project structure, fil
 
 - **node_modules** - Node.js packages required by Gulp tasks
 - **bower_components** - 3rd party libraries managed via Bower
-- **static** - automatically generated preview files, this is where you check your work in a browser
+- **preview** - automatically generated preview files, this is where you check your work in a browser
 - **source** - directory with HTML templates
   - **media** - Images, fonts, videos and other media files
   - **scripts** - JS files (these ending with _.min.js_ will be minified)
