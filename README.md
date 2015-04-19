@@ -11,7 +11,7 @@ Frontline is a scaffolding for web projects. It creates a project structure, fil
   - **media** - Images, fonts, videos and other media files. All other directories are also treated as _media_ and will be copied to 'preview' directory as well. All images will be optimized.
   - **scripts** - JS files (these ending with _.min.js_ will be minified).
   - **styles** - SCSS files (these ending with _.min.css_ will be minified).
-  - ***.html** - template files compiled with Twig template engine.
+  - **\*.html** - template files compiled with Twig template engine.
 
 ## Usage
 
