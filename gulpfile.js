@@ -1,6 +1,13 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
 
+var onError = function (error) {
+  plugins.util.log(plugins.util.colors.red(error.message));
+  plugins.util.log(plugins.util.colors.red(error.fileName + ':' + error.lineNumber));
+  plugins.util.beep();
+  this.emit('end');
+};
+
 gulp.task('clean', function () {
   return gulp.src('static/**/*', { read: false })
     .pipe(plugins.clean());
@@ -8,7 +15,7 @@ gulp.task('clean', function () {
 
 gulp.task('templates', function () {
   return gulp.src(['source/**/*.html', '!source/**/_*.html'])
-    .pipe(plugins.changed('static'))
+    .pipe(plugins.plumber(onError))
     .pipe(plugins.twig())
     .pipe(gulp.dest('static'));
 });
@@ -16,6 +23,7 @@ gulp.task('templates', function () {
 gulp.task('scripts', function () {
   var minFilter = plugins.filter(['*.min.js']);
   return gulp.src('source/scripts/**/*.js')
+    .pipe(plugins.plumber(onError))
     .pipe(plugins.changed('static/scripts'))
     .pipe(plugins.include())
     .pipe(minFilter)
@@ -27,6 +35,7 @@ gulp.task('scripts', function () {
 gulp.task('styles', function () {
   var minFilter = plugins.filter(['*.min.{css,scss}']);
   return gulp.src('source/styles/**/*.{css,scss}')
+    .pipe(plugins.plumber(onError))
     .pipe(plugins.include())
     .pipe(plugins.sass())
     .pipe(plugins.autoprefixer())
@@ -39,6 +48,7 @@ gulp.task('styles', function () {
 gulp.task('media', function () {
   var minFilter = plugins.filter(['*.{jpg,svg,gif,png}']);
   return gulp.src('source/media/**/*')
+    .pipe(plugins.plumber(onError))
     .pipe(plugins.changed('static/media'))
     .pipe(minFilter)
     .pipe(plugins.imagemin())
@@ -51,7 +61,7 @@ gulp.task('build', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('source/*.html', ['templates']);
+  gulp.watch('source/**/*.html', ['templates']);
   gulp.watch('source/scripts/**/*', ['scripts']);
   gulp.watch('source/styles/**/*', ['styles']);
   gulp.watch('source/media/**/*', ['media']);
