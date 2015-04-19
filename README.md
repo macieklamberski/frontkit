@@ -4,14 +4,14 @@ Frontline is a scaffolding for web projects. It creates a project structure, fil
 
 ## Structure
 
-- **node_modules** - Node.js packages required by Gulp tasks.
-- **bower_components** - 3rd party libraries managed via Bower.
-- **preview** - automatically generated preview files, this is where you check your work in a browser.
-- **source** - directory with source files.
-  - **media** - Images, fonts, videos and other media files. All other directories are also treated as _media_ and will be copied to 'preview' directory as well. All images will be optimized.
-  - **scripts** - JS files (these ending with _.min.js_ will be minified).
-  - **styles** - SCSS files (these ending with _.min.css_ will be minified).
-  - **\*.html** - template files compiled with Twig template engine.
+- **node_modules** — Node.js packages required by Gulp tasks.
+- **bower_components** — 3rd party libraries managed via Bower.
+- **preview** — automatically generated preview files, this is where you check your work in a browser.
+- **source** — directory with source files.
+  - **scripts** — JS files (these ending with _.min.js_ will be minified).
+  - **styles** — SCSS files (these ending with _.min.css_ will be minified).
+  - **\*.html** — template files compiled with Twig template engine.
+  - * — Directories with images, fonts, videos and other media files. All of them will be copied to 'preview' directory as well. All images within them will be optimized.
 
 ## Usage
 
@@ -72,7 +72,7 @@ After that, you're ready to rock! :metal:
 
 ## License
 
-Copyright (C) 2014 Maciej Lamberski
+Copyright (C) 2014-∞ Maciej Lamberski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
