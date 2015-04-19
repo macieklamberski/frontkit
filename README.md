@@ -9,8 +9,8 @@ Frontline is a scaffolding for web projects. It creates a project structure, fil
 - **static** - preview files, automatically generated here, this is where you check your work in a browser
 - **source** - directory with HTML templates
   - **media** - Images, fonts, videos and other media files
-  - **scripts** - JS files (these ending with .min.js will be minified)
-  - **styles** - SCSS files (these ending with .min.css will be minified)
+  - **scripts** - JS files (these ending with _.min.js_ will be minified)
+  - **styles** - SCSS files (these ending with _.min.css_ will be minified)
 
 ## Usage
 
