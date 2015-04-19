@@ -9,8 +9,7 @@ var onError = function (error) {
 };
 
 gulp.task('clean', function () {
-  return gulp.src('preview/**/*', { read: false })
-    .pipe(plugins.clean());
+  return plugins.del(['preview/**/*']);
 });
 
 gulp.task('templates', function () {
@@ -50,7 +49,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('media', function () {
-  var minFilter = plugins.filter(['*.{jpg,svg,gif,png}']);
+  var minFilter = plugins.filter(['**/*.{jpg,svg,gif,png}']);
   return gulp.src(['source/**/*', '!source/{scripts,styles}/**/*', '!source/**/*.html'])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.changed('preview'))
