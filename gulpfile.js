@@ -51,13 +51,13 @@ gulp.task('styles', function () {
 
 gulp.task('media', function () {
   var minFilter = plugins.filter(['*.{jpg,svg,gif,png}']);
-  return gulp.src('source/media/**/*')
+  return gulp.src(['source/**/*', '!source/{scripts,styles}/**/*', '!source/**/*.html'])
     .pipe(plugins.plumber(onError))
-    .pipe(plugins.changed('preview/media'))
+    .pipe(plugins.changed('preview'))
     .pipe(minFilter)
     .pipe(plugins.imagemin())
     .pipe(minFilter.restore())
-    .pipe(gulp.dest('preview/media'));
+    .pipe(gulp.dest('preview'));
 });
 
 gulp.task('build', function () {
