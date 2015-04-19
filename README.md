@@ -4,15 +4,17 @@ Frontline is a scaffolding for web projects. It creates a project structure, fil
 
 ## Structure
 
-- **node_modules** - Node.js modules for various Gulp tasks, usually you don’t have to do anything about this folder
+- **node_modules** - Node.js packages required by Gulp tasks
 - **bower_components** - 3rd party libraries managed via Bower
 - **static** - preview files, automatically generated here, this is where you check your work in a browser
-- **source** - source files, development is done here
+- **source** - directory with HTML templates
   - **media** - Images, fonts, videos and other media files
   - **scripts** - JS files (only custom files, plugins and libraries should be added via Bower
   - **styles** - SCSS files
 
 ## Usage
+
+Run below commands in your project directory.
 
 ```bash
 # This task will watch for changes in files and recompile them as needed
@@ -31,25 +33,25 @@ The following software needs to be installed before using Frontline. These insta
 
 First is Node.js, so you can work with `npm`, Node package manager. You can install it from [pre-built installer](http://nodejs.org) or using Homebrew:
 
-```
+```bash
 brew install node
 ```
 
 Next is [Sass](http://sass-lang.com) gem:
 
-```
+```bash
 gem install sass
 ```
 
 Then install [Gulp](http://gulpjs.com) globally:
 
-```
+```bash
 npm install --global gulp
 ```
 
 For managing certain dependencies like Bootstrap, you will need [Bower](http://bower.io), another package manager. Install it from the command line as well:
 
-```
+```bash
 npm install --global bower
 ```
 
@@ -59,7 +61,7 @@ Also make sure that [Git](http://git-scm.com) is installed as some bower package
 
 Having all requirements met, you can set up new project.
 
-```
+```bash
 git clone https://github.com/hanverd/frontline.git new-project
 cd new-project
 npm install && bower install
