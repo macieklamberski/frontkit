@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
-
+var options = require('./options.json');
 var onError = function (error) {
   plugins.util.log(plugins.util.colors.red(error.message));
   plugins.util.log(plugins.util.colors.red(error.fileName + ':' + error.lineNumber));
@@ -9,7 +9,7 @@ var onError = function (error) {
 };
 
 gulp.task('clean', function () {
-  return plugins.del(['preview/**/*']);
+  return plugins.del(['preview/**/*', options.theme + '/{fonts,images,scripts,styles}']);
 });
 
 gulp.task('templates', function () {
@@ -50,7 +50,7 @@ gulp.task('styles', function () {
 
 gulp.task('media', function () {
   var minFilter = plugins.filter(['**/*.{jpg,svg,gif,png}']);
-  return gulp.src(['source/**/*', '!source/{scripts,styles}/**/*', '!source/**/*.html'])
+  return gulp.src(['source/{fonts,images,media}/**/*'])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.changed('preview'))
     .pipe(minFilter)
@@ -59,8 +59,13 @@ gulp.task('media', function () {
     .pipe(gulp.dest('preview'));
 });
 
+gulp.task('theme', function () {
+  return options.theme && gulp.src('preview/{fonts,images,scripts,styles}/**/*')
+    .pipe(gulp.dest(options.theme));
+});
+
 gulp.task('build', function () {
-  return plugins.runSequence('clean', ['templates', 'scripts', 'styles', 'media']);
+  return plugins.runSequence('clean', ['templates', 'scripts', 'styles', 'media'], 'theme');
 });
 
 gulp.task('watch', function () {
@@ -68,6 +73,22 @@ gulp.task('watch', function () {
   gulp.watch('source/scripts/**/*', ['scripts']);
   gulp.watch('source/styles/**/*', ['styles']);
   gulp.watch('source/media/**/*', ['media']);
+});
+
+gulp.task('deploy', function () {
+  if (options.deploy.adapter == 'ftp') {
+    options.deploy.log = plugins.util.log
+    var connection = plugins.vinylFtp.create(options.deploy);
+    return gulp.src(options.deploy.local)
+      .pipe(connection.newer(options.deploy.remote))
+      .pipe(connection.dest(options.deploy.remote));
+
+  } else if (options.deploy.adapter == 'rsync') {
+    return gulp.src(options.deploy.root + '/**/*')
+      .pipe(plugins.rsync(options.deploy));
+  } else {
+    plugins.util.log(plugins.util.colors.red('Deployment is not configured.'));
+  }
 });
 
 gulp.task('default', ['build', 'watch']);

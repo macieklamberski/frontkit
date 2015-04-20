@@ -8,24 +8,74 @@ Frontline is a scaffolding for web projects. It creates a project structure, fil
 - **bower_components**—3rd party libraries managed via Bower.
 - **preview**—automatically generated preview files, this is where you check your work in a browser.
 - **source**—directory with source files.
+  - **fonts**—Font files, also font-based icons.
+  - **images**—Images used strictly for layout purposes (will be optimized).
+  - **media**—Images, videos and other media files used as a content (won't be copied to CMS theme).
   - **scripts**—JS files (these ending with _.min.js_ will be minified).
   - **styles**—SCSS files (these ending with _.min.css_ will be minified).
-  - **\*.html**—template files compiled with Twig template engine.
-  - **[directory-name]**—Directories with images, fonts, videos and other media files. All of them will be copied to 'preview' directory as well. All images within them will be optimized.
+  - **\*.html**—template files compiled using Twig template engine.
 
 ## Usage
 
 Run below commands in your project directory.
 
 ```bash
-# This task will watch for changes in files and recompile them as needed
+# This task will watch for changes in files and recompile them as needed.
 gulp watch
 
-# Recreate whole project
+# Recreate whole project.
 gulp build
 
-# Equivalent of 'gulp build && gulp watch'
+# Equivalent of 'gulp build && gulp watch'.
 gulp
+```
+
+## Configuration
+
+You can configure Frontline to do additional things like deploying and copying compiled assets to CMS theme. Below is example `options.json` file, located in root directory of the project.
+
+```javascript
+{
+  "theme": "wordpress/wp-content/themes/frontline",
+  "deploy": {
+    "adapter": "ftp",
+    // For configuration of the adapter, read "deploy" section below.
+  }
+}
+```
+
+### theme
+
+Path to directory root (where assets will be copied) or `false` to disable it.
+
+### deploy
+
+You can choose of two adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp) or [gulp-rsync](https://github.com/jerrysu/gulp-rsync). Each of them have different set of configuration options.
+
+To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapter, look [into documentation of the package](https://github.com/morris/vinyl-ftp#ftpcreate-config-). There are also two additional properties: `local` and `remote`, which, as the names suggest, are used to locate local and remote directories. Example configuration:
+
+```javascript
+"deploy": {
+  "adapter": "ftp",
+  "host": "frontline.com",
+  "user": "frontline",
+  "password": "letmein",
+  "local": "preview/**/*",
+  "remote": "/var/www/frontline.com"
+}
+```
+
+To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package configuration ([look into documentation](https://github.com/jerrysu/gulp-rsync#rsyncoptions)). Example configuration:
+
+```javascript
+"deploy": {
+  "adapter": "rsync",
+  "root": "preview",
+  "port": 22,
+  "hostname": "frontline.com",
+  "destination": "/var/www/frontline.com",
+  "incremental": true
+}
 ```
 
 ## Requirements
