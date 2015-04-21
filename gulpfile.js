@@ -16,34 +16,43 @@ gulp.task('templates', function () {
   return gulp.src(['source/**/*.html', '!source/**/_*.html'])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.twig())
+    .pipe(plugins.jsbeautifier({ indentSize: 2, indentInnerHtml: true }))
     .pipe(gulp.dest('preview'));
 });
 
 gulp.task('scripts', function () {
   var minFilter = plugins.filter(['*.min.js']);
+  var beautifyFilter = plugins.filter(['*.js', '!*.min.js']);
   return gulp.src('source/scripts/**/*.js')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.changed('preview/scripts'))
     .pipe(plugins.include())
+    .pipe(beautifyFilter)
+      .pipe(plugins.jsbeautifier({ indentSize: 2, space_after_anon_function: true }))
+    .pipe(beautifyFilter.restore())
     .pipe(minFilter)
-    .pipe(plugins.uglify())
+      .pipe(plugins.uglify())
     .pipe(minFilter.restore())
     .pipe(gulp.dest('preview/scripts'));
 });
 
 gulp.task('styles', function () {
   var minFilter = plugins.filter(['*.min.{css,scss}']);
+  var beautifyFilter = plugins.filter(['*.{css,scss}', '*.min.{css,scss}']);
   return gulp.src('source/styles/**/*.{css,scss}')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.include())
     .pipe(plugins.sass())
-    .pipe(plugins.cssbeautify({ indent: '  ', autosemicolon: true }))
-    .pipe(plugins.replace(';\n/*', ';\n\n/*'))
-    .pipe(plugins.replace('*/\n', '*/\n\n'))
-    .pipe(plugins.replace('"', '\''))
+    .pipe(beautifyFilter)
+      .pipe(plugins.jsbeautifier({ indentSize: 2 }))
+      .pipe(plugins.replace(';\n/*', ';\n\n/*'))
+      .pipe(plugins.replace('}\n/*', '}\n\n/*'))
+      .pipe(plugins.replace('*/\n/*', '*/\n\n/*'))
+      .pipe(plugins.replace('"', '\''))
+    .pipe(beautifyFilter.restore())
     .pipe(plugins.autoprefixer())
     .pipe(minFilter)
-    .pipe(plugins.minifyCss())
+      .pipe(plugins.minifyCss())
     .pipe(minFilter.restore())
     .pipe(gulp.dest('preview/styles'));
 });
@@ -52,9 +61,9 @@ gulp.task('media', function () {
   var minFilter = plugins.filter(['**/*.{jpg,svg,gif,png}']);
   return gulp.src(['source/{fonts,images,media}/**/*'])
     .pipe(plugins.plumber(onError))
-    .pipe(plugins.changed('preview'))
+    .pipe(plugins.changed('preview/{fonts,images,media}'))
     .pipe(minFilter)
-    .pipe(plugins.imagemin())
+      .pipe(plugins.imagemin())
     .pipe(minFilter.restore())
     .pipe(gulp.dest('preview'));
 });
