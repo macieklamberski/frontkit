@@ -60,7 +60,7 @@ To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapt
   "host": "frontline.com",
   "user": "frontline",
   "password": "letmein",
-  "local": "preview/**/*",
+  "local": "preview",
   "remote": "/var/www/frontline.com"
 }
 ```

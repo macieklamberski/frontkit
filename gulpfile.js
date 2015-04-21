@@ -98,7 +98,7 @@ gulp.task('deploy', function () {
   if (options.deploy.adapter == 'ftp') {
     options.deploy.log = plugins.util.log
     var connection = plugins.vinylFtp.create(options.deploy);
-    return gulp.src(options.deploy.local)
+    return gulp.src(options.deploy.local + '/**/*')
       .pipe(connection.newerOrDifferentSize(options.deploy.remote))
       .pipe(connection.dest(options.deploy.remote));
   } else if (options.deploy.adapter == 'rsync') {
