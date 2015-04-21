@@ -120,7 +120,9 @@ npm install && bower install
 
 After that, you're ready to rock! :metal:
 
-## License (MIT License)
+## License
+
+(MIT License)
 
 Copyright (C) 2015 Maciej Lamberski
 
