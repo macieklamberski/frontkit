@@ -21,7 +21,7 @@ gulp.task('templates', function () {
 });
 
 gulp.task('scripts', function () {
-  var minFilter = plugins.filter(['*.min.js']);
+  var minFilter = plugins.filter('*.min.js');
   var beautifyFilter = plugins.filter(['*.js', '!*.min.js']);
   return gulp.src('source/scripts/**/*.js')
     .pipe(plugins.plumber(onError))
@@ -37,7 +37,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-  var minFilter = plugins.filter(['*.min.{css,scss}']);
+  var minFilter = plugins.filter('*.min.{css,scss}');
   var beautifyFilter = plugins.filter(['*.{css,scss}', '*.min.{css,scss}']);
   return gulp.src('source/styles/**/*.{css,scss}')
     .pipe(plugins.plumber(onError))
@@ -58,7 +58,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('media', function () {
-  var minFilter = plugins.filter(['**/*.{jpg,svg,gif,png}']);
+  var minFilter = plugins.filter('**/*.{jpg,svg,gif,png}');
   return gulp.src(['source/{fonts,images,media}/**/*'])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.changed('preview'))
@@ -68,13 +68,23 @@ gulp.task('media', function () {
     .pipe(gulp.dest('preview'));
 });
 
+gulp.task('other', function () {
+  return gulp.src([
+    'source/**/*',
+    '!source/{fonts,images,scripts,styles,media}',
+    '!source/{fonts,images,scripts,styles,media}/**/*',
+    '!source/**/*.html'
+  ])
+    .pipe(gulp.dest('preview'));
+});
+
 gulp.task('theme', function () {
   return options.theme && gulp.src('preview/{fonts,images,scripts,styles}/**/*')
     .pipe(gulp.dest(options.theme));
 });
 
 gulp.task('build', function () {
-  return plugins.runSequence('clean', ['templates', 'scripts', 'styles', 'media'], 'theme');
+  return plugins.runSequence('clean', ['templates', 'scripts', 'styles', 'media', 'other'], 'theme');
 });
 
 gulp.task('watch', function () {
