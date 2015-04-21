@@ -9,7 +9,7 @@ var onError = function (error) {
 };
 
 gulp.task('clean', function () {
-  return plugins.del(['preview/**/*', options.theme + '/{fonts,images,scripts,styles}']);
+  return plugins.del(['preview', options.theme + '/{fonts,images,scripts,styles}']);
 });
 
 gulp.task('templates', function () {
@@ -61,7 +61,7 @@ gulp.task('media', function () {
   var minFilter = plugins.filter(['**/*.{jpg,svg,gif,png}']);
   return gulp.src(['source/{fonts,images,media}/**/*'])
     .pipe(plugins.plumber(onError))
-    .pipe(plugins.changed('preview/{fonts,images,media}'))
+    .pipe(plugins.changed('preview'))
     .pipe(minFilter)
       .pipe(plugins.imagemin())
     .pipe(minFilter.restore())
@@ -89,9 +89,8 @@ gulp.task('deploy', function () {
     options.deploy.log = plugins.util.log
     var connection = plugins.vinylFtp.create(options.deploy);
     return gulp.src(options.deploy.local)
-      .pipe(connection.newer(options.deploy.remote))
+      .pipe(connection.newerOrDifferentSize(options.deploy.remote))
       .pipe(connection.dest(options.deploy.remote));
-
   } else if (options.deploy.adapter == 'rsync') {
     return gulp.src(options.deploy.root + '/**/*')
       .pipe(plugins.rsync(options.deploy));
@@ -100,4 +99,6 @@ gulp.task('deploy', function () {
   }
 });
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', function () {
+  return plugins.runSequence('build', 'watch');
+});
