@@ -75,6 +75,7 @@ gulp.task('other', function () {
     '!source/{fonts,images,scripts,styles,media}/**/*',
     '!source/**/*.html'
   ])
+    .pipe(plugins.changed('preview'))
     .pipe(gulp.dest('preview'));
 });
 
