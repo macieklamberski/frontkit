@@ -91,7 +91,8 @@ gulp.task('watch', function () {
   gulp.watch('source/**/*.html', ['templates']);
   gulp.watch('source/scripts/**/*', ['scripts']);
   gulp.watch('source/styles/**/*', ['styles']);
-  gulp.watch('source/media/**/*', ['media']);
+  gulp.watch('source/{fonts,images,media}/**/*', ['media']);
+  gulp.watch('source/**/*', ['other']);
 });
 
 gulp.task('deploy', function () {
