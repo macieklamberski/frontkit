@@ -20,7 +20,7 @@
      * Custom feature
      */
     feature: function () {
-      if(false) {console.log('test')}
+
     }
   };
 
