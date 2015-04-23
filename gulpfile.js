@@ -15,7 +15,7 @@ gulp.task('clean', function () {
 gulp.task('templates', function () {
   return gulp.src(['source/**/*.html', '!source/**/_*.html'])
     .pipe(plugins.plumber(onError))
-    .pipe(plugins.twig())
+    .pipe(plugins.twig({ errorLogToConsole: true }))
     .pipe(plugins.jsbeautifier({ indentSize: 2, indentInnerHtml: true }))
     .pipe(gulp.dest('preview'));
 });
