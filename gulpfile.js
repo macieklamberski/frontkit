@@ -16,7 +16,12 @@ gulp.task('templates', function () {
   return gulp.src(['source/**/*.html', '!source/**/_*.html'])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.twig({ errorLogToConsole: true }))
-    .pipe(plugins.jsbeautifier({ indentSize: 2, indentInnerHtml: true, maxPreserveNewlines: 1 }))
+    .pipe(plugins.jsbeautifier({
+      indentSize: 2,
+      indentInnerHtml: true,
+      unformatted: ['script'],
+      maxPreserveNewlines: 1
+    }))
     .pipe(gulp.dest('preview'));
 });
 
