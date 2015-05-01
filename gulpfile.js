@@ -8,7 +8,7 @@ var onError = function (error) {
   this.emit('end');
 };
 
-gulp.task('build-clean', function () {
+gulp.task('clean', function () {
   return plugins.del(['preview', options.theme + '/{fonts,images,scripts,styles}']);
 });
 
@@ -77,7 +77,6 @@ gulp.task('build-other', function () {
   return gulp.src([
     'source/**/*',
     '!source/{fonts,images,scripts,styles,media}',
-    '!source/{fonts,images,scripts,styles,media}/**/*',
     '!source/**/*.html'
   ])
     .pipe(plugins.changed('preview'))
@@ -90,7 +89,7 @@ gulp.task('build-theme', function () {
 });
 
 gulp.task('build', function () {
-  return plugins.runSequence('build-clean', ['build-templates', 'build-scripts', 'build-styles', 'build-media', 'build-other'], 'build-theme');
+  return plugins.runSequence('clean', ['build-templates', 'build-scripts', 'build-styles', 'build-media', 'build-other'], 'build-theme');
 });
 
 gulp.task('watch-templates', function () {
