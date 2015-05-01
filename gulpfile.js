@@ -8,11 +8,11 @@ var onError = function (error) {
   this.emit('end');
 };
 
-gulp.task('clean', function () {
+gulp.task('build-clean', function () {
   return plugins.del(['preview', options.theme + '/{fonts,images,scripts,styles}']);
 });
 
-gulp.task('templates', function () {
+gulp.task('build-templates', function () {
   return gulp.src(['source/**/*.html', '!source/**/_*.html'])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.twig({ errorLogToConsole: true }))
@@ -25,7 +25,7 @@ gulp.task('templates', function () {
     .pipe(gulp.dest('preview'));
 });
 
-gulp.task('scripts', function () {
+gulp.task('build-scripts', function () {
   var minFilter = plugins.filter('*.min.js');
   var beautifyFilter = plugins.filter(['*.js', '!*.min.js']);
   return gulp.src('source/scripts/**/*.js')
@@ -41,7 +41,7 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest('preview/scripts'));
 });
 
-gulp.task('styles', function () {
+gulp.task('build-styles', function () {
   var minFilter = plugins.filter('*.min.{css,scss}');
   var beautifyFilter = plugins.filter(['*.{css,scss}', '*.min.{css,scss}']);
   return gulp.src('source/styles/**/*.{css,scss}')
@@ -62,7 +62,7 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('preview/styles'));
 });
 
-gulp.task('media', function () {
+gulp.task('build-media', function () {
   var minFilter = plugins.filter('**/*.{jpg,svg,gif,png}');
   return gulp.src(['source/{fonts,images,media}/**/*'])
     .pipe(plugins.plumber(onError))
@@ -73,7 +73,7 @@ gulp.task('media', function () {
     .pipe(gulp.dest('preview'));
 });
 
-gulp.task('other', function () {
+gulp.task('build-other', function () {
   return gulp.src([
     'source/**/*',
     '!source/{fonts,images,scripts,styles,media}',
@@ -84,21 +84,37 @@ gulp.task('other', function () {
     .pipe(gulp.dest('preview'));
 });
 
-gulp.task('theme', function () {
+gulp.task('build-theme', function () {
   return options.theme && gulp.src('preview/{fonts,images,scripts,styles}/**/*')
     .pipe(gulp.dest(options.theme));
 });
 
 gulp.task('build', function () {
-  return plugins.runSequence('clean', ['templates', 'scripts', 'styles', 'media', 'other'], 'theme');
+  return plugins.runSequence('build-clean', ['build-templates', 'build-scripts', 'build-styles', 'build-media', 'build-other'], 'build-theme');
+});
+
+gulp.task('watch-templates', function () {
+  return plugins.runSequence('build-templates', 'build-theme');
+});
+
+gulp.task('watch-scripts', function () {
+  return plugins.runSequence('build-scripts', 'build-theme');
+});
+
+gulp.task('watch-styles', function () {
+  return plugins.runSequence('build-styles', 'build-theme');
+});
+
+gulp.task('watch-media', function () {
+  return plugins.runSequence('build-media', 'build-theme');
 });
 
 gulp.task('watch', function () {
-  gulp.watch('source/**/*.html', ['templates']);
-  gulp.watch('source/scripts/**/*', ['scripts']);
-  gulp.watch('source/styles/**/*', ['styles']);
-  gulp.watch('source/{fonts,images,media}/**/*', ['media']);
-  gulp.watch('source/**/*', ['other']);
+  gulp.watch('source/**/*.html', ['watch-templates']);
+  gulp.watch('source/scripts/**/*', ['watch-scripts']);
+  gulp.watch('source/styles/**/*', ['watch-styles']);
+  gulp.watch('source/{fonts,images,media}/**/*', ['watch-media']);
+  gulp.watch('source/**/*', ['build-other']);
 });
 
 gulp.task('deploy', function () {
