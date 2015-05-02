@@ -68,6 +68,14 @@ body {
   text-size-adjust: none;
 }
 
+hr {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+}
+
 a {
   &:hover,
   &:focus {
