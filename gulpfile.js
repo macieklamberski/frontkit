@@ -77,6 +77,7 @@ gulp.task('build-other', function () {
   return gulp.src([
     'source/**/*',
     '!source/{fonts,images,scripts,styles,media}',
+    '!source/{fonts,images,scripts,styles,media}/**/*',
     '!source/**/*.html'
   ])
     .pipe(plugins.changed('preview'))
