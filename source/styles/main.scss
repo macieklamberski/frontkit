@@ -1,7 +1,8 @@
 /*------------------------------------------------------------------------------
 
-  Project Name
-  Crafted with passion by Author Name (http://website.com).
+  Project: Name
+  By: Maciej Lamberski (lamberski.com)
+  For: Client (client.com)
 
 /*----------------------------------------------------------------------------*/
 
