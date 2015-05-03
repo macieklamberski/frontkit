@@ -64,6 +64,10 @@ table {
 /* Base
 /*----------------------------------------------------------------------------*/
 
+html {
+  font-size: $size-base;
+}
+
 body {
   text-size-adjust: none;
 }
