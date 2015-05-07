@@ -66,7 +66,7 @@ gulp.task('styles', function () {
   var beautifyFilter = plugins.filter(['*.{css,scss}', '!*.min.{css,scss}']);
   var stream = gulp.src('styles/**/*.{css,scss}')
     .pipe(plugins.plumber(onError))
-    .pipe(plugins.cssGlobbing())
+    .pipe(plugins.cssGlobbing({ extensions: ['.css', '.scss'] }))
     .pipe(plugins.sass())
     .pipe(beautifyFilter)
       .pipe(plugins.jsbeautifier({ indentSize: 2 }))
