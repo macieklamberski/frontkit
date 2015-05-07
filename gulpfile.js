@@ -22,8 +22,7 @@ gulp.task('build-templates', function () {
       unformatted: ['script'],
       maxPreserveNewlines: 1
     }))
-    .pipe(gulp.dest('preview'))
-    .pipe(gulp.dest(false));
+    .pipe(gulp.dest('preview'));
 });
 
 gulp.task('build-scripts', function () {
