@@ -5,15 +5,13 @@ Frontline is a scaffolding for web projects. It creates a project structure, fil
 ## Structure
 
 - **node_modules**—Node.js packages required by Gulp tasks.
-- **bower_components**—3rd party libraries managed via Bower.
-- **preview**—automatically generated preview files, this is where you check your work in a browser.
-- **source**—directory with source files.
-  - **fonts**—Font files, also font-based icons.
-  - **images**—Images used strictly for layout purposes (will be optimized).
-  - **media**—Images, videos and other media files used as a content (won't be copied to CMS theme).
-  - **scripts**—JS files (those ending with _.min.js_ will be minified).
-  - **styles**—SCSS files (those ending with _.min.css_ will be minified).
-  - **\*.html**—Template files compiled using Twig template engine.
+- **templates**—Template files compiled using Twig template engine.
+- **scripts**—JS files (those ending with _.min.js_ will be minified).
+- **styles**—SCSS files (those ending with _.min.css_ will be minified).
+- **images**—Images used strictly for layout purposes (will be optimized).
+- **fonts**—Font files, also font-based icons.
+- **media**—Images, videos and other media files used as a content (won't be copied to CMS theme).
+- **vendor**—3rd party libraries managed via Bower.
 
 ## Usage
 
