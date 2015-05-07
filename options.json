@@ -3,7 +3,7 @@
     {
       "path": "_preview",
       "tasks": ["scripts", "styles", "images", "fonts", "templates", "media"]
-    },
+    }
   ],
   "deploy": {}
 }
