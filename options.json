@@ -1,8 +1,12 @@
 {
   "targets": [
     {
-      "path": "preview",
+      "path": "_preview",
       "tasks": ["scripts", "styles", "images", "fonts", "templates", "media"]
+    },
+    {
+      "path": "_wp",
+      "tasks": ["scripts", "styles"]
     }
   ],
   "deploy": {}

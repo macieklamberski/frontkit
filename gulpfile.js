@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
 var options = require('./options.json');
+var tasks = ['templates', 'scripts', 'styles', 'images', 'fonts', 'media'];
 var onError = function (error) {
   plugins.util.log(plugins.util.colors.red(error.message));
   plugins.util.log(plugins.util.colors.red(error.fileName + ':' + error.lineNumber));
@@ -17,14 +18,21 @@ var copyToTargets = function (stream, task, directory) {
 }
 
 gulp.task('clean', function () {
-  // return plugins.del([
-  //   'preview/{fonts,media,images,scripts,styles}',
-  //   options.theme + '/{fonts,images,scripts,styles}'
-  // ]);
+  var directories = [];
+  options.targets.forEach(function (target) {
+    target.tasks.forEach(function (task) {
+      if (task == 'templates') {
+        directories.push(target.path + '/*.html')
+      } else {
+        directories.push(target.path + '/' + task);
+      }
+    });
+  });
+  return plugins.del(directories);
 });
 
 gulp.task('templates', function () {
-  var stream = gulp.src(['source/**/*.html', '!source/**/_*.html'])
+  var stream = gulp.src(['templates/**/*.html', '!templates/**/_*.html'])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.twig({ errorLogToConsole: true }))
     .pipe(plugins.jsbeautifier({
@@ -40,7 +48,7 @@ gulp.task('templates', function () {
 gulp.task('scripts', function () {
   var minFilter = plugins.filter('*.min.js');
   var beautifyFilter = plugins.filter(['*.js', '!*.min.js']);
-  var stream = gulp.src('source/scripts/**/*.js')
+  var stream = gulp.src('scripts/**/*.js')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.include())
     .pipe(beautifyFilter)
@@ -56,7 +64,7 @@ gulp.task('scripts', function () {
 gulp.task('styles', function () {
   var minFilter = plugins.filter('*.min.{css,scss}');
   var beautifyFilter = plugins.filter(['*.{css,scss}', '!*.min.{css,scss}']);
-  var stream = gulp.src('source/styles/**/*.{css,scss}')
+  var stream = gulp.src('styles/**/*.{css,scss}')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.include())
     .pipe(plugins.sass())
@@ -76,7 +84,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('images', function () {
-  var stream = gulp.src('source/images/**/*')
+  var stream = gulp.src('images/**/*.{jpg,svg,gif,png}')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.imagemin());
 
@@ -84,28 +92,26 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-  var stream = gulp.src('source/fonts/**/*')
+  var stream = gulp.src('fonts/**/*')
     .pipe(plugins.plumber(onError));
 
   return copyToTargets(stream, 'fonts', '/fonts');
 });
 
 gulp.task('media', function () {
-  var stream = gulp.src('source/media/**/*')
+  var stream = gulp.src('media/**/*')
     .pipe(plugins.plumber(onError));
 
   return copyToTargets(stream, 'media', '/media');
 });
 
 gulp.task('build', function () {
-  return plugins.runSequence('clean', ['templates', 'scripts', 'styles', 'images', 'fonts', 'media']);
+  return plugins.runSequence('clean', tasks);
 });
 
 gulp.task('watch', function () {
-  gulp.watch('source/**/*.html', ['templates']);
-
-  ['scripts', 'styles', 'images', 'fonts', 'media'].forEach(function (task) {
-    gulp.watch('source/' + task + '/**/*', [task]);
+  tasks.forEach(function (task) {
+    gulp.watch(task + '/**/*', [task]);
   });
 });
 
