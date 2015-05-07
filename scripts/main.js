@@ -1,9 +1,9 @@
 /*------------------------------------------------------------------------------
 
   Project: Name
-  By: Maciej Lamberski (lamberski.com)
+  By: Author (website.com)
 
-  Built with Frontline (github.com/lamberski/frontline).
+  Built with Frontend (github.com/lamberski/frontend).
 
 /*----------------------------------------------------------------------------*/
 

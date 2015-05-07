@@ -1,6 +1,6 @@
-# Frontline
+# Frontend
 
-Frontline is a scaffolding for web projects. It creates a project structure, files and Gulp workflow which support modern web tools like CSS preprocessors, file minificators, image optimizers. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
+Frontend is a scaffolding for web projects. It creates a project structure, files and Gulp workflow which support modern web tools like CSS preprocessors, file minificators, image optimizers. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
 
 ## Structure
 
@@ -30,11 +30,11 @@ gulp
 
 ## Configuration
 
-You can configure Frontline to do additional things like deploying and copying compiled assets to CMS theme. Below is example `options.json` file, located in root directory of the project.
+You can configure frontend to do additional things like deploying and copying compiled assets to CMS theme. Below is example `options.json` file, located in root directory of the project.
 
 ```javascript
 {
-  "theme": "wordpress/wp-content/themes/frontline",
+  "theme": "wordpress/wp-content/themes/frontend",
   "deploy": {
     "adapter": "ftp",
     // For configuration of the adapter, read "deploy" section below.
@@ -55,11 +55,11 @@ To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapt
 ```javascript
 "deploy": {
   "adapter": "ftp",
-  "host": "frontline.com",
-  "user": "frontline",
+  "host": "domain.com",
+  "user": "domain",
   "password": "letmein",
   "local": "preview",
-  "remote": "/var/www/frontline.com"
+  "remote": "/var/www/domain.com"
 }
 ```
 
@@ -70,15 +70,15 @@ To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package conf
   "adapter": "rsync",
   "root": "preview",
   "port": 22,
-  "hostname": "frontline.com",
-  "destination": "/var/www/frontline.com",
+  "hostname": "domain.com",
+  "destination": "/var/www/domain.com",
   "incremental": true
 }
 ```
 
 ## Requirements
 
-The following software needs to be installed before using Frontline. These installations need to be done just once so you can skip this section if you have the software already installed.
+The following software needs to be installed before using Frontend. These installations need to be done just once so you can skip this section if you have the software already installed.
 
 First is Node.js, so you can work with `npm`, Node package manager. You can install it from [pre-built installer](http://nodejs.org) or using Homebrew:
 
@@ -111,7 +111,7 @@ Also make sure that [Git](http://git-scm.com) is installed as some bower package
 Having all requirements met, you can set up new project.
 
 ```bash
-git clone https://github.com/lamberski/frontline.git new-project
+git clone https://github.com/lamberski/frontend.git new-project
 cd new-project
 npm install && bower install
 ```
