@@ -2,7 +2,8 @@
 
   Project: Name
   By: Maciej Lamberski (lamberski.com)
-  For: Client (client.com)
+
+  Built with Frontline (github.com/lamberski/frontline).
 
 /*----------------------------------------------------------------------------*/
 
