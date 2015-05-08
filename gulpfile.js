@@ -28,7 +28,7 @@ gulp.task('clean', function () {
       }
     });
   });
-  return plugins.del(directories);
+  return plugins.del(directories, { force: true });
 });
 
 gulp.task('templates', function () {
