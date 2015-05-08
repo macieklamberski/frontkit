@@ -17,7 +17,7 @@ var copyToTargets = function (stream, task, directory) {
   return stream;
 }
 
-gulp.task('clean', function () {
+gulp.task('clean', function (cb) {
   var directories = [];
   options.targets.forEach(function (target) {
     target.tasks.forEach(function (task) {
@@ -28,7 +28,7 @@ gulp.task('clean', function () {
       }
     });
   });
-  return plugins.del(directories, { force: true });
+  plugins.del(directories, { force: true }, cb);
 });
 
 gulp.task('templates', function () {
