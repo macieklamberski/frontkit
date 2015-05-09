@@ -77,7 +77,7 @@ gulp.task('styles', function () {
     .pipe(beautifyFilter.restore())
     .pipe(plugins.autoprefixer())
     .pipe(minFilter)
-      .pipe(plugins.minifyCss())
+      .pipe(plugins.minifyCss({ processImport: true }))
     .pipe(minFilter.restore())
 
   return copyToTargets(stream, 'styles', '/styles');
