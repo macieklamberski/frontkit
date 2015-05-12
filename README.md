@@ -1,17 +1,44 @@
-# Frontend
+# Frontkit
 
-Frontend is a scaffolding for web projects. It creates a project structure, files and Gulp workflow which support modern web tools like CSS preprocessors, file minificators, image optimizers. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
+Frontkit is a scaffolding for web projects. It creates a project structure, files and Gulp workflow which support modern web tools like CSS preprocessors, file minificators, image optimizers. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
 
-## Structure
+## Components
 
-- **node_modules**—Node.js packages required by Gulp tasks.
-- **templates**—Template files compiled using Twig template engine.
-- **scripts**—JS files (those ending with _.min.js_ will be minified).
-- **styles**—SCSS files (those ending with _.min.css_ will be minified).
-- **images**—Images used strictly for layout purposes (will be optimized).
-- **fonts**—Font files, also font-based icons.
-- **media**—Images, videos and other media files used as a content (won't be copied to CMS theme).
-- **vendor**—3rd party libraries managed via Bower.
+Frontkit consists of six different parts. Each of them is stored in separate directory and managed by different Gulp task (with the same name as directory).
+
+### templates
+
+HTML files compiled using [Twig](http://twig.sensiolabs.org) template engine. Thanks to Twig, templates can be divided into partials and later included in main HTML files. Partials (files with `_` prefix in their name) will not be copied to compiled target. Frontkit uses [Twig.js](https://github.com/justjohn/twig.js) which means you can use basically all the functionalities from its original PHP implementation. At the end, files are prettified with JS Prettify library to ensure consistency in the output.
+
+### scripts
+
+Directory with JavaScript files. Those ending with _.min.js_ will be minified using [Uglify](https://github.com/terinjokes/gulp-uglify). It is useful when combining multiple plugins or libraries used later in the application.
+
+Thanks to [`gulp-include`](https://www.npmjs.com/package/gulp-include), you can combine multiple scripts into one using below syntax:
+
+```javascript
+//= include relative/path/to/file.js
+```
+
+### styles
+
+Place for CSS and SCSS files. SCSS files are compiled to regular CSS files with [libsass](https://github.com/sass/node-sass). Files ending with _.min.css_ will be minified. You can use wildcard to import all the files from given directory:
+
+```css
+@import 'blocks/*' // Will import all the files in the blocks folder.
+```
+
+### images
+
+Images used strictly for layout purposes. Will be optimized using [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin).
+
+### fonts
+
+Font files, also font-based icons.
+
+### media
+
+Images, videos and other media files used as a content.
 
 ## Usage
 
@@ -30,11 +57,16 @@ gulp
 
 ## Configuration
 
-You can configure frontend to do additional things like deploying and copying compiled assets to CMS theme. Below is example `options.json` file, located in root directory of the project.
+You can configure Frontkit to do things like deploying and manage output directories. Below is example `options.json` file, located in root directory of the project.
 
 ```javascript
 {
-  "theme": "wordpress/wp-content/themes/frontend",
+  "targets": [
+    {
+      "path": "_preview",
+      "tasks": ["scripts", "styles", "images", "fonts", "templates", "media"]
+    }
+  ],
   "deploy": {
     "adapter": "ftp",
     // For configuration of the adapter, read "deploy" section below.
@@ -42,9 +74,9 @@ You can configure frontend to do additional things like deploying and copying co
 }
 ```
 
-### theme
+### targets
 
-Path to directory root (where assets will be copied) or `false` to disable it.
+Array of directories to which source will be compiled. `path` points to target directory, `tasks` is array of performed tasks.
 
 ### deploy
 
@@ -58,7 +90,7 @@ To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapt
   "host": "domain.com",
   "user": "domain",
   "password": "letmein",
-  "local": "preview",
+  "local": "_preview",
   "remote": "/var/www/domain.com"
 }
 ```
@@ -68,7 +100,7 @@ To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package conf
 ```javascript
 "deploy": {
   "adapter": "rsync",
-  "root": "preview",
+  "root": "_preview",
   "port": 22,
   "hostname": "domain.com",
   "destination": "/var/www/domain.com",
@@ -78,7 +110,7 @@ To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package conf
 
 ## Requirements
 
-The following software needs to be installed before using Frontend. These installations need to be done just once so you can skip this section if you have the software already installed.
+The following software needs to be installed before using Frontkit. These installations need to be done just once so you can skip this section if you have the software already installed.
 
 First is Node.js, so you can work with `npm`, Node package manager. You can install it from [pre-built installer](http://nodejs.org) or using Homebrew:
 
@@ -111,7 +143,7 @@ Also make sure that [Git](http://git-scm.com) is installed as some bower package
 Having all requirements met, you can set up new project.
 
 ```bash
-git clone https://github.com/lamberski/frontend.git new-project
+git clone https://github.com/lamberski/frontkit.git new-project
 cd new-project
 npm install && bower install
 ```
