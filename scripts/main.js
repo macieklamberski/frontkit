@@ -3,7 +3,7 @@
   Project: Name
   By: Author (website.com)
 
-  Built with Frontend (github.com/lamberski/frontend).
+  Built with Frontkit (github.com/lamberski/frontkit).
 
 /*----------------------------------------------------------------------------*/
 
