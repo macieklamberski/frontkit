@@ -48,6 +48,12 @@ $size-base: 16px;
   }
 }
 
+@mixin modernizr($feature) {
+  html.#{$feature} & {
+    @content;
+  }
+}
+
 @function rem($desired-size) {
   @return ($desired-size / $size-base) * 1rem;
 }
