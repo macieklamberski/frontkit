@@ -2,12 +2,12 @@
 // Variables
 //----------------------------------------------------------------------------//
 
-$breakpoint-laptop: 1440px;
-$breakpoint-tablet: 1024px;
-$breakpoint-phablet: 736px;
-$breakpoint-phone: 480px;
+$breakpoint--laptop: 1440px;
+$breakpoint--tablet: 1024px;
+$breakpoint--phablet: 736px;
+$breakpoint--phone: 480px;
 
-$size-base: 16px;
+$size--base: 16px;
 
 // Mixins
 //----------------------------------------------------------------------------//
@@ -23,25 +23,25 @@ $size-base: 16px;
 @mixin breakpoint($breakpoint) {
   @if $breakpoint == laptop {
 
-    @media (max-width: $breakpoint-laptop) {
+    @media (max-width: $breakpoint--laptop) {
       @content;
     }
 
   } @else if $breakpoint == tablet {
 
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: $breakpoint--tablet) {
       @content;
     }
 
   } @else if $breakpoint == phablet {
 
-    @media (max-width: $breakpoint-phablet) {
+    @media (max-width: $breakpoint--phablet) {
       @content;
     }
 
   } @else if $breakpoint == phone {
 
-    @media (max-width: $breakpoint-phone) {
+    @media (max-width: $breakpoint--phone) {
       @content;
     }
 
@@ -54,6 +54,6 @@ $size-base: 16px;
   }
 }
 
-@function rem($desired-size) {
-  @return ($desired-size / $size-base) * 1rem;
+@function rem($size--desired) {
+  @return ($size--desired / $size--base) * 1rem;
 }
