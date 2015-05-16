@@ -1,6 +1,49 @@
 # Frontkit
 
-Frontkit is a scaffolding for web projects. It creates a project structure, files and Gulp workflow which support modern web tools like CSS preprocessors, file minificators, image optimizers. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
+Frontkit is a scaffolding for web projects. It consists of directories structure, base files and Gulp workflow which supports modern web tools like CSS preprocessors, file minificators, image optimizers. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
+
+## Structure
+
+Below is tree with directories structure for a typical project. `fonts`, `images` and `media` directories are not present in the repository as they not always used in every project. If your project has any of them - just create corresponding directory. `vendor` is automatically created when you install any Bower dependencies.
+
+```bash
+.
+├── fonts/
+│   └── ...
+├── images/
+│   └── ...
+├── media/
+│   └── ...
+├── scripts/
+│   ├── ...
+│   └── main.js
+├── styles/
+│   ├── ...
+│   └── main.scss
+├── templates/
+│   ├── ...
+│   └── index.html
+├── vendor/
+└── ...
+```
+
+## Usage
+
+Run below commands in your project directory.
+
+```bash
+# This task will watch for changes in files and recompile them as needed.
+gulp watch
+
+# Recreate whole project.
+gulp build
+
+# Equivalent of 'gulp build && gulp watch'.
+gulp
+
+# Deploy changes to defined host (see Configuration section below).
+gulp deploy
+```
 
 ## Components
 
@@ -39,21 +82,6 @@ Font files, also font-based icons.
 ### media
 
 Images, videos and other media files used as a content.
-
-## Usage
-
-Run below commands in your project directory.
-
-```bash
-# This task will watch for changes in files and recompile them as needed.
-gulp watch
-
-# Recreate whole project.
-gulp build
-
-# Equivalent of 'gulp build && gulp watch'.
-gulp
-```
 
 ## Configuration
 
