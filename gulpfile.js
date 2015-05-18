@@ -2,13 +2,15 @@ var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
 var options = require('./options.json');
 var tasks = ['templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'media'];
-var onError = function (error) {
+
+function onError(error) {
   plugins.util.log(plugins.util.colors.red(error.message));
   plugins.util.log(plugins.util.colors.red(error.fileName + ':' + error.lineNumber));
   plugins.util.beep();
   this.emit('end');
 };
-var copyToTargets = function (stream, task, directory) {
+
+function copyToTargets(stream, task, directory) {
   options.targets.forEach(function (target) {
     if (target.tasks.indexOf(task) >= 0) {
       stream = stream.pipe(gulp.dest(target.path + directory));
