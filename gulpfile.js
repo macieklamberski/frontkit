@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
 var options = require('./options.json');
-var tasks = ['templates', 'scripts', 'styles', 'images', 'fonts', 'media'];
+var tasks = ['templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'media'];
 var onError = function (error) {
   plugins.util.log(plugins.util.colors.red(error.message));
   plugins.util.log(plugins.util.colors.red(error.fileName + ':' + error.lineNumber));
@@ -81,6 +81,15 @@ gulp.task('styles', function () {
     .pipe(minFilter.restore())
 
   return copyToTargets(stream, 'styles', '/styles');
+});
+
+gulp.task('icons', function () {
+  var stream = gulp.src('icons/**/*.svg')
+    .pipe(plugins.plumber(onError))
+    .pipe(plugins.imagemin())
+    .pipe(plugins.svgstore());
+
+  return copyToTargets(stream, 'icons', '/icons');
 });
 
 gulp.task('images', function () {
