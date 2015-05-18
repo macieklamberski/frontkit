@@ -87,6 +87,10 @@ gulp.task('icons', function () {
   var stream = gulp.src('icons/**/*.svg')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.imagemin())
+    .pipe(plugins.cheerio({
+      run: function ($) { $('[fill]').removeAttr('fill') },
+      parserOptions: { xmlMode: true }
+    }))
     .pipe(plugins.svgstore());
 
   return copyToTargets(stream, 'icons', '/icons');
