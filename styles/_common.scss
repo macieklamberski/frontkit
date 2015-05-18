@@ -76,6 +76,14 @@ body {
   text-size-adjust: none;
 }
 
+svg {
+  display: inline-block;
+  vertical-align: top;
+  width: 1em;
+  height: 1em;
+  fill: black;
+}
+
 hr {
   display: none;
 }
