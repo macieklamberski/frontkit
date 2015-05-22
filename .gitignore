@@ -3,5 +3,3 @@ node_modules
 vendor
 assets
 /_*
-*.sublime-project
-*.sublime-workspace
