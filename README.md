@@ -23,7 +23,8 @@ Below is tree with directories structure for a typical project. `fonts`, `images
 ├── templates/
 │   ├── ...
 │   └── index.html
-├── vendor/
+├── bower_components/
+├── node_modules/
 └── ...
 ```
 
