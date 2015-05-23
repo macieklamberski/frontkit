@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var fs = require('fs');
+var path = require('path');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
 var config = require('./package.json').config;
 var tasks = ['templates', 'scripts', 'styles', 'images', 'fonts', 'media'];
@@ -49,19 +50,19 @@ gulp.task('templates', function () {
 });
 
 gulp.task('scripts', function () {
-  var minFilter = plugins.filter('*.min.js');
-  var beautifyFilter = plugins.filter(['*.js', '!*.min.js']);
-  var stream = gulp.src('scripts/**/*.js')
-    .pipe(plugins.plumber(onError))
-    .pipe(plugins.include())
-    .pipe(beautifyFilter)
-      .pipe(plugins.jsbeautifier({ indentSize: 2, space_after_anon_function: true }))
-    .pipe(beautifyFilter.restore())
-    .pipe(minFilter)
-      .pipe(plugins.uglify())
-    .pipe(minFilter.restore());
+  var streams = [];
+  plugins.glob.sync('scripts/*.js').forEach(function(filePath) {
+    streams.push(
+      plugins.browserify(filePath)
+        .bundle()
+        .pipe(plugins.vinylSourceStream(path.basename(filePath)))
+        .pipe(plugins.vinylBuffer())
+        .pipe(plugins.uglify())
+        .pipe(plugins.rename({ suffix: '.min' }))
+    );
+  });
 
-  return copyToTargets(stream, 'scripts', '/scripts');
+  return copyToTargets(plugins.mergeStream(streams), 'scripts', '/scripts');
 });
 
 gulp.task('styles', function () {
@@ -95,10 +96,10 @@ gulp.task('images', function () {
       .pipe(plugins.imagemin())
   );
 
-  plugins.glob.sync('images/**/*.svg').forEach(function(path) {
-    if (fs.statSync(path).isDirectory()) {
+  plugins.glob.sync('images/**/*.svg').forEach(function(filePath) {
+    if (fs.statSync(filePath).isDirectory()) {
       streams.push(
-        gulp.src(path + '/*.svg')
+        gulp.src(filePath + '/*.svg')
           .pipe(plugins.plumber(onError))
           .pipe(plugins.imagemin())
           .pipe(plugins.cheerio({

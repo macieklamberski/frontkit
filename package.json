@@ -17,6 +17,7 @@
     "deploy": {}
   },
   "devDependencies": {
+    "browserify": "^10.2.1",
     "del": "^1.1.1",
     "glob": "^5.0.9",
     "gulp": "^3.8.11",
@@ -42,6 +43,13 @@
     "gulp-util": "^3.0.4",
     "merge-stream": "^0.1.7",
     "run-sequence": "^1.0.2",
-    "vinyl-ftp": "^0.4.0"
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-ftp": "^0.4.0",
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-transform": "^1.0.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "modernizr": "^3.0.0-alpha.4"
   }
 }
