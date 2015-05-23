@@ -2,7 +2,7 @@
   "targets": [
     {
       "path": "_preview",
-      "tasks": ["scripts", "styles", "icons", "images", "fonts", "templates", "media"]
+      "tasks": ["scripts", "styles", "images", "fonts", "templates", "media"]
     }
   ],
   "deploy": {}

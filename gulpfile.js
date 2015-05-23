@@ -1,7 +1,8 @@
 var gulp = require('gulp');
+var fs = require('fs');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
 var options = require('./options.json');
-var tasks = ['templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'media'];
+var tasks = ['templates', 'scripts', 'styles', 'images', 'fonts', 'media'];
 
 function onError(error) {
   plugins.util.log(plugins.util.colors.red(error.message));
@@ -85,25 +86,32 @@ gulp.task('styles', function () {
   return copyToTargets(stream, 'styles', '/styles');
 });
 
-gulp.task('icons', function () {
-  var stream = gulp.src('icons/**/*.svg')
-    .pipe(plugins.plumber(onError))
-    .pipe(plugins.imagemin())
-    .pipe(plugins.cheerio({
-      run: function ($) { $('[fill]').removeAttr('fill') },
-      parserOptions: { xmlMode: true }
-    }))
-    .pipe(plugins.svgstore());
-
-  return copyToTargets(stream, 'icons', '/icons');
-});
-
 gulp.task('images', function () {
-  var stream = gulp.src('images/**/*.{jpg,svg,gif,png}')
-    .pipe(plugins.plumber(onError))
-    .pipe(plugins.imagemin());
+  var streams = [];
 
-  return copyToTargets(stream, 'images', '/images');
+  streams.push(
+    gulp.src(['images/**/*.{jpg,svg,gif,png}', '!images/**/*.svg/'])
+      .pipe(plugins.plumber(onError))
+      .pipe(plugins.imagemin())
+  );
+
+  plugins.glob.sync('images/**/*.svg').forEach(function(path) {
+    if (fs.statSync(path).isDirectory()) {
+      streams.push(
+        gulp.src(path + '/*.svg')
+          .pipe(plugins.plumber(onError))
+          .pipe(plugins.imagemin())
+          .pipe(plugins.cheerio({
+            run: function ($) { $('[fill]').removeAttr('fill') },
+            parserOptions: { xmlMode: true }
+          }))
+          .pipe(plugins.svgstore())
+          .pipe(plugins.rename({ extname: '' }))
+      );
+    }
+  });
+
+  return copyToTargets(plugins.mergeStream(streams), 'images', '/images');
 });
 
 gulp.task('fonts', function () {
