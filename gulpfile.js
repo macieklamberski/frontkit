@@ -66,23 +66,13 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-  var minFilter = plugins.filter('*.min.{css,scss}');
-  var beautifyFilter = plugins.filter(['*.{css,scss}', '!*.min.{css,scss}']);
   var stream = gulp.src('styles/**/*.{css,scss}')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.cssGlobbing({ extensions: ['.css', '.scss'] }))
     .pipe(plugins.sass())
-    .pipe(beautifyFilter)
-      .pipe(plugins.jsbeautifier({ indentSize: 2 }))
-      .pipe(plugins.replace(';\n/*', ';\n\n/*'))
-      .pipe(plugins.replace('}\n/*', '}\n\n/*'))
-      .pipe(plugins.replace('*/\n/*', '*/\n\n/*'))
-      .pipe(plugins.replace('"', '\''))
-    .pipe(beautifyFilter.restore())
     .pipe(plugins.autoprefixer())
-    .pipe(minFilter)
-      .pipe(plugins.minifyCss({ processImport: true }))
-    .pipe(minFilter.restore());
+    .pipe(plugins.minifyCss({ processImport: true }))
+    .pipe(plugins.rename({ suffix: '.min' }));
 
   return copyToTargets(stream, 'styles', '/styles');
 });
