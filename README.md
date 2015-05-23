@@ -1,6 +1,6 @@
 # Frontkit
 
-Frontkit is a scaffolding for web projects. It consists of directories structure, base files and Gulp workflow which supports modern web tools like CSS preprocessors, file minificators, image optimizers. Built HTML, CSS and JS files are prettified and fully editable so clients can work directly with them if they wish.
+Frontkit is a scaffolding for web projects. It consists of directories structure, base files and Gulp workflow which supports modern web tools like Browserify, CSS preprocessors, file minificators, image optimizers.
 
 ## Structure
 
@@ -54,21 +54,17 @@ HTML files compiled using [Twig](http://twig.sensiolabs.org) template engine. Th
 
 ### scripts
 
-Directory with JavaScript files. Those ending with _.min.js_ will be minified using [Uglify](https://github.com/terinjokes/gulp-uglify). It is useful when combining multiple plugins or libraries used later in the application.
-
-Thanks to [`gulp-include`](https://www.npmjs.com/package/gulp-include), you can combine multiple scripts into one using below syntax:
-
-```javascript
-//= include relative/path/to/file.js
-```
+Directory with JavaScript files. (@TODO: Info about JS files being handled by Browserify.)
 
 ### styles
 
-Place for CSS and SCSS files. SCSS files are compiled to regular CSS files with [libsass](https://github.com/sass/node-sass). Files ending with _.min.css_ will be minified. You can use wildcard to import all the files from given directory:
+Place for CSS and SCSS files. SCSS files are compiled to regular CSS files with [libsass](https://github.com/sass/node-sass). You can use wildcard to import all the files from given directory:
 
 ```css
 @import 'blocks/*' // Will import all the files in the blocks folder.
 ```
+
+(@TODO: Info about files being minified and named with .min suffix.)
 
 ### images
 
@@ -170,14 +166,6 @@ Then install [Gulp](http://gulpjs.com) globally:
 npm install -g gulp
 ```
 
-For managing certain dependencies like Bootstrap, you will need [Bower](http://bower.io), another package manager. Install it from the command line as well:
-
-```bash
-npm install -g bower
-```
-
-Also make sure that [Git](http://git-scm.com) is installed as some bower packages require it to be fetched and installed.
-
 ## Installation
 
 Having all requirements met, you can set up new project.
@@ -185,7 +173,7 @@ Having all requirements met, you can set up new project.
 ```bash
 git clone https://github.com/lamberski/frontkit.git new-project
 cd new-project
-npm install && bower install
+npm install
 ```
 
 After that, you're ready to rock! :metal:
