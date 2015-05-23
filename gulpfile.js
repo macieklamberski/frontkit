@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var fs = require('fs');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
-var options = require('./options.json');
+var config = require('./package.json').config;
 var tasks = ['templates', 'scripts', 'styles', 'images', 'fonts', 'media'];
 
 function onError(error) {
@@ -12,7 +12,7 @@ function onError(error) {
 };
 
 function copyToTargets(stream, task, directory) {
-  options.targets.forEach(function (target) {
+  config.targets.forEach(function (target) {
     if (target.tasks.indexOf(task) >= 0) {
       stream = stream.pipe(gulp.dest(target.path + directory));
     }
@@ -22,7 +22,7 @@ function copyToTargets(stream, task, directory) {
 
 gulp.task('clean', function (cb) {
   var directories = [];
-  options.targets.forEach(function (target) {
+  config.targets.forEach(function (target) {
     target.tasks.forEach(function (task) {
       if (task == 'templates') {
         directories.push(target.path + '/*.html')
@@ -81,7 +81,7 @@ gulp.task('styles', function () {
     .pipe(plugins.autoprefixer())
     .pipe(minFilter)
       .pipe(plugins.minifyCss({ processImport: true }))
-    .pipe(minFilter.restore())
+    .pipe(minFilter.restore());
 
   return copyToTargets(stream, 'styles', '/styles');
 });
@@ -103,7 +103,7 @@ gulp.task('images', function () {
           .pipe(plugins.imagemin())
           .pipe(plugins.cheerio({
             run: function ($) { $('[fill]').removeAttr('fill') },
-            parserOptions: { xmlMode: true }
+            parserconfig: { xmlMode: true }
           }))
           .pipe(plugins.svgstore())
           .pipe(plugins.rename({ extname: '' }))
@@ -139,15 +139,15 @@ gulp.task('watch', function () {
 });
 
 gulp.task('deploy', function () {
-  if (options.deploy.adapter == 'ftp') {
-    options.deploy.log = plugins.util.log
-    var connection = plugins.vinylFtp.create(options.deploy);
-    return gulp.src(options.deploy.local + '/**/*')
-      .pipe(connection.newerOrDifferentSize(options.deploy.remote))
-      .pipe(connection.dest(options.deploy.remote));
-  } else if (options.deploy.adapter == 'rsync') {
-    return gulp.src(options.deploy.root + '/**/*')
-      .pipe(plugins.rsync(options.deploy));
+  if (config.deploy.adapter == 'ftp') {
+    config.deploy.log = plugins.util.log
+    var connection = plugins.vinylFtp.create(config.deploy);
+    return gulp.src(config.deploy.local + '/**/*')
+      .pipe(connection.newerOrDifferentSize(config.deploy.remote))
+      .pipe(connection.dest(config.deploy.remote));
+  } else if (config.deploy.adapter == 'rsync') {
+    return gulp.src(config.deploy.root + '/**/*')
+      .pipe(plugins.rsync(config.deploy));
   } else {
     plugins.util.log(plugins.util.colors.red('Deployment is not configured.'));
   }

@@ -94,20 +94,25 @@ Images, videos and other media files used as a content.
 
 ## Configuration
 
-You can configure Frontkit to do things like deploying and manage output directories. Below is example `options.json` file, located in root directory of the project.
+You can configure Frontkit to do things like deploying and manage output directories. Below is example `config` key in _package.json_ file, located in root directory of the project.
 
 ```javascript
+// package.json
 {
-  "targets": [
-    {
-      "path": "_preview",
-      "tasks": ["scripts", "styles", "images", "fonts", "templates", "media"]
+  // ...
+  "config": {
+    "targets": [
+      {
+        "path": "_preview",
+        "tasks": ["scripts", "styles", "images", "fonts", "templates", "media"]
+      }
+    ],
+    "deploy": {
+      "adapter": "ftp",
+      // For configuration of the adapter, read "deploy" section below.
     }
-  ],
-  "deploy": {
-    "adapter": "ftp",
-    // For configuration of the adapter, read "deploy" section below.
-  }
+  },
+  // ...
 }
 ```
 
