@@ -118,7 +118,7 @@ Array of directories to which source will be compiled. `path` points to target d
 
 You can choose of two adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp) or [gulp-rsync](https://github.com/jerrysu/gulp-rsync). Each of them have different set of configuration options.
 
-To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapter, look [into documentation of the package](https://github.com/morris/vinyl-ftp#ftpcreate-config-). There are also two additional properties: `local` and `remote`, which, as the names suggest, are used to locate local and remote directories. Example configuration:
+To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapter, look [into documentation of the package](https://github.com/morris/vinyl-ftp#ftpcreate-config-). There are also two additional properties: `files` (path to local files) and `destination` (remote directory on the server). Example configuration:
 
 ```javascript
 "deploy": {
@@ -126,21 +126,22 @@ To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapt
   "host": "domain.com",
   "user": "domain",
   "password": "letmein",
-  "local": "_preview",
-  "remote": "/var/www/domain.com"
+  "destination": "/var/www/domain.com",
+  "files": ["_preview/**/*", "!_preview/.git/"]
 }
 ```
 
-To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package configuration ([look into documentation](https://github.com/jerrysu/gulp-rsync#rsyncoptions)). Example configuration:
+To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package configuration ([look into documentation](https://github.com/jerrysu/gulp-rsync#rsyncoptions)). There is also one additional property: `files` - path to local files. Example configuration:
 
 ```javascript
 "deploy": {
   "adapter": "rsync",
-  "root": "_preview",
   "port": 22,
   "hostname": "domain.com",
+  "incremental": true,
+  "root": "_preview",
   "destination": "/var/www/domain.com",
-  "incremental": true
+  "files": ["_preview/**/*", "!_preview/.git/"]
 }
 ```
 
