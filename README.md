@@ -117,18 +117,24 @@ Array of directories to which source will be compiled. `path` points to target d
 
 ### deploy
 
+You can define one or more deploy targets, each with its own set of configuration options.
+
 You can choose of two adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp) or [gulp-rsync](https://github.com/jerrysu/gulp-rsync). Each of them have different set of configuration options.
 
 To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapter, look [into documentation of the package](https://github.com/morris/vinyl-ftp#ftpcreate-config-). There are also two additional properties: `files` (path to local files) and `destination` (remote directory on the server). Example configuration:
 
 ```javascript
 "deploy": {
-  "adapter": "ftp",
-  "host": "domain.com",
-  "user": "domain",
-  "password": "letmein",
-  "destination": "/var/www/domain.com",
-  "files": ["dist/**/*", "!dist/.git/"]
+  // ...
+  "staging": {
+    "adapter": "ftp",
+    "host": "staging.domain.com",
+    "user": "staging",
+    "password": "letmein",
+    "destination": "/var/www/staging.domain.com",
+    "files": ["dist/**/*", "!dist/.git/"]
+  },
+  // ...
 }
 ```
 
@@ -136,13 +142,17 @@ To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package conf
 
 ```javascript
 "deploy": {
-  "adapter": "rsync",
-  "port": 22,
-  "hostname": "domain.com",
-  "incremental": true,
-  "root": "dist",
-  "destination": "/var/www/domain.com",
-  "files": ["dist/**/*", "!dist/.git/"]
+  // ...
+  "preview": {
+    "adapter": "rsync",
+    "port": 22,
+    "hostname": "domain.com",
+    "incremental": true,
+    "root": "dist",
+    "destination": "/var/www/domain.com",
+    "files": ["dist/**/*", "!dist/.git/"]
+  },
+  // ...
 }
 ```
 
