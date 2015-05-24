@@ -41,7 +41,10 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('templates', function () {
-  var stream = gulp.src(['src/templates/**/*.html', '!src/templates/**/_*.html'])
+  var stream = gulp.src([
+    config.source + '/templates/**/*.html',
+    '!' + config.source + '/templates/**/_*.html'
+  ])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.twig({ errorLogToConsole: true }))
     .pipe(plugins.jsbeautifier({
@@ -56,7 +59,7 @@ gulp.task('templates', function () {
 
 gulp.task('scripts', function () {
   var streams = [];
-  plugins.glob.sync('src/scripts/*.js').forEach(function(filePath) {
+  plugins.glob.sync(config.source + '/scripts/*.js').forEach(function(filePath) {
     streams.push(
       plugins.browserify(filePath)
         .bundle()
@@ -71,7 +74,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-  var stream = gulp.src('src/styles/**/*.{css,scss}')
+  var stream = gulp.src(config.source + '/styles/**/*.{css,scss}')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.cssGlobbing({ extensions: ['.css', '.scss'] }))
     .pipe(plugins.sass())
@@ -85,7 +88,7 @@ gulp.task('styles', function () {
 gulp.task('sprites', function () {
   var streams = [];
 
-  plugins.glob.sync('src/sprites/*').forEach(function(filePath) {
+  plugins.glob.sync(config.source + '/sprites/*').forEach(function(filePath) {
     streams.push(
       gulp.src(filePath + '/*.svg')
         .pipe(plugins.plumber(onError))
@@ -102,7 +105,7 @@ gulp.task('sprites', function () {
 });
 
 gulp.task('images', function () {
-  var stream = gulp.src('src/images/**/*.{jpg,svg,gif,png}')
+  var stream = gulp.src(config.source + '/images/**/*.{jpg,svg,gif,png}')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.imagemin())
 
@@ -110,14 +113,14 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-  var stream = gulp.src('src/fonts/**/*')
+  var stream = gulp.src(config.source + '/fonts/**/*')
     .pipe(plugins.plumber(onError));
 
   return copyToTargets(stream, 'fonts', '/fonts');
 });
 
 gulp.task('media', function () {
-  var stream = gulp.src('src/media/**/*')
+  var stream = gulp.src(config.source + '/media/**/*')
     .pipe(plugins.plumber(onError));
 
   return copyToTargets(stream, 'media', '/media');
@@ -129,7 +132,7 @@ gulp.task('build', function () {
 
 gulp.task('watch', function () {
   tasks.forEach(function (task) {
-    gulp.watch('src/' + task + '/**/*', [task]);
+    gulp.watch(config.source + '/' + task + '/**/*', [task]);
   });
 });
 

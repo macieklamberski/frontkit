@@ -1,5 +1,6 @@
 {
   "config": {
+    "source": "./src",
     "targets": [
       {
         "path": "dist",
