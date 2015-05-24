@@ -1,9 +1,4 @@
 {
-  "name": "Frontkit",
-  "author": {
-    "name": "Author Name",
-    "url": "http://domain.com"
-  },
   "config": {
     "targets": [
       {
