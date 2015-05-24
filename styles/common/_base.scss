@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $size--base;
+}
+
+svg {
+  vertical-align: top;
+  width: 1em;
+  height: 1em;
+  fill: black;
+}
+
+hr {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+a {
+  &:hover,
+  &:focus {
+
+  }
+}

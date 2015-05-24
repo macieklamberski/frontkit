@@ -1,0 +1,23 @@
+@mixin clearfix() {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin breakpoint($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin modernizr($feature) {
+  html.#{$feature} & {
+    @content;
+  }
+}
+
+@function rem($size--desired) {
+  @return ($size--desired / $size--base) * 1rem;
+}
