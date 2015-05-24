@@ -12,6 +12,7 @@ Below is tree with directories structure for a typical project. `fonts`, `images
 ├── src/
 │   ├── fonts/
 │   ├── images/
+│   ├── sprites/
 │   ├── media/
 │   ├── scripts/
 │   ├── styles/
@@ -63,7 +64,9 @@ Place for CSS and SCSS files. SCSS files are compiled to regular CSS files with 
 
 Images used strictly for layout purposes. Will be optimized using [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin).
 
-Thanks to [gulp-svgstore](https://github.com/w0rm/gulp-svgstore), you can combine multiple SVG files into one that can be later used to embed inline SVG shapes in your HTML. Just name your directory with _.svg_ at the end (eg. _icons.svg_) and put SVG files in there. During build process, all files inside this directory will be combined into one with the same name. If you, for example, have `images/icons.svg/icon-name.svg`, you'll be able to embed it with below code.
+### sprites
+
+Thanks to [gulp-svgstore](https://github.com/w0rm/gulp-svgstore), you can combine multiple SVG files into one that can be later used to embed inline SVG shapes in your HTML. Just create directory in /sprites and put SVG files in there. During build process, all files inside this directory will be combined into one with the same name. If you, for example, have `sprites/icons/icon-name.svg`, you'll be able to embed it with below code.
 
 ```html
 <svg>

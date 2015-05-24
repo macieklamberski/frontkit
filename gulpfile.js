@@ -25,10 +25,15 @@ gulp.task('clean', function (cb) {
   var directories = [];
   config.targets.forEach(function (target) {
     target.tasks.forEach(function (task) {
-      if (task == 'templates') {
-        directories.push(target.path + '/*.html')
-      } else {
-        directories.push(target.path + '/' + task);
+      switch (task) {
+        case 'templates':
+          directories.push(target.path + '/*.html');
+        break;
+        case 'sprites':
+          directories.push(target.path + '/images');
+        break;
+        default:
+          directories.push(target.path + '/' + task);
       }
     });
   });
@@ -77,32 +82,31 @@ gulp.task('styles', function () {
   return copyToTargets(stream, 'styles', '/styles');
 });
 
-gulp.task('images', function () {
+gulp.task('sprites', function () {
   var streams = [];
 
-  streams.push(
-    gulp.src(['src/images/**/*.{jpg,svg,gif,png}', '!src/images/*.svg/*'])
-      .pipe(plugins.plumber(onError))
-      .pipe(plugins.imagemin())
-  );
-
-  plugins.glob.sync('src/images/**/*.svg').forEach(function(filePath) {
-    if (fs.statSync(filePath).isDirectory()) {
-      streams.push(
-        gulp.src(filePath + '/*.svg')
-          .pipe(plugins.plumber(onError))
-          .pipe(plugins.imagemin())
-          .pipe(plugins.cheerio({
-            run: function ($) { $('[fill]').removeAttr('fill') },
-            parserconfig: { xmlMode: true }
-          }))
-          .pipe(plugins.svgstore())
-          .pipe(plugins.rename({ extname: '' }))
-      );
-    }
+  plugins.glob.sync('src/sprites/*').forEach(function(filePath) {
+    streams.push(
+      gulp.src(filePath + '/*.svg')
+        .pipe(plugins.plumber(onError))
+        .pipe(plugins.imagemin())
+        .pipe(plugins.cheerio({
+          run: function ($) { $('[fill]').removeAttr('fill') },
+          parserconfig: { xmlMode: true }
+        }))
+        .pipe(plugins.svgstore())
+    );
   });
 
-  return copyToTargets(plugins.mergeStream(streams), 'images', '/images');
+  return copyToTargets(plugins.mergeStream(streams), 'sprites', '/images');
+});
+
+gulp.task('images', function () {
+  var stream = gulp.src('src/images/**/*.{jpg,svg,gif,png}')
+    .pipe(plugins.plumber(onError))
+    .pipe(plugins.imagemin())
+
+  return copyToTargets(stream, 'images', '/images');
 });
 
 gulp.task('fonts', function () {
