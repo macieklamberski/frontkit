@@ -15,6 +15,7 @@ Below is tree with directories structure for a typical project. `fonts`, `images
 │   ├── styles/
 │   ├── images/
 │   ├── sprites/
+│   ├── icons/
 │   ├── fonts/
 │   └── media/
 └── ...
@@ -40,7 +41,7 @@ gulp deploy
 
 ## Components
 
-Frontkit consists of six different parts. Each of them is stored in separate directory and managed by different Gulp task (with the same name as directory).
+Frontkit consists of eight different parts. Each of them is stored in separate directory and managed by different Gulp task (with the same name as directory).
 
 ### templates
 
@@ -66,13 +67,17 @@ Images used strictly for layout purposes. Will be optimized using [gulp-imagemin
 
 ### sprites
 
-Thanks to [gulp-svgstore](https://github.com/w0rm/gulp-svgstore), you can combine multiple SVG files into one that can be later used to embed inline SVG shapes in your HTML. Just create directory in /sprites and put SVG files in there. During build process, all files inside this directory will be combined into one with the same name. If you, for example, have `sprites/icons/icon-name.svg`, you'll be able to embed it with below code.
+Thanks to [gulp-svgstore](https://github.com/w0rm/gulp-svgstore), you can combine multiple SVG files into one that can be later used to embed inline SVG shapes in your HTML. Just create directory in /sprites and put SVG files in there. During build process, all files inside this directory will be combined into one with the same name. If you, for example, have `sprites/sprite-name/icon-name.svg`, you'll be able to embed it with below code.
 
 ```html
 <svg>
-  <use xlink:href="images/icons.svg#icon-name"></use>
+  <use xlink:href="images/sprite-name.svg#icon-name"></use>
 </svg>
 ```
+
+### icons
+
+SVG files from which font will be generated. (@TODO: Add more info about how it works.)
 
 ### fonts
 
