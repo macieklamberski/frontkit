@@ -3,7 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var plugins = require('gulp-load-plugins')({ pattern: '*' });
 var config = require('./package.json').config;
-var tasks = ['templates', 'scripts', 'styles', 'images', 'fonts', 'media'];
+var tasks = ['templates', 'scripts', 'styles', 'images', 'sprites', 'fonts', 'media'];
 
 function onError(error) {
   plugins.util.log(plugins.util.colors.red(error.message));
