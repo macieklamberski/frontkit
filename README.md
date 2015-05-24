@@ -10,13 +10,13 @@ Below is tree with directories structure for a typical project. `fonts`, `images
 .
 ├── node_modules/
 ├── src/
-│   ├── fonts/
-│   ├── images/
-│   ├── sprites/
-│   ├── media/
+│   ├── templates/
 │   ├── scripts/
 │   ├── styles/
-│   └── templates/
+│   ├── images/
+│   ├── sprites/
+│   ├── fonts/
+│   └── media/
 └── ...
 ```
 

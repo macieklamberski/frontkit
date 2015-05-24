@@ -4,12 +4,12 @@
       {
         "path": "dist",
         "tasks": [
+          "templates",
           "scripts",
           "styles",
           "images",
           "sprites",
           "fonts",
-          "templates",
           "media"
         ]
       }
