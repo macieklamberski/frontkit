@@ -71,7 +71,7 @@ gulp.task('styles', function () {
     .pipe(plugins.cssGlobbing({ extensions: ['.css', '.scss'] }))
     .pipe(plugins.sass())
     .pipe(plugins.autoprefixer())
-    .pipe(plugins.minifyCss({ processImport: true, keepSpecialComments: 0 }))
+    .pipe(plugins.minifyCss({ processImport: true, keepSpecialComments: 0, restructuring: false }))
     .pipe(plugins.rename({ suffix: '.min' }));
 
   return copyToTargets(stream, 'styles', '/styles');
