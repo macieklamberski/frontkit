@@ -2,7 +2,7 @@
   "config": {
     "targets": [
       {
-        "path": "_preview",
+        "path": "dist",
         "tasks": [
           "scripts",
           "styles",

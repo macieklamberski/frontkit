@@ -36,7 +36,7 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('templates', function () {
-  var stream = gulp.src(['templates/**/*.html', '!templates/**/_*.html'])
+  var stream = gulp.src(['src/templates/**/*.html', '!src/templates/**/_*.html'])
     .pipe(plugins.plumber(onError))
     .pipe(plugins.twig({ errorLogToConsole: true }))
     .pipe(plugins.jsbeautifier({
@@ -51,7 +51,7 @@ gulp.task('templates', function () {
 
 gulp.task('scripts', function () {
   var streams = [];
-  plugins.glob.sync('scripts/*.js').forEach(function(filePath) {
+  plugins.glob.sync('src/scripts/*.js').forEach(function(filePath) {
     streams.push(
       plugins.browserify(filePath)
         .bundle()
@@ -66,7 +66,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-  var stream = gulp.src('styles/**/*.{css,scss}')
+  var stream = gulp.src('src/styles/**/*.{css,scss}')
     .pipe(plugins.plumber(onError))
     .pipe(plugins.cssGlobbing({ extensions: ['.css', '.scss'] }))
     .pipe(plugins.sass())
@@ -81,12 +81,12 @@ gulp.task('images', function () {
   var streams = [];
 
   streams.push(
-    gulp.src(['images/**/*.{jpg,svg,gif,png}', '!images/**/*.svg/'])
+    gulp.src(['src/images/**/*.{jpg,svg,gif,png}', '!src/images/**/*.svg/'])
       .pipe(plugins.plumber(onError))
       .pipe(plugins.imagemin())
   );
 
-  plugins.glob.sync('images/**/*.svg').forEach(function(filePath) {
+  plugins.glob.sync('src/images/**/*.svg').forEach(function(filePath) {
     if (fs.statSync(filePath).isDirectory()) {
       streams.push(
         gulp.src(filePath + '/*.svg')
@@ -106,14 +106,14 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-  var stream = gulp.src('fonts/**/*')
+  var stream = gulp.src('src/fonts/**/*')
     .pipe(plugins.plumber(onError));
 
   return copyToTargets(stream, 'fonts', '/fonts');
 });
 
 gulp.task('media', function () {
-  var stream = gulp.src('media/**/*')
+  var stream = gulp.src('src/media/**/*')
     .pipe(plugins.plumber(onError));
 
   return copyToTargets(stream, 'media', '/media');
@@ -125,7 +125,7 @@ gulp.task('build', function () {
 
 gulp.task('watch', function () {
   tasks.forEach(function (task) {
-    gulp.watch(task + '/**/*', [task]);
+    gulp.watch('src/' + task + '/**/*', [task]);
   });
 });
 

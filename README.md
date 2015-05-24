@@ -8,21 +8,14 @@ Below is tree with directories structure for a typical project. `fonts`, `images
 
 ```bash
 .
-├── fonts/
-│   └── ...
-├── images/
-│   └── ...
-├── media/
-│   └── ...
-├── scripts/
-│   ├── ...
-│   └── main.js
-├── styles/
-│   ├── ...
-│   └── main.scss
-├── templates/
-│   ├── ...
-│   └── index.html
+├── node_modules/
+├── src/
+│   ├── fonts/
+│   ├── images/
+│   ├── media/
+│   ├── scripts/
+│   ├── styles/
+│   └── templates/
 └── ...
 ```
 
@@ -127,7 +120,7 @@ To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapt
   "user": "domain",
   "password": "letmein",
   "destination": "/var/www/domain.com",
-  "files": ["_preview/**/*", "!_preview/.git/"]
+  "files": ["dist/**/*", "!dist/.git/"]
 }
 ```
 
@@ -139,9 +132,9 @@ To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package conf
   "port": 22,
   "hostname": "domain.com",
   "incremental": true,
-  "root": "_preview",
+  "root": "dist",
   "destination": "/var/www/domain.com",
-  "files": ["_preview/**/*", "!_preview/.git/"]
+  "files": ["dist/**/*", "!dist/.git/"]
 }
 ```
 
