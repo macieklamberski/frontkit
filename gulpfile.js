@@ -81,7 +81,7 @@ gulp.task('images', function () {
   var streams = [];
 
   streams.push(
-    gulp.src(['src/images/**/*.{jpg,svg,gif,png}', '!src/images/**/*.svg/'])
+    gulp.src(['src/images/**/*.{jpg,svg,gif,png}', '!src/images/*.svg/*'])
       .pipe(plugins.plumber(onError))
       .pipe(plugins.imagemin())
   );
