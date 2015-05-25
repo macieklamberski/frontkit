@@ -96,15 +96,19 @@ You can configure Frontkit to do things like deploying and manage output directo
 {
   // ...
   "config": {
+    "source": "./src",
     "targets": [
       {
         "path": "_preview",
-        "tasks": ["scripts", "styles", "images", "fonts", "templates", "media"]
+        "tasks": ["templates", "scripts", "styles", "images", "sprites", "icons, "fonts", "media"]
       }
     ],
     "deploy": {
-      "adapter": "ftp",
-      // For configuration of the adapter, read "deploy" section below.
+      "staging": {
+        "adapter": "ftp",
+        // For configuration of the adapter, read "deploy" section below.
+      },
+      // ...
     }
   },
   // ...
