@@ -49,7 +49,12 @@ HTML files compiled using [Twig](http://twig.sensiolabs.org) template engine. Th
 
 ### scripts
 
-Directory with JavaScript files. (@TODO: Info about JS files being handled by Browserify.)
+Directory with JavaScript files. Thanks to [`gulp-include`](https://www.npmjs.com/package/gulp-include), you can combine multiple scripts into one using below syntax:
+
+```javascript
+//= include relative/path/to/file.js
+//= include relative/path/to/directory/*.js
+```
 
 ### styles
 

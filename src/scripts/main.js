@@ -1,6 +1,26 @@
-var $ = require('jquery');
-var Hello = require('./modules/hello');
+//= include ../../node_modules/jquery/dist/jquery.js
 
-$(function () {
-  Hello.init();
-});
+(function ($) {
+
+  var App = {
+
+    /**
+     * Initialize features
+     */
+    init: function () {
+      App.feature();
+    },
+
+    /**
+     * Custom feature
+     */
+    feature: function () {
+
+    }
+  };
+
+  $(function () {
+    App.init();
+  });
+
+})(jQuery);

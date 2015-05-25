@@ -18,7 +18,6 @@
     "deploy": {}
   },
   "devDependencies": {
-    "browserify": "^10.2.1",
     "del": "^1.1.1",
     "glob": "^5.0.9",
     "gulp": "^3.8.11",
@@ -29,6 +28,7 @@
     "gulp-foreach": "^0.1.0",
     "gulp-iconfont": "^1.0.1",
     "gulp-imagemin": "^2.2.1",
+    "gulp-include": "^1.1.1",
     "gulp-jsbeautifier": "0.0.8",
     "gulp-load-plugins": "^0.10.0",
     "gulp-minify-css": "^1.0.0",
@@ -49,7 +49,7 @@
     "yargs": "^3.9.1"
   },
   "dependencies": {
-    "browsernizr": "^1.0.2",
+    "component-modernizr": "components/modernizr",
     "jquery": "^2.1.4",
     "normalize.css": "^3.0.3"
   }
