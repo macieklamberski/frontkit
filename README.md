@@ -4,7 +4,7 @@ Frontkit is a scaffolding for web projects. It consists of directories structure
 
 ## Structure
 
-Below is tree with directories structure for a typical project. `fonts`, `images` and `media` directories are not present in the repository as they not always used in every project. If your project has any of them - just create corresponding directory.
+Below is tree with directories structure for a typical project. `fonts`, `images`, `sprites`, `icons` and `media` directories are not present in the repository as they not always used in every project. If your project has any of them - just create corresponding directory.
 
 ```bash
 .
