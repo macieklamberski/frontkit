@@ -94,13 +94,13 @@ Images, videos and other media files used as a content.
 
 ## Configuration
 
-You can configure Frontkit to do things like deploying and manage output directories. Below is example `config` key in _package.json_ file, located in root directory of the project.
+You can configure Frontkit to do things like deploying and manage output directories. Below is example `frontkit` key in _package.json_ file, located in root directory of the project.
 
 ```javascript
 // package.json
 {
   // ...
-  "config": {
+  "frontkit": {
     "source": "./src",
     "targets": [
       {

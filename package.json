@@ -1,5 +1,5 @@
 {
-  "config": {
+  "frontkit": {
     "source": "./src",
     "targets": [
       {
