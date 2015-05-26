@@ -1,6 +1,6 @@
 {
   "frontkit": {
-    "source": "./src",
+    "source": "src",
     "targets": [
       {
         "path": "dist",
