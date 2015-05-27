@@ -43,7 +43,7 @@ gulp build --dev
 gulp watch --dev
 
 # Deploy changes to defined host (see Configuration section below).
-gulp deploy
+gulp deploy --target=production
 ```
 
 ## Components
