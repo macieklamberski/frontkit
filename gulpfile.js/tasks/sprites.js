@@ -6,7 +6,7 @@ module.exports = function (gulp, plugins, config, helpers) {
       streams.push(
         gulp.src(filePath + '/*.svg')
           .pipe(plugins.plumber(helpers.onError))
-          .pipe(plugins.imagemin())
+          .pipe(helpers.ifNotDev(plugins.imagemin()))
           .pipe(plugins.cheerio({
             run: function ($) { $('[fill]').removeAttr('fill') },
             parserconfig: { xmlMode: true }

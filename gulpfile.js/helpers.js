@@ -1,5 +1,10 @@
 module.exports = function (gulp, plugins, config) {
   return {
+    ifNotDev: function (action) {
+      return plugins.yargs.argv['dev'] !== undefined
+        ? plugins.util.noop()
+        : action;
+    },
     onError: function (error) {
       plugins.util.log(plugins.util.colors.red(error.message));
       plugins.util.log(plugins.util.colors.red(error.fileName + ':' + error.lineNumber));

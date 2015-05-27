@@ -35,6 +35,13 @@ gulp build
 # Equivalent of 'gulp build && gulp watch'.
 gulp
 
+# Running any task with 'dev' parameter with skip time-consuming tasks
+# like file minification (JS, CSS) and image optimization. It's helpful
+# during development process.
+gulp --dev
+gulp build --dev
+gulp watch --dev
+
 # Deploy changes to defined host (see Configuration section below).
 gulp deploy
 ```

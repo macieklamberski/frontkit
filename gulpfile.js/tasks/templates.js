@@ -6,12 +6,12 @@ module.exports = function (gulp, plugins, config, helpers) {
     ])
       .pipe(plugins.plumber(helpers.onError))
       .pipe(plugins.twig({ errorLogToConsole: true }))
-      .pipe(plugins.jsbeautifier({
+      .pipe(helpers.ifNotDev(plugins.jsbeautifier({
         indentSize: 2,
         indentInnerHtml: true,
         unformatted: ['script'],
         maxPreserveNewlines: 1
-      }));
+      })));
 
     return helpers.copyToTargets(stream, 'templates', '/');
   });

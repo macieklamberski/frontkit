@@ -5,7 +5,11 @@ module.exports = function (gulp, plugins, config, helpers) {
       .pipe(plugins.cssGlobbing({ extensions: ['.css', '.scss'] }))
       .pipe(plugins.sass())
       .pipe(plugins.autoprefixer())
-      .pipe(plugins.minifyCss({ processImport: true, keepSpecialComments: 0, restructuring: false }))
+      .pipe(helpers.ifNotDev(plugins.minifyCss({
+        processImport: true,
+        keepSpecialComments: 0,
+        restructuring: false
+      })))
       .pipe(plugins.rename({ suffix: '.min' }));
 
     return helpers.copyToTargets(stream, 'styles', '/styles');

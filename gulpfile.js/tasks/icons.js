@@ -12,7 +12,7 @@ module.exports = function (gulp, plugins, config, helpers) {
         options.glyphs = codepoints;
         var stream = gulp.src('gulpfile.js/icons.css')
           .pipe(plugins.consolidate('lodash', options))
-          .pipe(plugins.minifyCss())
+          .pipe(helpers.ifNotDev(plugins.minifyCss()))
           .pipe(plugins.rename({ suffix: '.min' }));
 
         helpers.copyToTargets(stream, 'styles', '/styles');
