@@ -4,9 +4,9 @@ module.exports = function (gulp, plugins, config, helpers) {
       .pipe(plugins.plumber(helpers.onError))
       .pipe(plugins.cssGlobbing({ extensions: ['.css', '.scss'] }))
       .pipe(plugins.sass())
+      .pipe(plugins.importCss())
       .pipe(plugins.autoprefixer())
       .pipe(helpers.ifNotDev(plugins.minifyCss({
-        processImport: true,
         keepSpecialComments: 0,
         restructuring: false
       })))
