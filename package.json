@@ -29,7 +29,6 @@
     "gulp-iconfont": "^1.0.1",
     "gulp-imagemin": "^2.2.1",
     "gulp-include": "^1.1.1",
-    "gulp-jsbeautifier": "0.0.8",
     "gulp-load-plugins": "^0.10.0",
     "gulp-minify-css": "^1.0.0",
     "gulp-plumber": "^1.0.0",
