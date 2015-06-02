@@ -7,6 +7,7 @@ module.exports = function (gulp, plugins, config, helpers) {
       .pipe(plugins.importCss())
       .pipe(plugins.autoprefixer())
       .pipe(helpers.ifNotDev(plugins.minifyCss({
+        rebase: false,
         keepSpecialComments: 0,
         restructuring: false
       })))
