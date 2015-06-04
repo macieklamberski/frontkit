@@ -65,7 +65,7 @@ Directory with JavaScript files. Thanks to [`gulp-include`](https://www.npmjs.co
 
 ### styles
 
-Place for CSS and SCSS files. SCSS files are compiled to regular CSS files with [libsass](https://github.com/sass/node-sass). You can use wildcard to import all the files from given directory:
+Place for CSS, SCSS and Sass files. SCSS and Sass files are compiled to regular CSS files with [libsass](https://github.com/sass/node-sass). You can use wildcard to import all the files from given directory:
 
 ```css
 @import 'blocks/*' // Will import all the files in the blocks folder.
