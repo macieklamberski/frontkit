@@ -8,6 +8,7 @@ Below is tree with directories structure for a typical project. `fonts`, `images
 
 ```bash
 .
+├── bower_components/
 ├── node_modules/
 ├── src/
 │   ├── templates/
@@ -194,6 +195,12 @@ Then install [Gulp](http://gulpjs.com) globally:
 npm install -g gulp
 ```
 
+For managing front-end dependencies like Bootstrap, jQuery (and plugins), you will need [Bower](http://bower.io), another package manager. Install it from the command line as well:
+
+```bash
+npm install -g bower
+```
+
 ## Installation
 
 Having all requirements met, you can set up new project.
@@ -201,7 +208,7 @@ Having all requirements met, you can set up new project.
 ```bash
 git clone https://github.com/lamberski/frontkit.git new-project
 cd new-project
-npm install
+npm install && bower install
 ```
 
 After that, you're ready to rock! :metal:

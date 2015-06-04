@@ -48,10 +48,5 @@
     "vinyl-ftp": "^0.4.0",
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^3.9.1"
-  },
-  "dependencies": {
-    "component-modernizr": "components/modernizr",
-    "jquery": "^2.1.4",
-    "normalize.css": "^3.0.3"
   }
 }

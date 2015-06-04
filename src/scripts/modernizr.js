@@ -1,1 +1,1 @@
-//= include ../../node_modules/component-modernizr/modernizr.js
+//= include ../../bower_components/modernizr/modernizr.js
