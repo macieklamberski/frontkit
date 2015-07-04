@@ -6,6 +6,7 @@ module.exports = function (gulp, plugins, config, helpers) {
         fontName: 'Icons',
         className: 'icon',
         'normalize': true,
+        'fontHeight': 1001,
         appendCodepoints: false
       }))
       .on('codepoints', function(codepoints, options) {
