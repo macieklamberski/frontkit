@@ -1,8 +1,8 @@
 $breakpoints: (
-  'laptop'  : (max-width: 1440px),
-  'tablet'  : (max-width: 1024px),
-  'phablet' : (max-width: 736px),
-  'phone'   : (max-width: 480px),
+  'laptop'  : 'max-width: 1440px',
+  'tablet'  : 'max-width: 1024px',
+  'phablet' : 'max-width: 736px',
+  'phone'   : 'max-width: 480px',
 );
 
 $size--base: 16px;
