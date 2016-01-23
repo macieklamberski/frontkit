@@ -2,7 +2,8 @@ module.exports = function (gulp, plugins, config, helpers) {
   var tasks = ['templates', 'scripts', 'styles', 'images', 'sprites', 'icons', 'fonts', 'media'];
 
   gulp.task('build', function () {
-    return plugins.runSequence('clean', tasks);
+    tasks.unshift('clean');
+    return plugins.runSequence(tasks);
   });
 
   gulp.task('watch', function () {
