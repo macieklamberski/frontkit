@@ -183,12 +183,6 @@ First is Node.js, so you can work with `npm`, Node package manager. You can inst
 brew install node
 ```
 
-Next is [Sass](http://sass-lang.com) gem:
-
-```bash
-gem install sass
-```
-
 Then install [Gulp](http://gulpjs.com) globally:
 
 ```bash
