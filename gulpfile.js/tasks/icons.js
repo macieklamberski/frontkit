@@ -5,8 +5,8 @@ module.exports = function (gulp, plugins, config, helpers) {
       .pipe(plugins.iconfont({
         fontName: 'Icons',
         className: 'icon',
-        'normalize': true,
-        'fontHeight': 1001,
+        normalize: true,
+        fontHeight: 1001,
         appendUnicode: false
       }))
       .on('glyphs', function(glyphs, options) {

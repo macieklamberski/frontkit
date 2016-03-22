@@ -17,7 +17,7 @@ module.exports = function (gulp, plugins, config, helpers) {
     Object.keys(targets).forEach(function(key) {
       var target = targets[key];
       if (target.adapter == 'ftp') {
-        target.log = plugins.util.log
+        target.log = plugins.util.log;
         var connection = plugins.vinylFtp.create(target);
         return gulp.src(target.files)
           .pipe(connection.differentSize(target.destination))

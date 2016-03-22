@@ -8,7 +8,7 @@ module.exports = function (gulp, plugins, config, helpers) {
           .pipe(plugins.plumber(helpers.onError))
           .pipe(helpers.ifNotDev(plugins.imagemin()))
           .pipe(plugins.cheerio({
-            run: function ($) { $('[fill]').removeAttr('fill') },
+            run: function ($) { $('[fill]').removeAttr('fill'); },
             parserconfig: { xmlMode: true }
           }))
           .pipe(plugins.svgstore())

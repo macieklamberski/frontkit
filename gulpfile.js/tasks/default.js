@@ -15,4 +15,4 @@ module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('default', function () {
     return plugins.runSequence('build', 'watch');
   });
-}
+};
