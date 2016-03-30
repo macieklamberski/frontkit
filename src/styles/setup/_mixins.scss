@@ -26,6 +26,6 @@
   @return ($size--desired / $size--base) * 1rem;
 }
 
-@function trans($property, $duration: $duration--base, $easing: ease-in-out) {
-  @return #{$property $duration $easing};
+@function trans($property, $duration: $duration--base, $delay: 0ms, $easing: ease-in-out) {
+  @return #{$property $duration $delay $easing};
 }
