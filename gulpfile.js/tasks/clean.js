@@ -1,5 +1,5 @@
 module.exports = function (gulp, plugins, config) {
-  gulp.task('clean', function (cb) {
+  gulp.task('clean', function () {
     var directories = [];
     config.targets.forEach(function (target) {
       target.tasks.forEach(function (task) {
@@ -12,6 +12,6 @@ module.exports = function (gulp, plugins, config) {
         }
       });
     });
-    plugins.del(directories, { force: true }, cb);
+    return plugins.del(directories, { force: true });
   });
 };
