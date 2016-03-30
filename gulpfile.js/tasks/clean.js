@@ -7,9 +7,6 @@ module.exports = function (gulp, plugins, config) {
           case 'templates':
             directories.push(target.path + '/*.html');
           break;
-          case 'sprites':
-            directories.push(target.path + '/images');
-          break;
           default:
             directories.push(target.path + '/' + task);
         }

@@ -4,7 +4,7 @@ Frontkit is a scaffolding for web projects. It consists of directories structure
 
 ## Structure
 
-Below is tree with directories structure for a typical project. `fonts`, `images`, `sprites`, `icons` and `media` directories are not present in the repository as they not always used in every project. If your project has any of them - just create corresponding directory.
+Below is tree with directories structure for a typical project. `fonts`, `images`, `icons` and `media` directories are not present in the repository as they not always used in every project. If your project has any of them - just create corresponding directory.
 
 ```bash
 .
@@ -15,7 +15,6 @@ Below is tree with directories structure for a typical project. `fonts`, `images
 │   ├── scripts/
 │   ├── styles/
 │   ├── images/
-│   ├── sprites/
 │   ├── icons/
 │   ├── fonts/
 │   └── media/
@@ -78,16 +77,6 @@ Place for CSS, SCSS and Sass files. SCSS and Sass files are compiled to regular 
 
 Images used strictly for layout purposes. Will be optimized using [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin).
 
-### sprites
-
-Thanks to [gulp-svgstore](https://github.com/w0rm/gulp-svgstore), you can combine multiple SVG files into one that can be later used to embed inline SVG shapes in your HTML. Just create directory in /sprites and put SVG files in there. During build process, all files inside this directory will be combined into one with the same name. If you, for example, have `sprites/sprite-name/icon-name.svg`, you'll be able to embed it with below code.
-
-```html
-<svg>
-  <use xlink:href="images/sprite-name.svg#icon-name"></use>
-</svg>
-```
-
 ### icons
 
 SVG files from which font will be generated. (@TODO: Add more info about how it works.)
@@ -113,7 +102,7 @@ You can configure Frontkit to do things like deploying and manage output directo
     "targets": [
       {
         "path": "_preview",
-        "tasks": ["templates", "scripts", "styles", "images", "sprites", "icons", "fonts", "media"]
+        "tasks": ["templates", "scripts", "styles", "images", "icons", "fonts", "media"]
       }
     ],
     "deploy": {
