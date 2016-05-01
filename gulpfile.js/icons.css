@@ -9,18 +9,19 @@
   font-style: normal;
 }
 
-.<%= className %>:before {
+.<%= className %>::before {
   display: inline-block;
   font-family: '<%= fontName %>';
   font-style: normal;
   font-weight: normal;
   line-height: 1;
+  vertical-align: middle;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 <% _.each(glyphs, function (glyph) { %>
-  .<%= className %>--<%= glyph.name %>:before {
+  .<%= className %>--<%= glyph.name %>::before {
     content: '\<%= glyph.unicode.toString(16).toUpperCase() %>'
   }
 <% }); %>
