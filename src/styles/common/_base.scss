@@ -13,16 +13,17 @@ html {
   }
 }
 
-svg {
-  vertical-align: top;
-  width: 1em;
-  height: 1em;
-  fill: black;
+body {
+  font-family: $font--base;
+  line-height: $line--base;
+  color: $color--base;
 }
 
+svg,
 img {
-  max-width: 100%;
   vertical-align: top;
+  max-width: 100%;
+  fill: currentColor;
 }
 
 a {

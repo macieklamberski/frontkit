@@ -1,10 +1,16 @@
-$breakpoints: (
-  'laptop'  : '(max-width: 1440px)',
-  'tablet'  : '(max-width: 1024px)',
-  'phablet' : '(max-width: 736px)',
-  'phone'   : '(max-width: 480px)',
+$breakpoints    : (
+  'laptop'      : '(max-width: 1440px)',
+  'tablet'      : '(max-width: 1024px)',
+  'phablet'     : '(max-width: 736px)',
+  'phone'       : '(max-width: 480px)',
 );
 
-$size--base: 16px;
+$font--base     : ('Helvetica Neue', Helvetica, Arial, sans-serif);
 
-$duration--base: 250ms;
+$size--base     : 16px;
+
+$color--base    : #000;
+
+$line--base     : 1.5;
+
+$duration--base : 250ms;
