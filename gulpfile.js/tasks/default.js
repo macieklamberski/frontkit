@@ -1,8 +1,7 @@
 module.exports = function (gulp, plugins, config, helpers) {
   var tasks = ['templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'media'];
 
-  gulp.task('build', function () {
-    tasks.unshift('clean');
+  gulp.task('build', ['clean'], function () {
     return plugins.runSequence(tasks);
   });
 
