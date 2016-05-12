@@ -5,14 +5,14 @@
   var App = {
 
     /**
-     * Initialize features
+     * Initialize features.
      */
     init: function () {
       App.feature();
     },
 
     /**
-     * Custom feature
+     * Custom feature.
      */
     feature: function () {
 
