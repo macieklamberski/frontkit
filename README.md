@@ -1,6 +1,6 @@
 # Frontkit
 
-Frontkit is a scaffolding for web projects. It consists of directories structure, base files and Gulp workflow which supports modern web tools like CSS preprocessors, file minificators, image optimizers.
+Frontkit is a scaffolding for web projects. It consists of directories structure, base files and Gulp workflow which supports modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers.
 
 ## Structure
 
@@ -56,12 +56,7 @@ HTML files compiled using [Twig](http://twig.sensiolabs.org) template engine. Th
 
 ### scripts
 
-Directory with JavaScript files. Thanks to [`gulp-include`](https://www.npmjs.com/package/gulp-include), you can combine multiple scripts into one using below syntax:
-
-```javascript
-//= include relative/path/to/file.js
-//= include relative/path/to/directory/*.js
-```
+Directory with JavaScript files. Frontkit has Browserify support built in, so you can use it out of the box. You can also write JS code using ECMAScript 6 as it's also supported by default.
 
 ### styles
 
