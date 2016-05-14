@@ -1,7 +1,0 @@
-{
-  "name": true,
-  "devDependencies": {
-    "jquery": "~2.2",
-    "normalize.css": "~3.0"
-  }
-}

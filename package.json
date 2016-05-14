@@ -49,5 +49,8 @@
     "run-sequence": "^1.1",
     "vinyl-ftp": "^0.4",
     "yargs": "^3.31"
+  },
+  "dependencies": {
+    "normalize.css": "^4.1.1"
   }
 }

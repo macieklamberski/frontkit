@@ -173,12 +173,6 @@ Then install [Gulp](http://gulpjs.com) globally:
 npm install -g gulp
 ```
 
-For managing front-end dependencies like Bootstrap, jQuery (and plugins), you will need [Bower](http://bower.io), another package manager. Install it from the command line as well:
-
-```bash
-npm install -g bower
-```
-
 ## Installation
 
 Having all requirements met, you can set up new project.
