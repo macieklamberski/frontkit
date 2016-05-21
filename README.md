@@ -8,7 +8,6 @@ Below is tree with directories structure for a typical project.
 
 ```bash
 .
-├── bower_components/
 ├── node_modules/
 ├── src/
 │   ├── templates/
@@ -170,7 +169,7 @@ Having all requirements met, you can set up new project.
 ```bash
 git clone https://github.com/lamberski/frontkit.git new-project
 cd new-project
-npm install && bower install
+npm install
 ```
 
 After that, you're ready to rock! :metal:
