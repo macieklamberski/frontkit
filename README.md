@@ -43,7 +43,7 @@ gulp watch --dev
 gulp deploy --target=production
 ```
 
-## Components
+## Tasks
 
 Frontkit consists of eight different parts. Each of them is stored in separate directory and managed by different Gulp task (with the same name as directory).
 
