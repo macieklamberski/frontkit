@@ -15,6 +15,7 @@ Below is tree with directories structure for a typical project.
 │   ├── styles/
 │   ├── images/
 │   ├── icons/
+│   ├── files/
 └── ...
 ```
 
@@ -72,6 +73,10 @@ Images used strictly for layout purposes. Will be optimized using [gulp-imagemin
 ### icons
 
 SVG files from which font will be generated. (@TODO: Add more info about how it works.)
+
+### files
+
+Other static files that will be copied to the root of target directory. This is useful for archives, PDFs, etc.
 
 ## Configuration
 
