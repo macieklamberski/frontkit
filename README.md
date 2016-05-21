@@ -4,7 +4,7 @@ Frontkit is a scaffolding for web projects. It consists of directories structure
 
 ## Structure
 
-Below is tree with directories structure for a typical project. `fonts`, `images`, `icons` and `media` directories are not present in the repository as they not always used in every project. If your project has any of them - just create corresponding directory.
+Below is tree with directories structure for a typical project.
 
 ```bash
 .
@@ -16,8 +16,6 @@ Below is tree with directories structure for a typical project. `fonts`, `images
 │   ├── styles/
 │   ├── images/
 │   ├── icons/
-│   ├── fonts/
-│   └── media/
 └── ...
 ```
 
@@ -76,14 +74,6 @@ Images used strictly for layout purposes. Will be optimized using [gulp-imagemin
 
 SVG files from which font will be generated. (@TODO: Add more info about how it works.)
 
-### fonts
-
-Font files, also font-based icons.
-
-### media
-
-Images, videos and other media files used as a content.
-
 ## Configuration
 
 You can configure Frontkit to do things like deploying and manage output directories. Below is example `frontkit` key in _package.json_ file, located in root directory of the project.
@@ -97,7 +87,7 @@ You can configure Frontkit to do things like deploying and manage output directo
     "targets": [
       {
         "path": "_preview",
-        "tasks": ["templates", "scripts", "styles", "images", "icons", "fonts", "media"]
+        "tasks": ["templates", "scripts", "styles", "images", "icons"]
       }
     ],
     "deploy": {

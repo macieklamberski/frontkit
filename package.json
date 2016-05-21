@@ -9,9 +9,7 @@
           "scripts",
           "styles",
           "images",
-          "icons",
-          "fonts",
-          "media"
+          "icons"
         ]
       }
     ],
