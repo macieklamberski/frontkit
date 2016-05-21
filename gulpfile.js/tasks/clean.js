@@ -6,10 +6,9 @@ module.exports = function (gulp, plugins, config) {
         switch (task) {
           case 'templates':
             directories.push(target.path + '/*.html')
-          break
           case 'files':
-            plugins.glob.sync(config.source + '/files/*').forEach(function (path) {
-              path = path.replace(config.source + '/files', target.path)
+            plugins.glob.sync(config.source + '/' + task + '/*').forEach(function (path) {
+              path = path.replace(config.source + '/' + task, target.path)
               directories.push(path)
             })
           break
