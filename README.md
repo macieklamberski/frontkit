@@ -1,6 +1,6 @@
 # Frontkit
 
-Frontkit is a scaffolding for web projects. It consists of directories structure, base files and Gulp workflow which supports modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers.
+Frontkit is a static site generator. It consists of directories structure, base files and Gulp workflow which supports modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers.
 
 ## Structure
 
