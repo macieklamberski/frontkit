@@ -91,7 +91,7 @@ You can configure Frontkit to do things like deploying and manage output directo
     "targets": [
       {
         "path": "_preview",
-        "tasks": ["templates", "scripts", "styles", "images", "icons"]
+        "tasks": ["templates", "scripts", "styles", "images", "icons", "files"]
       }
     ],
     "deploy": {
