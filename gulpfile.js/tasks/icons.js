@@ -10,15 +10,15 @@ module.exports = function (gulp, plugins, config, helpers) {
         appendUnicode: false
       }))
       .on('glyphs', function(glyphs, options) {
-        options.glyphs = glyphs;
+        options.glyphs = glyphs
         var stream = gulp.src('gulpfile.js/icons.css')
           .pipe(plugins.consolidate('lodash', options))
           .pipe(helpers.ifNotDev(plugins.minifyCss()))
-          .pipe(plugins.rename({ suffix: '.min' }));
+          .pipe(plugins.rename({ suffix: '.min' }))
 
-        helpers.copyToTargets(stream, 'styles', '/styles');
-      });
+        helpers.copyToTargets(stream, 'styles', '/styles')
+      })
 
-    return helpers.copyToTargets(stream, 'fonts', '/fonts');
-  });
-};
+    return helpers.copyToTargets(stream, 'fonts', '/fonts')
+  })
+}

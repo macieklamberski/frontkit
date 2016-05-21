@@ -5,8 +5,8 @@ module.exports = function (gulp, plugins, config, helpers) {
       '!' + config.source + '/templates/**/_*.twig'
     ])
       .pipe(plugins.plumber(helpers.onError))
-      .pipe(plugins.twig({ errorLogToConsole: true }));
+      .pipe(plugins.twig({ errorLogToConsole: true }))
 
-    return helpers.copyToTargets(stream, 'templates', '/');
-  });
-};
+    return helpers.copyToTargets(stream, 'templates', '/')
+  })
+}

@@ -6,12 +6,12 @@ module.exports = function (gulp, plugins, config, helpers) {
           debug: true,
           transform: [plugins.es6ify]
         })
-        .bundle();
+        .bundle()
       }))
       .pipe(plugins.buffer())
       .pipe(helpers.ifNotDev(plugins.uglify()))
-      .pipe(plugins.rename({ suffix: '.min' }));
+      .pipe(plugins.rename({ suffix: '.min' }))
 
-    return helpers.copyToTargets(stream, 'scripts', '/scripts');
-  });
-};
+    return helpers.copyToTargets(stream, 'scripts', '/scripts')
+  })
+}

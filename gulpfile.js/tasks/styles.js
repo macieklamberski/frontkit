@@ -11,8 +11,8 @@ module.exports = function (gulp, plugins, config, helpers) {
         keepSpecialComments: 0,
         restructuring: false
       })))
-      .pipe(plugins.rename({ suffix: '.min' }));
+      .pipe(plugins.rename({ suffix: '.min' }))
 
-    return helpers.copyToTargets(stream, 'styles', '/styles');
-  });
-};
+    return helpers.copyToTargets(stream, 'styles', '/styles')
+  })
+}
