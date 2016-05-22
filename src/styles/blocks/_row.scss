@@ -1,11 +1,11 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: rem(-$width--gutter / 2);
-  margin-right: rem(-$width--gutter / 2);
+  margin-left: rem(-$width--gutter);
+  margin-right: rem(-$width--gutter);
 
   &__column {
-    padding: 0 rem($width--gutter / 2);
+    padding: 0 rem($width--gutter);
 
     &--half {
       flex-basis: 50%;
