@@ -1,22 +1,19 @@
 {
-  "frontkit": {
-    "source": "src",
-    "targets": [
-      {
-        "path": "dist",
-        "tasks": [
-          "templates",
-          "scripts",
-          "styles",
-          "images",
-          "icons",
-          "files"
-        ]
-      }
-    ],
-    "deploy": {}
+  "name": "frontkit",
+  "version": "1.0.0",
+  "description": "Opinionated static site generator.",
+  "homepage": "http://github.com/lamberski/frontkit",
+  "author": {
+    "name" : "Maciej Lamberski",
+    "email" : "maciej@lamberski.com",
+    "url" : "http://lamberski.com"
   },
-  "devDependencies": {
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "frontkit": "./bin/frontkit"
+  },
+  "dependencies": {
     "browserify": "^13.0.1",
     "del": "^2.2",
     "es6ify": "^1.6.0",
@@ -45,11 +42,10 @@
     "gulp-util": "^3.0",
     "lodash": "^3.9.1",
     "merge-stream": "^1.0",
+    "ncp": "^2.0.0",
+    "require-dir": "^0.3.0",
     "run-sequence": "^1.1",
     "vinyl-ftp": "^0.4",
     "yargs": "^3.31"
-  },
-  "dependencies": {
-    "normalize.css": "^4.1.1"
   }
 }
