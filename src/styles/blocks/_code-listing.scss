@@ -7,6 +7,10 @@
   padding: 1em 1.25em;
   border-radius: .33em;
 
+  &__comment {
+    color: rgba($color--white, 0.33);
+  }
+
   @include breakpoint(phablet) {
     font-size: rem(14px);
     border-radius: 0;
