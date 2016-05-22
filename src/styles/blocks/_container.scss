@@ -4,7 +4,7 @@
   padding: rem(50px) rem($width--gutter);
 
   @include breakpoint(tablet) {
-    max-width: rem($width--container * 0.85);
+    max-width: rem($width--container * 0.9);
   }
 
   @include breakpoint(phablet) {
