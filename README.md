@@ -7,7 +7,7 @@ I bet above description haven't been very helpful in understanding what Frontkit
 
 ## Usage
 
-First of, you need to install the package globally.
+First step is to install the package globally.
 
 ```bash
 npm install -g frontkit
@@ -47,7 +47,7 @@ gulp deploy --target=production
 
 ## Structure
 
-During new project initialization, Frontkit will create below structure of files in project directory.
+During project creation, Frontkit will create below structure of files in project directory.
 
 ```bash
 .
@@ -66,17 +66,15 @@ During new project initialization, Frontkit will create below structure of files
 └── package.json
 ```
 
-I bet you already know what all the files in root directory do*, so in the next section we'll focus on the contents of *src* directory.
-
-*—Yeah, just pre-configured files for linting, syntax formatting, etc.
+I bet you already know what all the files in root directory do (yeah, just pre-configured files for linting, syntax formatting, etc.), so in the next section we'll focus on the contents of *src* directory.
 
 ## Tasks
 
-Frontkit `src` folder consists of six main directories (these have their equivalents as Gulp tasks.) Let's find out what kind of stuff can be put to each of them and what will happen if you do this.
+Frontkit *src* folder consists of six main directories (these have their equivalents as Gulp tasks.) Let's find out what kind of stuff can be put to each of them and what will happen if you do this.
 
 ### templates
 
-HTML files compiled using [Twig](http://twig.sensiolabs.org) template engine. Thanks to Twig, templates can be divided into partials and later included in main HTML files. Partials (files with `_` prefix in their name) will not be copied to compiled target. Frontkit uses [Twig.js](https://github.com/justjohn/twig.js) which means you can use basically all the functionalities from its original PHP implementation. At the end, files are prettified with JS Prettify library to ensure consistency in the output.
+HTML files compiled using [Twig](http://twig.sensiolabs.org) template engine. Thanks to Twig, templates can be divided into partials and later included in main HTML files. Partials (files with *_* prefix in their name) will not be copied to compiled target. Frontkit uses [Twig.js](https://github.com/justjohn/twig.js) which means you can use basically all the functionalities from its original PHP implementation. At the end, files are prettified with JS Prettify library to ensure consistency in the output.
 
 ### scripts
 
@@ -141,9 +139,7 @@ Array of directories to which source will be compiled. `path` points to target d
 
 ### deploy
 
-You can define one or more deploy targets, each with its own set of configuration options.
-
-You can choose of two adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp) or [gulp-rsync](https://github.com/jerrysu/gulp-rsync). Each of them have different set of configuration options.
+You can define one or more deploy targets, each with its own set of configuration options. You can choose of two adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp) or [gulp-rsync](https://github.com/jerrysu/gulp-rsync). Each of them have different set of configuration options.
 
 To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapter, look [into documentation of the package](https://github.com/morris/vinyl-ftp#ftpcreate-config-). There are also two additional properties: `files` (path to local files) and `destination` (remote directory on the server). Example configuration:
 
