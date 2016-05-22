@@ -2,7 +2,7 @@ require('frontkit')({
   "source": "src",
   "targets": [
     {
-      "path": "dist",
+      "path": "./",
       "tasks": [
         "templates",
         "scripts",
