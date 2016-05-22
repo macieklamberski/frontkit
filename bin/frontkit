@@ -2,11 +2,23 @@
 
 var ncp         = require('ncp').ncp;
 var templates   = __dirname + '/../lib/templates';
-var destination = process.argv[2];
+var command     = process.argv[2];
+var destination = process.argv[3];
+
+if (command != 'new') {
+  console.log('To use Frontkit run new command:');
+  console.log('frontkit new project-name');
+  return;
+}
 
 ncp(templates, destination, function (error) {
- if (error) {
-   return console.error(error);
- }
- console.log('done!');
+  if (error) {
+    return console.error(error);
+  }
+
+  console.log('Project initialized!');
+  console.log('Now run below commands and start working. Happy coding!');
+  console.log('cd ' + destination);
+  console.log('npm install');
+  console.log('gulp');
 });

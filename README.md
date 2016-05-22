@@ -17,9 +17,12 @@ Now that you have it installed, you can initialize new project.
 
 ```bash
 frontkit new project-name
+cd project-name
+npm install
+gulp
 ```
 
-Above command will create *project-name* directory and copy project files there. Next, it'll `cd` to this newly created directory and run `npm install` to install all dependencies, and start up the Gulp workflow using `gulp`. And yeah, that's it—you're ready to rock! :metal:
+Above commands will create *project-name* directory and copy project files there. Next, `cd` to this newly created directory and run `npm install` to install all dependencies, and start up the Gulp workflow using `gulp`. And yeah, that's it—you're ready to rock! :metal:
 
 For reference, below is list of all tasks and options that you can pass to your Gulp.
 
