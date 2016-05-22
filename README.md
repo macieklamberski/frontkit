@@ -1,27 +1,27 @@
-# Frontkit
+Frontkit [![NPM version](https://badge.fury.io/js/frontkit.svg)](http://badge.fury.io/js/frontkit) [![NPM dependiencies](https://david-dm.org/lamberski/frontkit.svg)](https://david-dm.org/lamberski/frontkit)
+============
 
-Frontkit is a static site generator. It consists of directories structure, base files and Gulp workflow which supports modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers.
+Frontkit is static site generator. It consists of very opinionated Gulp workflow (with support of modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers) and basic directories & files structure that is generated during each project initialization. It was created mainly for my personal use, but if you like it and are keen to use it—I'll be more than happy if you do.
 
-## Structure
-
-Below is tree with directories structure for a typical project.
-
-```bash
-.
-├── node_modules/
-├── src/
-│   ├── templates/
-│   ├── scripts/
-│   ├── styles/
-│   ├── images/
-│   ├── icons/
-│   ├── files/
-└── ...
-```
+I bet above description haven't been very helpful in understanding what Frontkit actually does, so let's see how to use it.
 
 ## Usage
 
-Run below commands in your project directory.
+First of, you need to install the package globally.
+
+```bash
+npm install -g frontkit
+```
+
+Now that you have it installed, you can initialize new project.
+
+```bash
+frontkit new project-name
+```
+
+Above command will create *project-name* directory and copy project files there. Next, it'll `cd` to this newly created directory and run `npm install` to install all dependencies, and start up the Gulp workflow using `gulp`. And yeah, that's it—you're ready to rock! :metal:
+
+For reference, below is list of all tasks and options that you can pass to your Gulp.
 
 ```bash
 # This task will watch for changes in files and recompile them as needed.
@@ -40,13 +40,39 @@ gulp --dev
 gulp build --dev
 gulp watch --dev
 
-# Deploy changes to defined host (see Configuration section below).
+# Deploy changes to defined host (see Configuration section further in this
+# document).
 gulp deploy --target=production
 ```
 
+## Structure
+
+During new project initialization, Frontkit will create below structure of files in project directory.
+
+```bash
+.
+├── node_modules/
+├── src/
+│   ├── templates/
+│   ├── scripts/
+│   ├── styles/
+│   ├── images/
+│   ├── icons/
+│   ├── files/
+├── .editorconfig
+├── .gitignore
+├── .jshintrc
+├── gulpfile.js
+└── package.json
+```
+
+I bet you already know what all the files in root directory do*, so in the next section we'll focus on the contents of *src* directory.
+
+*—Yeah, just pre-configured files for linting, syntax formatting, etc.
+
 ## Tasks
 
-Frontkit consists of eight different parts. Each of them is stored in separate directory and managed by different Gulp task (with the same name as directory).
+Frontkit `src` folder consists of six main directories (these have their equivalents as Gulp tasks.) Let's find out what kind of stuff can be put to each of them and what will happen if you do this.
 
 ### templates
 
@@ -64,7 +90,7 @@ Place for CSS, SCSS and Sass files. SCSS and Sass files are compiled to regular 
 @import 'blocks/*' // Will import all the files in the blocks folder.
 ```
 
-(@TODO: Info about files being minified and named with .min suffix.)
+Each compiled file will be automatically minified and named with .min suffix.
 
 ### images
 
@@ -72,7 +98,7 @@ Images used strictly for layout purposes. Will be optimized using [gulp-imagemin
 
 ### icons
 
-SVG files from which font will be generated. (@TODO: Add more info about how it works.)
+SVG files from which font will be generated. You can later
 
 ### files
 
@@ -80,30 +106,33 @@ Other static files that will be copied to the root of target directory. This is 
 
 ## Configuration
 
-You can configure Frontkit to do things like deploying and manage output directories. Below is example `frontkit` key in _package.json_ file, located in root directory of the project.
+*gulpfile.js* created in your project directory is pre-configured but you can always change it to change behavior of Frontkit.
 
 ```javascript
-// package.json
-{
-  // ...
-  "frontkit": {
-    "source": "./src",
-    "targets": [
-      {
-        "path": "_preview",
-        "tasks": ["templates", "scripts", "styles", "images", "icons", "files"]
-      }
-    ],
-    "deploy": {
-      "staging": {
-        "adapter": "ftp",
-        // For configuration of the adapter, read "deploy" section below.
-      },
-      // ...
+// gulpfile.js
+require('frontkit')({
+  // Directory where all source files are stored.
+  "source": "src",
+
+  // List of all targets where Frontkit will compile source files.
+  // You can also specify which tasks will be invoked for each target.
+  "targets": [
+    {
+      "path": "dist",
+      "tasks": [
+        "templates",
+        "scripts",
+        "styles",
+        "images",
+        "icons",
+        "files"
+      ]
     }
-  },
-  // ...
-}
+  ],
+
+  // For configuration of deploy functionality, read "deploy" section below.
+  "deploy": {}
+})
 ```
 
 ### targets
@@ -167,26 +196,6 @@ Then install [Gulp](http://gulpjs.com) globally:
 npm install -g gulp
 ```
 
-## Installation
-
-Having all requirements met, you can set up new project.
-
-```bash
-git clone https://github.com/lamberski/frontkit.git new-project
-cd new-project
-npm install
-```
-
-After that, you're ready to rock! :metal:
-
 ## License
 
-(MIT License)
-
-Copyright (C) 2015 Maciej Lamberski
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Frontkit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
