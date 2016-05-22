@@ -1,0 +1,25 @@
+$breakpoints      : (
+  'laptop'        : '(max-width: 1440px)',
+  'tablet'        : '(max-width: 1024px)',
+  'phablet'       : '(max-width: 800px)',
+  'phone'         : '(max-width: 480px)',
+);
+
+$font--base       : ('Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif);
+$font--code       : (Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, sans-serif);
+$font--logo       : (Pacifico, sans-serif);
+
+$size--base       : 20px;
+
+$color--base      : #444446;
+$color--white     : #fff;
+$color--minor     : #dddddf;
+$color--accent    : #FC913A;
+
+$line--base       : 1.6;
+$line--heading    : 1.2;
+
+$duration--base   : 250ms;
+
+$width--container : 1000px;
+$width--gutter    : 30px;

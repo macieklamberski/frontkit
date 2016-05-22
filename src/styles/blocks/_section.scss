@@ -1,0 +1,7 @@
+.section {
+  margin-top: rem(100px);
+
+  @include breakpoint(phablet) {
+    margin-top: rem(50px);
+  }
+}

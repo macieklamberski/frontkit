@@ -1,0 +1,53 @@
+html {
+  font-size: $size--base;
+
+  &, * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: rem(3px);
+    background: $color--accent;
+  }
+}
+
+body {
+  font-family: $font--base;
+  font-weight: 300;
+  line-height: $line--base;
+  color: $color--base;
+
+  @include breakpoint(phablet) {
+    font-size: rem(16px);
+    font-weight: 400;
+  }
+}
+
+svg,
+img {
+  vertical-align: top;
+  max-width: 100%;
+  fill: currentColor;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  transition: trans(color), trans(background);
+
+  &:hover {
+    color: $color--accent;
+  }
+}

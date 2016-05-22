@@ -1,0 +1,11 @@
+.footer {
+  color: $color--minor;
+  text-align: center;
+  font-size: rem(16px);
+  font-weight: 400;
+
+  @include breakpoint(phablet) {
+    text-align: left;
+    font-size: rem(14px);
+  }
+}

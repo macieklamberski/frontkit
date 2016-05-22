@@ -1,0 +1,13 @@
+.container {
+  max-width: rem($width--container);
+  margin: 0 auto;
+  padding: rem(50px) rem($width--gutter);
+
+  @include breakpoint(tablet) {
+    max-width: rem($width--container * 0.85);
+  }
+
+  @include breakpoint(phablet) {
+    padding: rem(25px) rem($width--gutter / 2);
+  }
+}

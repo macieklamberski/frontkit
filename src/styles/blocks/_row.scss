@@ -1,0 +1,27 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: rem(-$width--gutter / 2);
+  margin-right: rem(-$width--gutter / 2);
+
+  &__column {
+    padding: 0 rem($width--gutter / 2);
+
+    &--half {
+      flex-basis: 50%;
+    }
+  }
+
+  @include breakpoint(phablet) {
+    display: block;
+    margin: 0;
+
+    &__column {
+      padding: 0;
+    }
+
+    &__column + &__column {
+      margin-top: rem(25px);
+    }
+  }
+}

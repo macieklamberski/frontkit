@@ -1,0 +1,21 @@
+.heading {
+  font-weight: 300;
+  line-height: 1.2;
+
+  &--intro {
+    font-size: rem(40px);
+  }
+
+  &--docs {
+    font-size: rem(35px);
+  }
+
+  @include breakpoint(phablet) {
+    font-weight: 400;
+
+    &--docs,
+    &--intro {
+      font-size: rem(30px);
+    }
+  }
+}

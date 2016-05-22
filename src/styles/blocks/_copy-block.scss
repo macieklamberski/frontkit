@@ -1,0 +1,5 @@
+.copy-block {
+  > :first-child ~ * {
+    margin-top: rem(20px);
+  }
+}

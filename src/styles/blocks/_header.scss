@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    font-family: $font--logo;
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-transform: lowercase;
+  }
+
+  &__menu {
+    margin-left: auto;
+    font-size: rem(16px);
+    font-weight: 400;
+
+    ul {
+      display: flex;
+      list-style: none;
+    }
+
+    li {
+      margin-left: rem($width--gutter);
+    }
+
+    a {
+      display: block;
+      padding: rem($width--gutter / 2);
+      margin: rem(-$width--gutter / 2);
+    }
+  }
+
+  @include breakpoint(phablet) {
+    &__logo {
+        font-size: 1.5rem;
+    }
+  }
+}

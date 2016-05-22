@@ -1,0 +1,18 @@
+.code-listing {
+  font-family: $font--code;
+  font-size: rem(16px);;
+  list-style: none;
+  background: $color--base;
+  color: $color--white;
+  padding: 1em 1.25em;
+  border-radius: .33em;
+
+  @include breakpoint(phablet) {
+    font-size: rem(14px);
+    border-radius: 0;
+    padding-left: rem($width--gutter / 2);
+    padding-right: rem($width--gutter / 2);
+    margin-left: rem(-$width--gutter / 2);
+    margin-right: rem(-$width--gutter / 2);
+  }
+}
