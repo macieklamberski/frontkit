@@ -1,7 +1,9 @@
 {
   "dependencies": {
-    "frontkit": "~1.0",
-    "gulp": "^3.9",
     "normalize.css": "^4.1"
+  },
+  "devDependencies": {
+    "frontkit": "~4.0",
+    "gulp": "^3.9"
   }
 }
