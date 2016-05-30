@@ -1,9 +1,11 @@
 #! /usr/bin/env node
 
 var ncp         = require('ncp').ncp;
+var replace     = require('replace');
 var templates   = __dirname + '/../lib/templates';
 var command     = process.argv[2];
 var destination = process.argv[3];
+var projectName = process.argv[4] || 'Project Name';
 
 if (command != 'new') {
   console.log('To use Frontkit run new command:');
@@ -15,6 +17,14 @@ ncp(templates, destination, function (error) {
   if (error) {
     return console.error(error);
   }
+
+  replace({
+    regex: '{{ projectName }}',
+    replacement: projectName,
+    paths: [destination],
+    recursive: true,
+    silent: true
+  });
 
   console.log('Project initialized!');
   console.log('Now run below commands and start working. Happy coding!');

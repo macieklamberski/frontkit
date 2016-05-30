@@ -1,5 +1,4 @@
-Frontkit [![NPM version](https://badge.fury.io/js/frontkit.svg)](http://badge.fury.io/js/frontkit) [![NPM dependiencies](https://david-dm.org/lamberski/frontkit.svg)](https://david-dm.org/lamberski/frontkit)
-============
+# Frontkit [![NPM version](https://badge.fury.io/js/frontkit.svg)](http://badge.fury.io/js/frontkit) [![NPM dependiencies](https://david-dm.org/lamberski/frontkit.svg)](https://david-dm.org/lamberski/frontkit)
 
 Frontkit is static site generator. It consists of very opinionated Gulp workflow (with support of modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers) and basic directories & files structure that is generated during each project initialization. It was created mainly for my personal use, but if you like it and are keen to use it—I'll be more than happy if you do.
 
@@ -16,13 +15,15 @@ npm install -g frontkit
 Now that you have it installed, you can initialize new project.
 
 ```bash
-frontkit new project-name
+frontkit new project-name "Project Name"
 cd project-name
 npm install
 gulp
 ```
 
 Above commands will create *project-name* directory and copy project files there. Next, `cd` to this newly created directory and run `npm install` to install all dependencies, and start up the Gulp workflow using `gulp`. And yeah, that's it—you're ready to rock! :metal:
+
+Second parameter—name of the project—is optional. If not provided, "Project Name" will be inserted into project *README.md* file and in `<title></title>`.
 
 For reference, below is list of all tasks and options that you can pass to your Gulp.
 
