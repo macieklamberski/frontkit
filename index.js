@@ -1,5 +1,4 @@
-module.exports = function (config) {
-  var gulp    = require('gulp')
+module.exports = function (gulp, config) {
   var plugins = require('gulp-load-plugins')({ pattern: '*' })
   var helpers = require(__dirname + '/lib/helpers')(gulp, plugins, config)
   var tasks   = require('require-dir')(__dirname + '/lib/tasks')

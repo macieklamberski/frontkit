@@ -111,7 +111,7 @@ Other static files that will be copied to the root of target directory. This is 
 
 ```javascript
 // gulpfile.js
-require('frontkit')({
+require('frontkit')(require('gulp'), {
   // Directory where all source files are stored.
   "source": "src",
 
