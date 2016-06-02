@@ -143,7 +143,7 @@ Array of directories to which source will be compiled. `path` points to target d
 
 ### deploy
 
-You can define one or more deploy targets, each with its own set of configuration options. You can choose of two adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp) or [gulp-rsync](https://github.com/jerrysu/gulp-rsync). Each of them have different set of configuration options.
+You can define one or more deploy targets, each with its own set of configuration options. You can choose of two adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp) or [gulp-scp2](https://github.com/popomore/gulp-scp2). Each of them have different set of configuration options.
 
 To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapter, look [into documentation of the package](https://github.com/morris/vinyl-ftp#ftpcreate-config-). There are also two additional properties: `files` (path to local files) and `destination` (remote directory on the server). Example configuration:
 
@@ -162,18 +162,16 @@ To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapt
 }
 ```
 
-To use **gulp-rsync**, set value of `adapter` to `"rsync"` and pass package configuration ([look into documentation](https://github.com/jerrysu/gulp-rsync#rsyncoptions)). There is also one additional property: `files` - path to local files. Example configuration:
+To use **gulp-scp2**, set value of `adapter` to `"scp2"` and pass package configuration ([look into documentation](https://github.com/popomore/gulp-scp2#gulp-scp2--)). There is also one additional property: `files` - path to local files. Example configuration:
 
 ```javascript
 "deploy": {
   // ...
   "preview": {
-    "adapter": "rsync",
+    "adapter": "scp2",
     "port": 22,
-    "hostname": "domain.com",
-    "incremental": true,
-    "root": "dist",
-    "destination": "/var/www/domain.com",
+    "host": "domain.com",
+    "dest": "/var/www/domain.com",
     "files": ["dist/**/*", "!dist/.git/"]
   },
   // ...
