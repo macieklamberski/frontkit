@@ -143,7 +143,7 @@ Array of directories to which source will be compiled. `path` points to target d
 
 ### deploy
 
-You can define one or more deploy targets, each with its own set of configuration options. You can choose of two adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp) or [gulp-scp2](https://github.com/popomore/gulp-scp2). Each of them have different set of configuration options.
+You can define one or more deploy targets, each with its own set of configuration options. You can choose of three adapters: [vinyl-ftp](https://github.com/morris/vinyl-ftp), [gulp-scp2](https://github.com/popomore/gulp-scp2) and [rsync-slim](https://github.com/stcruy/rsync-slim). Each of them have different set of configuration options.
 
 To use **vinyl-ftp**, set value of `adapter` to `"ftp"`. To configure this adapter, look [into documentation of the package](https://github.com/morris/vinyl-ftp#ftpcreate-config-). There are also two additional properties: `files` (path to local files) and `destination` (remote directory on the server). Example configuration:
 
@@ -173,6 +173,21 @@ To use **gulp-scp2**, set value of `adapter` to `"scp2"` and pass package config
     "host": "domain.com",
     "dest": "/var/www/domain.com",
     "files": ["dist/**/*", "!dist/.git/"]
+  },
+  // ...
+}
+```
+
+Using **rsync-slim** is also easy. Set value of `adapter` to `"slim"` and pass package configuration ([look into documentation](https://github.com/stcruy/rsync-slim#rsync-slim)).
+
+```javascript
+"deploy": {
+  // ...
+  "preview": {
+    "adapter": "slim",
+    "src": ["dist"],
+    "dest": "user@domain.com:/path/on/server",
+    "options": "-rtvhcz --delete --progress"
   },
   // ...
 }
