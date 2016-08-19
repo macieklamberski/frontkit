@@ -62,6 +62,7 @@ During project creation, Frontkit will create below structure of files in projec
 │   ├── styles/
 │   ├── images/
 │   ├── icons/
+│   ├── sprites/
 │   ├── files/
 ├── .editorconfig
 ├── .gitignore
@@ -100,7 +101,17 @@ Images used strictly for layout purposes. Will be optimized using [gulp-imagemin
 
 ### icons
 
-SVG files from which font will be generated. You can later
+SVG files from which font will be generated.
+
+### sprites
+
+Thanks to [gulp-svgstore](https://github.com/w0rm/gulp-svgstore), you can combine multiple SVG files into one that can be later used to embed inline SVG shapes in your HTML. Just create directory in /sprites and put SVG files in there. During build process, all files inside this directory will be combined into one with the same name. If you, for example, have `sprites/sprite-name/icon-name.svg`, you'll be able to embed it with below code.
+
+```html
+<svg>
+  <use xlink:href="images/sprite-name.svg#icon-name"></use>
+</svg>
+```
 
 ### files
 
@@ -127,6 +138,7 @@ require('frontkit')(require('gulp'), {
         "styles",
         "images",
         "icons",
+        "sprites",
         "files"
       ]
     }
