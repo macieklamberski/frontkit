@@ -1,6 +1,6 @@
 {
   "name": "frontkit",
-  "version": "4.0.11",
+  "version": "4.0.12",
   "description": "Opinionated all‑in‑one static site generator.",
   "homepage": "http://github.com/lamberski/frontkit",
   "author": "Maciej Lamberski <maciej@lamberski.com> (http://lamberski.com)",
@@ -21,6 +21,7 @@
     "gulp-buffer": "0.0.2",
     "gulp-consolidate": "^0.2",
     "gulp-foreach": "^0.1",
+    "gulp-html-minifier": "^0.1.8",
     "gulp-iconfont": "^8.0",
     "gulp-imagemin": "^3.0",
     "gulp-import-css": "^0.1",
