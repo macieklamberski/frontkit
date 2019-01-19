@@ -46,6 +46,7 @@
     "require-dir": "^1.2.0",
     "rsync-slim": "^1.1.0",
     "run-sequence": "^2.2.1",
+    "twig-markdown": "^0.2.1",
     "vinyl-ftp": "^0.6.1",
     "vue-hot-reload-api": "^2.0.6",
     "vueify": "^9.0",
